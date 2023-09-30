@@ -23,4 +23,4 @@ curve = SubResource("Curve2D_0xr3n")
 
 [node name="enemy_spawn_location" type="PathFollow2D" parent="player_position/enemy_path"]
 position = Vector2(126.855, -168.814)
-rotation = -0.00621754
+rotation = -0.00621757
