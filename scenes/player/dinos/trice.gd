@@ -32,18 +32,18 @@ func _physics_process(_delta):
 				if player_target.position.distance_squared_to(position) >= 4 * player_keep_range * player_keep_range:
 					trice_state = RETURNING
 				else:
-					velocity = player_target.velocity
+					velocity = (player_target.velocity)/2
 		CHASING:
 			if !is_instance_valid(enemy_target) or enemy_target.is_queued_for_deletion():
 				trice_state = RETURNING
 				enemy_target = null
 			else:
 				var dir = position.direction_to(enemy_target.position)
-				velocity = dir * chasing_speed
+				velocity = (dir * chasing_speed)/2
 		RETURNING:
 			if player_target and player_target.position.distance_squared_to(position) >= player_keep_range * player_keep_range:
 				var dir = position.direction_to(player_target.position)
-				velocity = dir * returning_speed
+				velocity = (dir * returning_speed)
 			else:
 				trice_state = SEARCHING
 
