@@ -1,12 +1,18 @@
-[gd_scene load_steps=6 format=3 uid="uid://dprsawowc2kg2"]
+[gd_scene load_steps=8 format=3 uid="uid://dprsawowc2kg2"]
 
 [ext_resource type="PackedScene" uid="uid://bcm7pfx0qk8fj" path="res://scenes/player/player.tscn" id="1_tgjfa"]
 [ext_resource type="Texture2D" uid="uid://cdhtneb5pvcmh" path="res://scenes/player/tile_reference.png" id="2_2xdfp"]
 [ext_resource type="PackedScene" uid="uid://bb28v0kht4nxk" path="res://scenes/hit/hurtbox.tscn" id="3_xjgvl"]
+[ext_resource type="Script" path="res://scenes/hit/hit_stats.gd" id="4_jem0f"]
 
 [sub_resource type="SegmentShape2D" id="SegmentShape2D_im26j"]
 a = Vector2(-139.168, 48.2402)
 b = Vector2(75.8316, 47.2402)
+
+[sub_resource type="Resource" id="Resource_4l0fp"]
+script = ExtResource("4_jem0f")
+damage_dealt = 20.0
+knockback_strength = 0.0
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_15iqh"]
 size = Vector2(108, 75)
@@ -33,7 +39,7 @@ texture = ExtResource("2_2xdfp")
 
 [node name="hurtbox" parent="." instance=ExtResource("3_xjgvl")]
 position = Vector2(217, 113)
-damage_dealt = 20.0
+hit_data = SubResource("Resource_4l0fp")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="hurtbox"]
 position = Vector2(1, 0)
