@@ -1,14 +1,15 @@
-[gd_scene load_steps=13 format=3 uid="uid://drm7nufbw1egd"]
+[gd_scene load_steps=14 format=3 uid="uid://drm7nufbw1egd"]
 
 [ext_resource type="Script" path="res://scenes/ui/history_comic.gd" id="1_vdbpk"]
 [ext_resource type="Texture2D" path="res://scenes/assets/comic/IMG_0722.png" id="2_1ywhb"]
 [ext_resource type="Texture2D" path="res://scenes/assets/comic/IMG_0723.png" id="3_smhld"]
 [ext_resource type="Texture2D" path="res://scenes/assets/comic/IMG_0724.png" id="4_qh1jk"]
-[ext_resource type="Texture2D" uid="uid://dgmuaiakcfxlx" path="res://scenes/assets/comic/comic5.png" id="5_t32vl"]
 [ext_resource type="Texture2D" path="res://scenes/assets/comic/IMG_0725.png" id="5_w6ry2"]
 [ext_resource type="Texture2D" uid="uid://cfygilj85w4q8" path="res://scenes/assets/comic/comic6.png" id="6_7vqjt"]
+[ext_resource type="Texture2D" uid="uid://djofigj3tnidd" path="res://scenes/assets/comic/IMG_0729.png" id="6_nxwl0"]
 [ext_resource type="Texture2D" uid="uid://dp5eqifp1yfs5" path="res://scenes/assets/comic/comic7.png" id="7_t3bk1"]
 [ext_resource type="FontFile" uid="uid://o1dq6pr7wn32" path="res://scenes/font/prstart.ttf" id="9_wuwey"]
+[ext_resource type="PackedScene" uid="uid://bclr88xsgr20p" path="res://scenes/ui/circular_progressbar.tscn" id="10_ijenv"]
 
 [sub_resource type="Animation" id="Animation_aj5ke"]
 length = 14.0
@@ -547,23 +548,24 @@ texture = ExtResource("3_smhld")
 
 [node name="Comic3" type="Sprite2D" parent="."]
 modulate = Color(1, 1, 1, 0)
-position = Vector2(559, 366)
+position = Vector2(481, 270)
 scale = Vector2(3, 3)
 texture = ExtResource("4_qh1jk")
 
 [node name="Comic4" type="Sprite2D" parent="."]
 modulate = Color(1, 1, 1, 0)
 position = Vector2(479, 269)
+scale = Vector2(3.3, 3.3)
 texture = ExtResource("5_w6ry2")
 
 [node name="Comic5" type="Sprite2D" parent="."]
 modulate = Color(1, 1, 1, 0)
-position = Vector2(479, 269)
-texture = ExtResource("5_t32vl")
+position = Vector2(479, 197)
+scale = Vector2(3, 3)
+texture = ExtResource("6_nxwl0")
 
 [node name="Comic6" type="Sprite2D" parent="."]
-modulate = Color(1, 1, 1, 0)
-position = Vector2(479, 269)
+position = Vector2(479, 285.72)
 texture = ExtResource("6_7vqjt")
 
 [node name="Comic7" type="Sprite2D" parent="."]
@@ -651,7 +653,6 @@ horizontal_alignment = 1
 autowrap_mode = 3
 
 [node name="text6" type="Label" parent="."]
-modulate = Color(1, 1, 1, 0)
 offset_left = 48.0
 offset_top = 33.0
 offset_right = 902.0
@@ -679,5 +680,12 @@ theme_override_font_sizes/font_size = 27
 text = "...they will have more fossil fuels in the present."
 horizontal_alignment = 1
 autowrap_mode = 3
+
+[node name="circular_progressbar" parent="." instance=ExtResource("10_ijenv")]
+offset_left = 883.0
+offset_top = 467.0
+offset_right = 209.0
+offset_bottom = 192.0
+scale = Vector2(0.25, 0.25)
 
 [connection signal="timeout" from="end_timer" to="." method="_on_end_timer_timeout"]
