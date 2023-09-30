@@ -1,0 +1,13 @@
+[gd_scene load_steps=2 format=3 uid="uid://cx3bl7sj2vgtn"]
+
+[ext_resource type="Script" path="res://scenes/hit/hitbox.gd" id="1_srka0"]
+
+[node name="hitbox" type="Area2D"]
+collision_layer = 256
+collision_mask = 256
+monitorable = false
+script = ExtResource("1_srka0")
+
+[node name="iframes" type="Timer" parent="."]
+process_callback = 0
+one_shot = true

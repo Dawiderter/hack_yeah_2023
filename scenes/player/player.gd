@@ -11,3 +11,11 @@ func _physics_process(delta):
 	velocity = direction * SPEED
 
 	move_and_slide()
+
+
+func _on_hurtbox_area_entered(area:Area2D):
+	pass
+
+
+func _on_hitbox_on_hit(damage, source):
+	print(damage)
