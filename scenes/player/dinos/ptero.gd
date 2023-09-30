@@ -1,6 +1,7 @@
 extends Node2D
 
 @export var radius: float = 200
+@export var angular_speed : float = 1
 
 @onready var sprite: AnimatedSprite2D = $sprite
 
@@ -12,7 +13,7 @@ func _ready():
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
-	time += delta
+	time += delta * angular_speed
 	time = fmod(time, 2*PI)
 
 	position = Vector2(cos(time), sin(time)) * radius 
