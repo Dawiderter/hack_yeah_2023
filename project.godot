@@ -13,3 +13,10 @@ config_version=5
 config/name="Hack Yeah 2023"
 run/main_scene="res://scenes/world/world.tscn"
 config/features=PackedStringArray("4.1", "Forward Plus")
+
+[display]
+
+window/size/viewport_width=384
+window/size/viewport_height=216
+window/size/window_width_override=1920
+window/size/window_height_override=1080
