@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cagakkoph5nim"
-path="res://.godot/imported/army_knife.png-cb482e0d28bd4c672fb9f80588d23ebd.ctex"
+uid="uid://8nmmxbicjgax"
+path="res://.godot/imported/tank.png-3c7cb560c3f160e7bc9843608dfc3e04.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://scenes/assets/army/army_knife.png"
-dest_files=["res://.godot/imported/army_knife.png-cb482e0d28bd4c672fb9f80588d23ebd.ctex"]
+source_file="res://scenes/assets/army/tank.png"
+dest_files=["res://.godot/imported/tank.png-3c7cb560c3f160e7bc9843608dfc3e04.ctex"]
 
 [params]
 
