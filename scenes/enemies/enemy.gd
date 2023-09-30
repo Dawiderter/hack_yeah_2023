@@ -8,3 +8,7 @@ func _process(delta):
 	velocity = (target.position - position).normalized() * move_speed
 	move_and_slide()
 
+
+
+func _on_hitbox_on_hit(hit_data : HitStats, source):
+	queue_free()
