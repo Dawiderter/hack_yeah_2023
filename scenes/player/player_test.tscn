@@ -1,0 +1,28 @@
+[gd_scene load_steps=4 format=3 uid="uid://dprsawowc2kg2"]
+
+[ext_resource type="PackedScene" uid="uid://bcm7pfx0qk8fj" path="res://scenes/player/player.tscn" id="1_tgjfa"]
+[ext_resource type="Texture2D" uid="uid://cdhtneb5pvcmh" path="res://scenes/player/tile_reference.png" id="2_2xdfp"]
+
+[sub_resource type="SegmentShape2D" id="SegmentShape2D_im26j"]
+a = Vector2(-139.168, 48.2402)
+b = Vector2(75.8316, 47.2402)
+
+[node name="player_test" type="Node2D"]
+
+[node name="player" parent="." instance=ExtResource("1_tgjfa")]
+position = Vector2(449.159, 140.934)
+
+[node name="StaticBody2D" type="StaticBody2D" parent="."]
+position = Vector2(485.168, 200.76)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
+shape = SubResource("SegmentShape2D_im26j")
+
+[node name="TileReference" type="Sprite2D" parent="."]
+position = Vector2(364, 127)
+texture = ExtResource("2_2xdfp")
+
+[node name="TileReference2" type="Sprite2D" parent="."]
+position = Vector2(453, 256)
+scale = Vector2(13.625, 1)
+texture = ExtResource("2_2xdfp")
