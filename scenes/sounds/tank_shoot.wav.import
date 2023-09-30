@@ -2,7 +2,11 @@
 
 importer="wav"
 type="AudioStreamWAV"
+<<<<<<< HEAD
+uid="uid://dblunnlarp6kv"
+=======
 uid="uid://s2iic541a8w8"
+>>>>>>> c64e4bfc69092d14a47acf55fc4fac95481f916b
 path="res://.godot/imported/tank_shoot.wav-5b116048527f251b86ca9be4665c45be.sample"
 
 [deps]
