@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cgtwjt7n011oe"
-path="res://.godot/imported/dino_1.png-b7b92dacad3ac2da47eec9843f9c77f1.ctex"
+uid="uid://csnp5s0jnv6c"
+path="res://.godot/imported/tri_idle.png-f7e3d2e2bae25d4c86cd1518f9e86b48.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://scenes/assets/dino_1.png"
-dest_files=["res://.godot/imported/dino_1.png-b7b92dacad3ac2da47eec9843f9c77f1.ctex"]
+source_file="res://scenes/assets/dinos/tri_idle.png"
+dest_files=["res://.godot/imported/tri_idle.png-f7e3d2e2bae25d4c86cd1518f9e86b48.ctex"]
 
 [params]
 

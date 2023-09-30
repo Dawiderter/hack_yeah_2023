@@ -1,8 +1,9 @@
-[gd_scene load_steps=8 format=3 uid="uid://dprsawowc2kg2"]
+[gd_scene load_steps=9 format=3 uid="uid://dprsawowc2kg2"]
 
 [ext_resource type="PackedScene" uid="uid://bcm7pfx0qk8fj" path="res://scenes/player/player.tscn" id="1_tgjfa"]
 [ext_resource type="Texture2D" uid="uid://cdhtneb5pvcmh" path="res://scenes/player/tile_reference.png" id="2_2xdfp"]
-[ext_resource type="PackedScene" uid="uid://ghbabccbo7bd" path="res://scenes/attacks/trex_attack.tscn" id="2_f7cx4"]
+[ext_resource type="PackedScene" uid="uid://ejcbb02rwjqh" path="res://scenes/player/dinos/trex.tscn" id="2_ndnpm"]
+[ext_resource type="PackedScene" uid="uid://dr5akf0xkeqgn" path="res://scenes/player/dinos/ptero.tscn" id="3_t668l"]
 [ext_resource type="PackedScene" uid="uid://bb28v0kht4nxk" path="res://scenes/hit/hurtbox.tscn" id="3_xjgvl"]
 [ext_resource type="PackedScene" uid="uid://d022fu33um405" path="res://scenes/world/enemies_spawner.tscn" id="4_v433g"]
 
@@ -19,8 +20,9 @@ size = Vector2(108, 75)
 position = Vector2(449.159, 140.934)
 collision_mask = 0
 
-[node name="trex_attack" parent="player" instance=ExtResource("2_f7cx4")]
-range_length = 300.0
+[node name="trex" parent="player" instance=ExtResource("2_ndnpm")]
+
+[node name="ptero" parent="player" instance=ExtResource("3_t668l")]
 
 [node name="StaticBody2D" type="StaticBody2D" parent="."]
 position = Vector2(485.168, 200.76)

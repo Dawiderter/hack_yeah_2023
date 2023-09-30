@@ -1,7 +1,7 @@
 [gd_resource type="TileSet" load_steps=7 format=3 uid="uid://bqxedoo3fm6yq"]
 
-[ext_resource type="Texture2D" uid="uid://cg3a62cqmgqcx" path="res://scenes/assets/tileset.jpg" id="1_1wufh"]
-[ext_resource type="Texture2D" uid="uid://dj2yfk2qqwa34" path="res://scenes/assets/tileset2.jpg" id="1_mkhuc"]
+[ext_resource type="Texture2D" uid="uid://cv67gdqw8uh8q" path="res://scenes/assets/tileset.jpg" id="1_1wufh"]
+[ext_resource type="Texture2D" uid="uid://bxpqnjb6imtn5" path="res://scenes/assets/tileset2.jpg" id="1_mkhuc"]
 [ext_resource type="Texture2D" uid="uid://dlus4xuauorse" path="res://resources/TilesetNature.png" id="2_rve8r"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_iriiq"]
