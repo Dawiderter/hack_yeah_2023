@@ -18,6 +18,9 @@ const FOREST_TERRAIN: int = 0
 const DESERT_TERRAIN: int = 1
 const VOLCANO_TERRAIN: int = 2
 
+const EDGE_WIDTH: int = 20
+const jaggedness_coefficient: float = 0.8
+
 
 func get_noise() -> Noise:
 	var noise = FastNoiseLite.new()
@@ -43,31 +46,112 @@ class Biome:
 
 	func generate_floor(tile_map: TileMap):
 		var tiles = []
+		
+		var tiles2 = []
+		# Generate the inner rectangle where features will be generated
 		for x in range(partition.generative_left_top.x, partition.generative_right_bottom.x):
 			for y in range(partition.generative_left_top.y, partition.generative_right_bottom.y):
-				tiles.push_back(Vector2i(x, y))
+				tiles2.push_back(Vector2i(x, y))
+		tile_map.set_cells_terrain_connect(FLOOR_LAYER, tiles2, FLOOR_TILESET, terrain())
+
+		# Generate the left and right jagged edges
 		var noise_left = FastNoiseLite.new()
 		var noise_right = FastNoiseLite.new()
+		var left_up_x
+		var left_down_x
+		var right_up_x
+		var right_down_x
 		for y in range(partition.generative_left_top.y, partition.generative_right_bottom.y):
-			var left_jagged_line = ceil((noise_left.get_noise_1d(y) + 1 ) * 10)
+			var left_jagged_line = ceil((noise_left.get_noise_1d(y) + 1 ) * (EDGE_WIDTH * jaggedness_coefficient))
+			var right_jagged_line = ceil((noise_right.get_noise_1d(y) + 1) * (EDGE_WIDTH * jaggedness_coefficient))
+			if y == partition.generative_left_top.y:
+				left_up_x = left_jagged_line
+				right_up_x = right_jagged_line
+			if y == partition.generative_right_bottom.y - 1:
+				left_down_x = left_jagged_line
+				right_down_x = right_jagged_line
 			for k in left_jagged_line:
-				var x = partition.generative_left_top.x- k
+				var x = partition.generative_left_top.x - k
 				tiles.push_back(Vector2i(x, y))
-			var right_jagged_line = ceil((noise_right.get_noise_1d(y) + 1) * 10)
 			for k in right_jagged_line:
 				var x = partition.generative_right_bottom.x + k
 				tiles.push_back(Vector2i(x, y))
+
+		# Generate the upper and lower jagged edges
 		var noise_up = FastNoiseLite.new()
 		var noise_down = FastNoiseLite.new()
+		var left_up_y
+		var left_down_y
+		var right_up_y
+		var right_down_y
 		for x in range(partition.generative_left_top.x, partition.generative_right_bottom.x):
-			var up_jagged_line = ceil((noise_up.get_noise_1d(x) + 1) * 10)
+			var up_jagged_line = ceil((noise_up.get_noise_1d(x) + 1) * (EDGE_WIDTH * jaggedness_coefficient))
+			var down_jagged_line = ceil((noise_down.get_noise_1d(x) + 1) * (EDGE_WIDTH * jaggedness_coefficient))
+			if x == partition.generative_left_top.x:
+				left_up_y = up_jagged_line
+				left_down_y = down_jagged_line
+			if x == partition.generative_right_bottom.x - 1:
+				right_up_y = up_jagged_line
+				right_down_y = down_jagged_line
 			for k in up_jagged_line:
 				var y = partition.generative_left_top.y - k
 				tiles.push_back(Vector2i(x, y))
-			var down_jagged_line = ceil((noise_down.get_noise_1d(x) + 1) * 10)
 			for k in down_jagged_line:
 				var y = partition.generative_right_bottom.y + k
 				tiles.push_back(Vector2i(x, y))
+				
+		# Fix the left upper corner
+		var a = left_up_x
+		var b = left_up_y
+		var a_sq = a * a
+		var b_sq = b * b
+		for x in a:
+			for y in b:
+				var x_t = abs(a) - x
+				if (x_t * x_t) / a_sq + (y * y) / b_sq <= 1:
+					var x_tt = partition.generative_left_top.x - abs(x_t)
+					var y_tt = partition.generative_left_top.y - abs(y)
+					tiles.push_back(Vector2i(x_tt, y_tt))
+					
+		# Fix the right upper corner
+		a = right_up_x
+		b = right_up_y
+		a_sq = a * a
+		b_sq = b * b
+		for x in a:
+			for y in b:
+				if (x * x) / a_sq + (y * y) / b_sq <= 1:
+					var x_tt = partition.generative_right_bottom.x + abs(x)
+					var y_tt = partition.generative_left_top.y - abs(y)
+					tiles.push_back(Vector2i(x_tt, y_tt))
+					
+		# Fix the right lower corner
+		a = right_down_x
+		b = right_down_y
+		a_sq = a * a
+		b_sq = b * b
+		for x in a:
+			for y in b:
+				var y_t = abs(b) - y
+				if (x * x) / a_sq + (y_t * y_t) / b_sq <= 1:
+					var x_tt = partition.generative_right_bottom.x + abs(x)
+					var y_tt = partition.generative_right_bottom.y + abs(y_t) - 1
+					tiles.push_back(Vector2i(x_tt, y_tt))
+					
+		# Fix the left lower corner
+		a = left_down_x
+		b = left_down_y
+		a_sq = a * a
+		b_sq = b * b
+		for x in a:
+			for y in b:
+				var x_t = abs(a) - x
+				var y_t = abs(b) - y
+				if (x_t * x_t) / a_sq + (y_t * y_t) / b_sq <= 1:
+					var x_tt = partition.generative_left_top.x - abs(x_t)
+					var y_tt = partition.generative_right_bottom.y + abs(y_t) - 1
+					tiles.push_back(Vector2i(x_tt, y_tt))
+					
 
 		tile_map.set_cells_terrain_connect(FLOOR_LAYER, tiles, FLOOR_TILESET, terrain())
 	
@@ -108,8 +192,8 @@ class BiomePartition:
 		
 		var length = Vector2i(abs(left_top.x - right_bottom.x), abs(left_top.y - right_bottom.y))
 		
-		generative_left_top = left_top + length / 20
-		generative_right_bottom = right_bottom - length / 20
+		generative_left_top = left_top + length / EDGE_WIDTH
+		generative_right_bottom = right_bottom - length / EDGE_WIDTH
 		
 	func area() -> int:
 		return abs(left_top.x - right_bottom.x) * abs(left_top.y - right_bottom.y)
@@ -123,8 +207,10 @@ func get_largest_biome_index(biomes: Array[BiomePartition]) -> int:
 
 func partition_map(left_top: Vector2i, right_bottom: Vector2i, count: int) -> Array[BiomePartition]:
 	var biomes: Array[BiomePartition] = []
-	var x = randi_range(left_top.x, right_bottom.x)
-	var y = randi_range(left_top.y, right_bottom.y)
+	var len_x = abs(left_top.x - right_bottom.x)
+	var len_y = abs(left_top.y - right_bottom.y)
+	var x = randi_range(left_top.x + len_x / 4, right_bottom.x - len_x / 4)
+	var y = randi_range(left_top.y + len_y / 4, right_bottom.y - len_y / 4)
 	if count == 1:
 		biomes.push_back(BiomePartition.new(left_top.x, left_top.y, right_bottom.x, right_bottom.y))
 	elif count == 2:

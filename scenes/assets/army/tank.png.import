@@ -2,20 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-<<<<<<< HEAD
-uid="uid://gl6xyp63f23a"
-=======
-uid="uid://bc77qncpwkw0s"
->>>>>>> 6b237e0e51241ca66fff365e119bb7e99124ee58
-path="res://.godot/imported/army_gun.png-2a914b8ec28fe926c1599d0f861d95c4.ctex"
+uid="uid://8nmmxbicjgax"
+path="res://.godot/imported/tank.png-3c7cb560c3f160e7bc9843608dfc3e04.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://scenes/assets/army/army_gun.png"
-dest_files=["res://.godot/imported/army_gun.png-2a914b8ec28fe926c1599d0f861d95c4.ctex"]
+source_file="res://scenes/assets/army/tank.png"
+dest_files=["res://.godot/imported/tank.png-3c7cb560c3f160e7bc9843608dfc3e04.ctex"]
 
 [params]
 

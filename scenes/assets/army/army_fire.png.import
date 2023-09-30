@@ -2,7 +2,11 @@
 
 importer="texture"
 type="CompressedTexture2D"
+<<<<<<< HEAD
 uid="uid://caspc4wtjcwbc"
+=======
+uid="uid://dbbyhb8k78imk"
+>>>>>>> 6b237e0e51241ca66fff365e119bb7e99124ee58
 path="res://.godot/imported/army_fire.png-12cae818ba8de11167a185f96937a8d6.ctex"
 metadata={
 "vram_texture": false

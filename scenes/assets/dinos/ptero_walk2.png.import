@@ -2,20 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-<<<<<<< HEAD
-uid="uid://gl6xyp63f23a"
-=======
-uid="uid://bc77qncpwkw0s"
->>>>>>> 6b237e0e51241ca66fff365e119bb7e99124ee58
-path="res://.godot/imported/army_gun.png-2a914b8ec28fe926c1599d0f861d95c4.ctex"
+uid="uid://cju4e7bgvbhbi"
+path="res://.godot/imported/ptero_walk2.png-cf6eb6e1ffad2d210da21db5c852083f.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://scenes/assets/army/army_gun.png"
-dest_files=["res://.godot/imported/army_gun.png-2a914b8ec28fe926c1599d0f861d95c4.ctex"]
+source_file="res://scenes/assets/dinos/ptero_walk2.png"
+dest_files=["res://.godot/imported/ptero_walk2.png-cf6eb6e1ffad2d210da21db5c852083f.ctex"]
 
 [params]
 
