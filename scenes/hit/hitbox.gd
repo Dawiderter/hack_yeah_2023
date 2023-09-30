@@ -14,6 +14,6 @@ func _physics_process(delta):
 			if area.name == "hurtbox":
 				iframes.wait_time = invincibility_seconds
 				iframes.start()
-				emit_signal("on_hit", area.damage_dealt, area)
+				emit_signal("on_hit", area.hit_data, area)
 
-signal on_hit(damage: float, source: Area2D)
+signal on_hit(hit_data: HitStats, source: Area2D)

@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://pcd8h0p4swsn"
-path="res://.godot/imported/dino_2.png-8ea3bfe04f68dc13eb8546b761c10b63.ctex"
+uid="uid://dlus4xuauorse"
+path="res://.godot/imported/TilesetNature.png-ef01edb7f5c67d816a3c31db232ae59e.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://scenes/assets/dino_2.png"
-dest_files=["res://.godot/imported/dino_2.png-8ea3bfe04f68dc13eb8546b761c10b63.ctex"]
+source_file="res://resources/TilesetNature.png"
+dest_files=["res://.godot/imported/TilesetNature.png-ef01edb7f5c67d816a3c31db232ae59e.ctex"]
 
 [params]
 

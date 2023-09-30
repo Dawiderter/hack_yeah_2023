@@ -2,7 +2,7 @@ class_name Hurtbox
 
 extends Area2D
 
-@export var damage_dealt : float
+@export var hit_data: HitStats
 
 # Called when the node enters the scene tree for the first time.
 func _ready():

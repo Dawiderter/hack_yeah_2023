@@ -1,7 +1,17 @@
-[gd_scene load_steps=2 format=3 uid="uid://cuhwqjx4b5kv"]
+[gd_scene load_steps=3 format=3 uid="uid://cuhwqjx4b5kv"]
 
+[ext_resource type="TileSet" uid="uid://bqxedoo3fm6yq" path="res://scenes/level/tileset.tres" id="1_dx1cp"]
 [ext_resource type="Script" path="res://scenes/level/level.gd" id="1_ooxbr"]
 
 [node name="TileMap" type="TileMap"]
+tile_set = ExtResource("1_dx1cp")
 format = 2
+layer_0/name = "floor"
+layer_1/name = "foliage"
+layer_1/enabled = true
+layer_1/modulate = Color(1, 1, 1, 1)
+layer_1/y_sort_enabled = false
+layer_1/y_sort_origin = 0
+layer_1/z_index = 0
+layer_1/tile_data = PackedInt32Array()
 script = ExtResource("1_ooxbr")
