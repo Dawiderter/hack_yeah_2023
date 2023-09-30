@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://chyxla1x7tpkd"
-path="res://.godot/imported/army_gun.png-2a914b8ec28fe926c1599d0f861d95c4.ctex"
+uid="uid://drvuqiwdjjm26"
+path="res://.godot/imported/IMG_0723.png-f707869819a0391a546c9da3cf1da8de.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://scenes/assets/army/army_gun.png"
-dest_files=["res://.godot/imported/army_gun.png-2a914b8ec28fe926c1599d0f861d95c4.ctex"]
+source_file="res://scenes/assets/comic/IMG_0723.png"
+dest_files=["res://.godot/imported/IMG_0723.png-f707869819a0391a546c9da3cf1da8de.ctex"]
 
 [params]
 
