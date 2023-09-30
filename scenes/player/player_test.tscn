@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=3 uid="uid://dprsawowc2kg2"]
+[gd_scene load_steps=10 format=3 uid="uid://dprsawowc2kg2"]
 
 [ext_resource type="PackedScene" uid="uid://bcm7pfx0qk8fj" path="res://scenes/player/player.tscn" id="1_tgjfa"]
 [ext_resource type="Texture2D" uid="uid://cdhtneb5pvcmh" path="res://scenes/player/tile_reference.png" id="2_2xdfp"]
@@ -6,6 +6,7 @@
 [ext_resource type="PackedScene" uid="uid://dr5akf0xkeqgn" path="res://scenes/player/dinos/ptero.tscn" id="3_t668l"]
 [ext_resource type="PackedScene" uid="uid://bb28v0kht4nxk" path="res://scenes/hit/hurtbox.tscn" id="3_xjgvl"]
 [ext_resource type="PackedScene" uid="uid://d022fu33um405" path="res://scenes/world/enemies_spawner.tscn" id="4_v433g"]
+[ext_resource type="PackedScene" uid="uid://cg73lktt68fq7" path="res://scenes/player/dinos/trice.tscn" id="7_6yqc6"]
 
 [sub_resource type="SegmentShape2D" id="SegmentShape2D_im26j"]
 a = Vector2(-139.168, 48.2402)
@@ -49,3 +50,7 @@ shape = SubResource("RectangleShape2D_15iqh")
 [node name="enemies_spawner" parent="." node_paths=PackedStringArray("player") instance=ExtResource("4_v433g")]
 position = Vector2(-2, 1)
 player = NodePath("../player")
+
+[node name="trice" parent="." node_paths=PackedStringArray("player_target") instance=ExtResource("7_6yqc6")]
+position = Vector2(0, -1)
+player_target = NodePath("../player")
