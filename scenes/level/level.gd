@@ -5,6 +5,11 @@ extends TileMap
 @onready var rows: int = get_parent().rows
 @onready var columns: int = get_parent().columns
 
+@export var starting_biome: BiomeType = BiomeType.FOREST
+@export var finish_biome: BiomeType = BiomeType.VOLCANO
+
+var biomes: Array[Biome]
+
 enum BiomeType {FOREST, DESERT, VOLCANO}
 
 const FLOOR_LAYER: int = 0
@@ -293,14 +298,17 @@ func create_biomes(partitions: Array[BiomePartition]) -> Array[Biome]:
 
 	return biomes
 
-func generate_starting_position(biome: Biome):
+func generate_starting_position():
+	var tile_size = tile_set.tile_size
+	var biome = find_biome(biomes, starting_biome)
 	var left_top = biome.partition.generative_left_top
 	var right_bottom = biome.partition.generative_right_bottom
-	var x = randi_range(left_top.x, right_bottom.x)
-	var y = randi_range(left_top.y, right_bottom.y)
+	var x = randi_range(left_top.x * tile_size.x, right_bottom.x * tile_size.x)
+	var y = randi_range(left_top.y * tile_size.y, right_bottom.y * tile_size.y)
 	return Vector2i(x, y)
 
-func generate_time_machine(biome: Biome):
+func generate_time_machine():
+	var biome = find_biome(biomes, finish_biome)
 	var left_top = biome.partition.generative_left_top
 	var right_bottom = biome.partition.generative_right_bottom
 	var x = randi_range(left_top.x, right_bottom.x)
@@ -311,12 +319,7 @@ func _ready():
 	var biome_count = 3
 	var biome_partitions = partition_map(Vector2i(0,0), Vector2i(rows - 1, columns - 1), biome_count)
 
-	var biomes: Array[Biome] = create_biomes(biome_partitions)
-
-	var starting_biome = find_biome(biomes, BiomeType.FOREST)
-	generate_starting_position(starting_biome)
-	var finishing_biome = find_biome(biomes, BiomeType.VOLCANO)
-	generate_time_machine(finishing_biome)
+	biomes = create_biomes(biome_partitions)
 
 	for biome in biomes:
 		biome.generate_floor(self)

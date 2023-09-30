@@ -13,6 +13,6 @@ script = ExtResource("1_mlnty")
 SPEED = 2000.0
 
 [node name="Camera2D" parent="player" index="1"]
-zoom = Vector2(0.205, 0.205)
+zoom = Vector2(3.58, 3.58)
 
 [editable path="player"]

@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://djlgptrx2msvu"
-path="res://.godot/imported/trex_bite.png-e0271663b812d6aac2a470f691a41ad8.ctex"
+uid="uid://djofigj3tnidd"
+path="res://.godot/imported/IMG_0729.png-ed1c5df59dd787c525d2c45b23f1a80a.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://scenes/assets/dinos/trex_bite.png"
-dest_files=["res://.godot/imported/trex_bite.png-e0271663b812d6aac2a470f691a41ad8.ctex"]
+source_file="res://scenes/assets/comic/IMG_0729.png"
+dest_files=["res://.godot/imported/IMG_0729.png-ed1c5df59dd787c525d2c45b23f1a80a.ctex"]
 
 [params]
 

@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://djlgptrx2msvu"
-path="res://.godot/imported/trex_bite.png-e0271663b812d6aac2a470f691a41ad8.ctex"
+uid="uid://d2s757h7ilpuv"
+path="res://.godot/imported/CircularProgressBar.png-98d9a8603926463605b7483665fc6415.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://scenes/assets/dinos/trex_bite.png"
-dest_files=["res://.godot/imported/trex_bite.png-e0271663b812d6aac2a470f691a41ad8.ctex"]
+source_file="res://scenes/assets/CircularProgressBar.png"
+dest_files=["res://.godot/imported/CircularProgressBar.png-98d9a8603926463605b7483665fc6415.ctex"]
 
 [params]
 
