@@ -55,6 +55,12 @@ spawn_test={
 ]
 }
 
+[layer_names]
+
+2d_physics/layer_9="Player hitbox"
+2d_physics/layer_10="Enemies hitboxes"
+2d_physics/layer_12="Enemy for trice search"
+
 [rendering]
 
 textures/canvas_textures/default_texture_filter=0
