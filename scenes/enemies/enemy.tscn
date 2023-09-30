@@ -1,10 +1,14 @@
-[gd_scene load_steps=4 format=3 uid="uid://dk7s1r5dnclxt"]
+[gd_scene load_steps=6 format=3 uid="uid://dk7s1r5dnclxt"]
 
 [ext_resource type="Script" path="res://scenes/enemies/enemy.gd" id="1_htrxu"]
 [ext_resource type="Texture2D" uid="uid://ddute4bi1e268" path="res://icon.svg" id="1_u5syo"]
+[ext_resource type="PackedScene" uid="uid://cx3bl7sj2vgtn" path="res://scenes/hit/hitbox.tscn" id="3_7xy2h"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_g46v3"]
-radius = 21.37
+radius = 18.1108
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_7ykwj"]
+radius = 21.0238
 
 [node name="enemy" type="CharacterBody2D"]
 script = ExtResource("1_htrxu")
@@ -15,3 +19,12 @@ texture = ExtResource("1_u5syo")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("CircleShape2D_g46v3")
+
+[node name="hitbox" parent="." instance=ExtResource("3_7xy2h")]
+collision_layer = 512
+collision_mask = 512
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="hitbox"]
+shape = SubResource("CircleShape2D_7ykwj")
+
+[connection signal="on_hit" from="hitbox" to="." method="_on_hitbox_on_hit"]
