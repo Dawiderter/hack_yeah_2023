@@ -10,8 +10,10 @@ enum BiomeType {FOREST, DESERT, VOLCANO}
 const FLOOR_LAYER: int = 0
 const FLOOR_TILESET: int = 0
 const FLOOR_TILESET_ID: int = 0
+
 const FOLIAGE_LAYER: int = 1
-const FOLIAGE_TILESET: int = 3
+const FOLIAGE_TILESET: int = 2
+const FOLIAGE_TILESET_ID: int = 3
 const THRESHOLD = 0.15  
 
 const FOREST_TERRAIN: int = 0
@@ -159,7 +161,7 @@ class Biome:
 
 		tile_map.set_cells_terrain_connect(FLOOR_LAYER, tiles, FLOOR_TILESET, terrain())
 
-	func generate_features():
+	func generate_features(tile_map: TileMap):
 		pass
 
 class DesertBiome extends Biome:
@@ -175,6 +177,9 @@ class ForestBiome extends Biome:
 
 	func terrain():
 		return FOREST_TERRAIN
+		
+	func generate_features(tile_map: TileMap):
+		pass
 
 class VolcanoBiome extends Biome:
 	func type():
@@ -208,6 +213,22 @@ func get_largest_biome_index(biomes: Array[BiomePartition]) -> int:
 		if biomes[i].area() > biomes[index].area():
 			index = i
 	return index
+
+func is_valid_grass_tile(x: int, y: int) -> bool:
+	var cell = get_cell_atlas_coords(FLOOR_LAYER, Vector2i(x, y))
+	if cell in [Vector2i(3, 1)]:
+		return true
+	return false
+
+func generate_grass():
+	var noise = FastNoiseLite.new()
+	noise.frequency = 0.5
+	for y in range(rows):
+		for x in range(columns):
+			var value = noise.get_noise_2d(x, y)
+			if value > THRESHOLD and is_valid_grass_tile(x, y):
+				set_cell(FOLIAGE_LAYER, Vector2i(x, y), FOLIAGE_TILESET_ID, Vector2i(0, 3))
+	
 
 func partition_map(left_top: Vector2i, right_bottom: Vector2i, count: int) -> Array[BiomePartition]:
 	var biomes: Array[BiomePartition] = []
@@ -299,3 +320,5 @@ func _ready():
 
 	for biome in biomes:
 		biome.generate_floor(self)
+		
+	generate_grass()

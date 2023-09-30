@@ -1,9 +1,11 @@
-[gd_resource type="TileSet" load_steps=5 format=3 uid="uid://bqxedoo3fm6yq"]
+[gd_resource type="TileSet" load_steps=7 format=3 uid="uid://bqxedoo3fm6yq"]
 
 [ext_resource type="Texture2D" uid="uid://bj6w4v01y1ljq" path="res://scenes/assets/tileset.jpg" id="1_1wufh"]
+[ext_resource type="Texture2D" uid="uid://kg8ikv8ahfwb" path="res://scenes/assets/plants.png" id="2_4c15k"]
 [ext_resource type="Texture2D" uid="uid://dlus4xuauorse" path="res://resources/TilesetNature.png" id="2_rve8r"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_372ou"]
+resource_name = "floor"
 texture = ExtResource("1_1wufh")
 0:0/0 = 0
 0:0/0/terrain_set = 0
@@ -227,6 +229,13 @@ texture = ExtResource("1_1wufh")
 2:11/0 = 0
 3:11/0 = 0
 4:11/0 = 0
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_sc6yx"]
+texture = ExtResource("2_4c15k")
+0:0/0 = 0
+0:1/0 = 0
+0:2/0 = 0
+0:3/0 = 0
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_c6nxr"]
 texture = ExtResource("2_rve8r")
@@ -622,5 +631,6 @@ terrain_set_0/terrain_1/name = "desert "
 terrain_set_0/terrain_1/color = Color(0.117647, 0.505882, 0.494118, 1)
 terrain_set_0/terrain_2/name = "volcano"
 terrain_set_0/terrain_2/color = Color(0.12549, 0.501961, 0.741176, 1)
-sources/3 = SubResource("TileSetAtlasSource_c6nxr")
 sources/2 = SubResource("TileSetAtlasSource_372ou")
+sources/4 = SubResource("TileSetAtlasSource_c6nxr")
+sources/3 = SubResource("TileSetAtlasSource_sc6yx")
