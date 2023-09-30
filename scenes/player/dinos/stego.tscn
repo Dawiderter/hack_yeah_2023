@@ -1,0 +1,54 @@
+[gd_scene load_steps=9 format=3 uid="uid://suydt1xlk51q"]
+
+[ext_resource type="Script" path="res://scenes/player/dinos/stego.gd" id="1_38ht6"]
+[ext_resource type="Texture2D" uid="uid://xwymi14p1ut" path="res://scenes/assets/dinos/stego_idle.png" id="2_eur3o"]
+[ext_resource type="Texture2D" uid="uid://bn7p6mahdnrfg" path="res://scenes/assets/dinos/stego_walk.png" id="3_ubr4c"]
+[ext_resource type="PackedScene" uid="uid://bb28v0kht4nxk" path="res://scenes/hit/hurtbox.tscn" id="4_fjm2p"]
+[ext_resource type="Script" path="res://scenes/hit/hit_stats.gd" id="5_bkqan"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_81sam"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_eur3o")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_eur3o")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_ubr4c")
+}],
+"loop": true,
+"name": &"move",
+"speed": 4.0
+}]
+
+[sub_resource type="Resource" id="Resource_7vl06"]
+script = ExtResource("5_bkqan")
+damage_dealt = 0.0
+knockback_strength = 0.0
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_pypue"]
+radius = 0.01
+
+[node name="stego" type="Node2D"]
+script = ExtResource("1_38ht6")
+player_keep_range = 50.0
+range_radius = 50.0
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_81sam")
+animation = &"move"
+
+[node name="hurtbox" parent="." instance=ExtResource("4_fjm2p")]
+collision_layer = 512
+collision_mask = 512
+hit_data = SubResource("Resource_7vl06")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="hurtbox"]
+shape = SubResource("CircleShape2D_pypue")

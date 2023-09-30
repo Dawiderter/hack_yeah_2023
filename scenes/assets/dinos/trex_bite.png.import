@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bj6w4v01y1ljq"
-path="res://.godot/imported/tileset.jpg-d247a5a06bf389fa741cd9501a619b9e.ctex"
+uid="uid://djlgptrx2msvu"
+path="res://.godot/imported/trex_bite.png-e0271663b812d6aac2a470f691a41ad8.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://scenes/assets/tileset.jpg"
-dest_files=["res://.godot/imported/tileset.jpg-d247a5a06bf389fa741cd9501a619b9e.ctex"]
+source_file="res://scenes/assets/dinos/trex_bite.png"
+dest_files=["res://.godot/imported/trex_bite.png-e0271663b812d6aac2a470f691a41ad8.ctex"]
 
 [params]
 
