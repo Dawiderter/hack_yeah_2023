@@ -4,7 +4,7 @@
 [ext_resource type="Texture2D" uid="uid://cdhtneb5pvcmh" path="res://scenes/player/tile_reference.png" id="2_2xdfp"]
 [ext_resource type="PackedScene" uid="uid://ghbabccbo7bd" path="res://scenes/attacks/trex_attack.tscn" id="2_f7cx4"]
 [ext_resource type="PackedScene" uid="uid://bb28v0kht4nxk" path="res://scenes/hit/hurtbox.tscn" id="3_xjgvl"]
-[ext_resource type="PackedScene" uid="uid://d022fu33um405" path="res://scenes/world/enemies_spawner.tscn" id="4_v433g"]
+[ext_resource type="PackedScene" path="res://scenes/world/enemies_spawner.tscn" id="4_v433g"]
 
 [sub_resource type="SegmentShape2D" id="SegmentShape2D_im26j"]
 a = Vector2(-139.168, 48.2402)
