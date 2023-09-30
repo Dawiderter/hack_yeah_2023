@@ -36,12 +36,10 @@ func set_range_length(_range_length: float):
 
 func _on_duration_timeout():
 	if should_attack_go_on_cooldown:
-		print("AAA")
 		left_shape.set_deferred("disabled", true)
 		cooldown_timer.start(cooldown)
 		should_attack_go_on_cooldown = false
 	else:
-		print("BBB")
 		left_shape.set_deferred("disabled", false)
 		right_shape.set_deferred("disabled", true)
 		duration_timer.start(duration / 2)
