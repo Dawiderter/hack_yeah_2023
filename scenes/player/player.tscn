@@ -1,14 +1,10 @@
-[gd_scene load_steps=6 format=3 uid="uid://bcm7pfx0qk8fj"]
+[gd_scene load_steps=4 format=3 uid="uid://bcm7pfx0qk8fj"]
 
 [ext_resource type="Script" path="res://scenes/player/player.gd" id="1_hhlf2"]
 [ext_resource type="Texture2D" uid="uid://yjsxdgy70wnl" path="res://scenes/player/player_placeholder.png" id="2_eqmkh"]
-[ext_resource type="PackedScene" uid="uid://cx3bl7sj2vgtn" path="res://scenes/hit/hitbox.tscn" id="3_mlk54"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_hj4o2"]
 radius = 18.0
-
-[sub_resource type="CircleShape2D" id="CircleShape2D_6ouy4"]
-radius = 19.31
 
 [node name="player" type="CharacterBody2D"]
 script = ExtResource("1_hhlf2")
@@ -22,10 +18,3 @@ texture = ExtResource("2_eqmkh")
 
 [node name="Camera2D" type="Camera2D" parent="."]
 position_smoothing_enabled = true
-
-[node name="hitbox" parent="." instance=ExtResource("3_mlk54")]
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="hitbox"]
-shape = SubResource("CircleShape2D_6ouy4")
-
-[connection signal="on_hit" from="hitbox" to="." method="_on_hitbox_on_hit"]
