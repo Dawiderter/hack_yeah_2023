@@ -2,7 +2,7 @@ class_name World
 
 extends Node2D
 
-@export var rows: int = 800
+@export var rows: int = 400
 @export var columns: int = 400
 
 func _ready():
