@@ -43,11 +43,34 @@ class Biome:
 
 	func generate_floor(tile_map: TileMap):
 		var tiles = []
-		for x in range(partition.left_top.x, partition.right_bottom.x):
-			for y in range(partition.left_top.y, partition.right_bottom.y):
+		for x in range(partition.generative_left_top.x, partition.generative_right_bottom.x):
+			for y in range(partition.generative_left_top.y, partition.generative_right_bottom.y):
 				tiles.push_back(Vector2i(x, y))
-		tile_map.set_cells_terrain_connect(FLOOR_LAYER, tiles, FLOOR_TILESET, terrain())
+		var noise_left = FastNoiseLite.new()
+		var noise_right = FastNoiseLite.new()
+		for y in range(partition.generative_left_top.y, partition.generative_right_bottom.y):
+			var left_jagged_line = ceil((noise_left.get_noise_1d(y) + 1 ) * 10)
+			for k in left_jagged_line:
+				var x = partition.generative_left_top.x- k
+				tiles.push_back(Vector2i(x, y))
+			var right_jagged_line = ceil((noise_right.get_noise_1d(y) + 1) * 10)
+			for k in right_jagged_line:
+				var x = partition.generative_right_bottom.x + k
+				tiles.push_back(Vector2i(x, y))
+		var noise_up = FastNoiseLite.new()
+		var noise_down = FastNoiseLite.new()
+		for x in range(partition.generative_left_top.x, partition.generative_right_bottom.x):
+			var up_jagged_line = ceil((noise_up.get_noise_1d(x) + 1) * 10)
+			for k in up_jagged_line:
+				var y = partition.generative_left_top.y - k
+				tiles.push_back(Vector2i(x, y))
+			var down_jagged_line = ceil((noise_down.get_noise_1d(x) + 1) * 10)
+			for k in down_jagged_line:
+				var y = partition.generative_right_bottom.y + k
+				tiles.push_back(Vector2i(x, y))
 
+		tile_map.set_cells_terrain_connect(FLOOR_LAYER, tiles, FLOOR_TILESET, terrain())
+	
 	func generate_features():
 		pass
 
@@ -85,8 +108,8 @@ class BiomePartition:
 		
 		var length = Vector2i(abs(left_top.x - right_bottom.x), abs(left_top.y - right_bottom.y))
 		
-		generative_left_top = left_top + length / 5
-		generative_right_bottom = right_bottom - length / 5
+		generative_left_top = left_top + length / 20
+		generative_right_bottom = right_bottom - length / 20
 		
 	func area() -> int:
 		return abs(left_top.x - right_bottom.x) * abs(left_top.y - right_bottom.y)
