@@ -1,48 +1,78 @@
-[gd_scene load_steps=2 format=3 uid="uid://ipt6rppg55wy"]
+[gd_scene load_steps=4 format=3 uid="uid://ipt6rppg55wy"]
 
 [ext_resource type="Script" path="res://scenes/ui/MainMenu.gd" id="1_l5ssx"]
+[ext_resource type="Texture2D" uid="uid://c5bedp8t5jcha" path="res://scenes/assets/main_menu_background.png" id="2_rartn"]
+[ext_resource type="FontFile" uid="uid://o1dq6pr7wn32" path="res://scenes/font/prstart.ttf" id="3_8j7un"]
 
 [node name="Control" type="Control"]
 layout_mode = 3
 anchor_top = 0.009
-anchor_right = 1.0
+anchor_right = 1.311
 anchor_bottom = 1.005
-offset_top = 0.0559999
-offset_bottom = -0.0800018
+offset_top = 0.0879993
+offset_right = -252.848
+offset_bottom = -189.84
 grow_horizontal = 2
 grow_vertical = 0
 script = ExtResource("1_l5ssx")
 
+[node name="TextureRect" type="TextureRect" parent="."]
+layout_mode = 0
+offset_top = -6.0
+offset_right = 960.0
+offset_bottom = 534.0
+texture = ExtResource("2_rartn")
+
 [node name="VBoxContainer" type="VBoxContainer" parent="."]
+modulate = Color(0, 0, 0, 1)
+self_modulate = Color(0, 0, 0, 1)
 layout_mode = 1
-anchors_preset = 2
-anchor_top = 1.0
-anchor_bottom = 1.0
-offset_left = 60.0
-offset_top = -255.0
-offset_right = 306.0
-offset_bottom = -118.0
-grow_vertical = 0
+anchors_preset = -1
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -123.0
+offset_top = -68.5
+offset_right = 123.0
+offset_bottom = 68.5
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 12
 alignment = 1
 
 [node name="Start" type="Button" parent="VBoxContainer"]
+modulate = Color(0, 0, 0, 1)
+self_modulate = Color(0, 0, 0, 1)
 layout_mode = 2
+theme_override_fonts/font = ExtResource("3_8j7un")
+theme_override_font_sizes/font_size = 30
 text = "New Game"
 flat = true
-alignment = 0
+icon_alignment = 1
 
 [node name="Options" type="Button" parent="VBoxContainer"]
+modulate = Color(0, 0, 0, 1)
+self_modulate = Color(0, 0, 0, 1)
 layout_mode = 2
+theme_override_fonts/font = ExtResource("3_8j7un")
+theme_override_font_sizes/font_size = 30
 text = "Options"
 flat = true
-alignment = 0
+icon_alignment = 1
 
 [node name="Exit" type="Button" parent="VBoxContainer"]
+modulate = Color(0, 0, 0, 1)
+self_modulate = Color(0, 0, 0, 1)
 layout_mode = 2
+theme_override_fonts/font = ExtResource("3_8j7un")
+theme_override_font_sizes/font_size = 30
 text = "Exit"
 flat = true
-alignment = 0
+icon_alignment = 1
 
+[connection signal="focus_entered" from="VBoxContainer/Start" to="." method="_on_start_focus_entered"]
+[connection signal="focus_exited" from="VBoxContainer/Start" to="." method="_on_start_focus_exited"]
 [connection signal="pressed" from="VBoxContainer/Start" to="." method="_on_start_pressed"]
 [connection signal="pressed" from="VBoxContainer/Options" to="." method="_on_options_pressed"]
 [connection signal="pressed" from="VBoxContainer/Exit" to="." method="_on_exit_pressed"]
