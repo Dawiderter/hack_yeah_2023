@@ -2,7 +2,11 @@
 
 importer="wav"
 type="AudioStreamWAV"
+<<<<<<< HEAD
 uid="uid://d3yb5afckr1ro"
+=======
+uid="uid://opmnfq7bs4tw"
+>>>>>>> c64e4bfc69092d14a47acf55fc4fac95481f916b
 path="res://.godot/imported/taking_damage.wav-a30a3408879ac016137009c5ddf40664.sample"
 
 [deps]

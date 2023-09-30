@@ -23,52 +23,70 @@ func get_noise() -> Noise:
 	var noise = FastNoiseLite.new()
 	noise.set_noise_type(FastNoiseLite.TYPE_SIMPLEX)
 	return noise
-	
+
 func is_valid_resource_tile(coords: Vector2i) -> bool:
 	return get_cell_atlas_coords(FLOOR_LAYER, coords) ==  Vector2i(1,1)
 
 enum biome_type{FOREST, VOLCANO, DESERT, ACID_LAKES}
 
 class Biome:
-	var terrain: int
 	var partition: BiomePartition
-	
-	func _init(terrain, partition):
-		self.terrain = terrain
+
+	func _init(partition):
 		self.partition = partition
 		
+	func terrain():
+		pass
+
 	func type():
 		pass
-		
+
 	func generate_floor(tile_map: TileMap):
 		var tiles = []
 		for x in range(partition.left_top.x, partition.right_bottom.x):
 			for y in range(partition.left_top.y, partition.right_bottom.y):
 				tiles.push_back(Vector2i(x, y))
-		tile_map.set_cells_terrain_connect(FLOOR_LAYER, tiles, FLOOR_TILESET, terrain)
-		
+		tile_map.set_cells_terrain_connect(FLOOR_LAYER, tiles, FLOOR_TILESET, terrain())
+
 	func generate_features():
 		pass
-	
+
 class DesertBiome extends Biome:
 	func type():
 		return BiomeType.DESERT
 		
+	func terrain():
+		return DESERT_TERRAIN
+
 class ForestBiome extends Biome:
 	func type():
 		return BiomeType.FOREST
 		
+	func terrain():
+		return FOREST_TERRAIN
+
 class VolcanoBiome extends Biome:
 	func type():
 		return BiomeType.VOLCANO
-	
+		
+	func terrain():
+		return VOLCANO_TERRAIN
+
 class BiomePartition:
 	var left_top: Vector2i
 	var right_bottom: Vector2i
+	
+	var generative_left_top: Vector2i
+	var generative_right_bottom: Vector2i
 		
 	func _init(x1, y1, x2, y2):
 		left_top = Vector2i(x1, y1)
 		right_bottom = Vector2i(x2, y2)
+		
+		var length = Vector2i(abs(left_top.x - right_bottom.x), abs(left_top.y - right_bottom.y))
+		
+		generative_left_top = left_top + length / 5
+		generative_right_bottom = right_bottom - length / 5
 		
 	func area() -> int:
 		return abs(left_top.x - right_bottom.x) * abs(left_top.y - right_bottom.y)
@@ -118,7 +136,7 @@ func find_biome(biomes: Array[Biome], type: BiomeType) -> Biome:
 		if biome.type() == type:
 			return biome
 	return null
-	
+
 func create_biomes(partitions: Array[BiomePartition]) -> Array[Biome]:
 	var biomes: Array[Biome] = []
 	
@@ -132,33 +150,31 @@ func create_biomes(partitions: Array[BiomePartition]) -> Array[Biome]:
 		var biome: Biome
 		match type:
 			BiomeType.FOREST:
-				biome = ForestBiome.new(FOREST_TERRAIN, partition)
+				biome = ForestBiome.new(partition)
 			BiomeType.DESERT:
-				biome = DesertBiome.new(DESERT_TERRAIN, partition)
+				biome = DesertBiome.new(partition)
 			BiomeType.VOLCANO:
-				biome = VolcanoBiome.new(VOLCANO_TERRAIN, partition)
+				biome = VolcanoBiome.new(partition)
 		biomes.push_back(biome)
 	
 	return biomes
-	
+
+func generate_starting_position(biome: Biome):
+	pass
+
+func generate_time_machine(biome: Biome):
+	pass
 
 func _ready():
 	var biome_count = 3
 	var biome_partitions = partition_map(Vector2i(0,0), Vector2i(rows - 1, columns - 1), biome_count)
-	
+
 	var biomes: Array[Biome] = create_biomes(biome_partitions)
-	
+
 	var starting_biome = find_biome(biomes, BiomeType.FOREST)
+	generate_starting_position(starting_biome)
 	var finishing_biome = find_biome(biomes, BiomeType.VOLCANO)
-	
+	generate_time_machine(finishing_biome)
+
 	for biome in biomes:
 		biome.generate_floor(self)
-		
-	#var biomes_list: Array[biome_type]
-	
-	#set_cell(FLOOR_LAYER, Vector2i(0, 0), 2, Vector2i(0,0))
-	#var noise = get_noise()
-	
-	#var tiles = get_tiles(noise)
-	#set_cells_terrain_connect(FLOOR_LAYER, tiles, FLOOR_TILESET, 0)
-

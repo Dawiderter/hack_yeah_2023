@@ -2,7 +2,11 @@
 
 importer="wav"
 type="AudioStreamWAV"
+<<<<<<< HEAD
 uid="uid://ba5uvv0usb6nu"
+=======
+uid="uid://bvh0b8j4urgyo"
+>>>>>>> c64e4bfc69092d14a47acf55fc4fac95481f916b
 path="res://.godot/imported/attack.wav-c8a26850775668b223ecdd9aac4cb2b7.sample"
 
 [deps]
