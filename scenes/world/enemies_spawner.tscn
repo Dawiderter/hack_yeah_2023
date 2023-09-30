@@ -5,31 +5,22 @@
 
 [sub_resource type="Curve2D" id="Curve2D_0xr3n"]
 _data = {
-"points": PackedVector2Array(0, 0, 0, 0, -69.1445, -110.814, 0, 0, 0, 0, 1253.86, -114.814, 0, 0, 0, 0, 1265.86, 678.186, 0, 0, 0, 0, -47.1445, 683.186, 0, 0, 0, 0, -69.1445, -110.814)
+"points": PackedVector2Array(0, 0, 0, 0, 126.855, -168.814, 0, 0, 0, 0, 1091.85, -174.814, 0, 0, 0, 0, 1080.85, 766.186, 0, 0, 0, 0, 128.855, 755.186, 0, 0, 0, 0, 126.855, -168.814)
 }
 point_count = 5
 
-[node name="enemies_spawner" type="Node"]
+[node name="enemies_spawner" type="Node2D"]
+position = Vector2(2, -2)
 script = ExtResource("1_v7546")
 enemy_1_scene = ExtResource("2_6y13b")
 
-[node name="enemy_1_spawner_timer" type="Timer" parent="."]
-wait_time = 0.05
-
-[node name="start_delay" type="Timer" parent="."]
-one_shot = true
-autostart = true
-
 [node name="player_position" type="Marker2D" parent="."]
-position = Vector2(573, 322)
+position = Vector2(372, 394)
 
 [node name="enemy_path" type="Path2D" parent="player_position"]
 position = Vector2(-604.855, -281.186)
 curve = SubResource("Curve2D_0xr3n")
 
 [node name="enemy_spawn_location" type="PathFollow2D" parent="player_position/enemy_path"]
-position = Vector2(-69.1445, -110.814)
-rotation = -0.00302342
-
-[connection signal="timeout" from="enemy_1_spawner_timer" to="." method="_on_enemy_1_spawner_timer_timeout"]
-[connection signal="timeout" from="start_delay" to="." method="_on_start_delay_timeout"]
+position = Vector2(126.855, -168.814)
+rotation = -0.00621754
