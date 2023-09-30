@@ -21,3 +21,13 @@ func _on_Enter_button_down():
 func _on_continue_pressed():
 	get_tree().paused = false
 	hide()
+
+
+func _on_restart_pressed():
+	get_tree().paused = false
+	hide()
+	get_tree().change_scene_to_file("res://scenes/player/player.tscn")
+
+
+func _on_exit_pressed():
+	get_tree().quit()

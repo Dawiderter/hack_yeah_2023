@@ -12,11 +12,9 @@ func _process(delta):
 
 
 func _on_start_pressed():
-<<<<<<< HEAD
 	get_tree().change_scene_to_file("res://scenes/player/player.tscn")
-=======
+
 	get_tree().change_scene_to_file("res://scenes/ui/history_comic.tscn")
->>>>>>> c64e4bfc69092d14a47acf55fc4fac95481f916b
 
 func _on_options_pressed():
 	pass # Replace with function body.
