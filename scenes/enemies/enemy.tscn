@@ -1,7 +1,7 @@
 [gd_scene load_steps=18 format=3 uid="uid://dk7s1r5dnclxt"]
 
 [ext_resource type="Script" path="res://scenes/enemies/enemy.gd" id="1_htrxu"]
-[ext_resource type="Texture2D" uid="uid://bm684kf1f22o6" path="res://scenes/assets/army/army_knife.png" id="2_7js3u"]
+[ext_resource type="Texture2D" uid="uid://db5ha231iifk" path="res://scenes/assets/army/army_knife.png" id="2_7js3u"]
 [ext_resource type="PackedScene" uid="uid://cx3bl7sj2vgtn" path="res://scenes/hit/hitbox.tscn" id="3_7xy2h"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_g46v3"]
@@ -9,35 +9,6 @@ radius = 18.1108
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_7ykwj"]
 radius = 21.0238
-
-[sub_resource type="Animation" id="Animation_201t0"]
-resource_name = "walk_up"
-length = 1.2
-loop_mode = 1
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Sprite2D:frame_coords")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.3, 0.6, 0.9),
-"transitions": PackedFloat32Array(1, 1, 1, 1),
-"update": 1,
-"values": [Vector2i(2, 0), Vector2i(2, 1), Vector2i(2, 2), Vector2i(2, 3)]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("Sprite2D:flip_h")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [false]
-}
 
 [sub_resource type="Animation" id="Animation_vpf0m"]
 resource_name = "walk_down"
@@ -126,6 +97,35 @@ tracks/1/keys = {
 "values": [true]
 }
 
+[sub_resource type="Animation" id="Animation_201t0"]
+resource_name = "walk_up"
+length = 1.2
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame_coords")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.3, 0.6, 0.9),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 1,
+"values": [Vector2i(2, 0), Vector2i(2, 1), Vector2i(2, 2), Vector2i(2, 3)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Sprite2D:flip_h")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_xjs0a"]
 _data = {
 "walk_down": SubResource("Animation_vpf0m"),
@@ -176,7 +176,7 @@ script = ExtResource("1_htrxu")
 texture = ExtResource("2_7js3u")
 hframes = 3
 vframes = 4
-frame = 2
+frame = 8
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("CircleShape2D_g46v3")
