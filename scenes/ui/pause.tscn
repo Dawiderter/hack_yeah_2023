@@ -1,8 +1,10 @@
-[gd_scene load_steps=2 format=3 uid="uid://xcspfrnsbuxo"]
+[gd_scene load_steps=3 format=3 uid="uid://xcspfrnsbuxo"]
 
 [ext_resource type="Script" path="res://scenes/ui/pause.gd" id="1_68gb1"]
+[ext_resource type="FontFile" uid="uid://uu5dl5mxi8xp" path="res://scenes/font/prstartk.ttf" id="2_uvtek"]
 
 [node name="pause" type="Control"]
+process_mode = 3
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -38,7 +40,32 @@ offset_bottom = 15.5
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="Continue" type="Button" parent="VBoxContainer/ColorRect/CenterContainer"]
+[node name="VBoxContainer" type="VBoxContainer" parent="VBoxContainer/ColorRect/CenterContainer"]
 layout_mode = 2
+theme_override_constants/separation = 12
+
+[node name="Continue" type="Button" parent="VBoxContainer/ColorRect/CenterContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("2_uvtek")
+theme_override_font_sizes/font_size = 30
 text = "Continue"
 icon_alignment = 1
+
+[node name="Restart" type="Button" parent="VBoxContainer/ColorRect/CenterContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("2_uvtek")
+theme_override_font_sizes/font_size = 30
+text = "Restart"
+icon_alignment = 1
+
+[node name="Exit" type="Button" parent="VBoxContainer/ColorRect/CenterContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("2_uvtek")
+theme_override_font_sizes/font_size = 30
+text = "Exit
+"
+icon_alignment = 1
+
+[connection signal="pressed" from="VBoxContainer/ColorRect/CenterContainer/VBoxContainer/Continue" to="." method="_on_continue_pressed"]
+[connection signal="pressed" from="VBoxContainer/ColorRect/CenterContainer/VBoxContainer/Restart" to="." method="_on_continue_pressed"]
+[connection signal="pressed" from="VBoxContainer/ColorRect/CenterContainer/VBoxContainer/Exit" to="." method="_on_continue_pressed"]
