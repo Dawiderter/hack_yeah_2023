@@ -12,7 +12,7 @@ script = ExtResource("1_mlnty")
 [node name="player" parent="." instance=ExtResource("4_lfa1r")]
 SPEED = 2000.0
 
-[node name="Camera2D" parent="player" index="2"]
-zoom = Vector2(0.205, 0.205)
+[node name="Camera2D" parent="player" index="1"]
+zoom = Vector2(5, 5)
 
 [editable path="player"]
