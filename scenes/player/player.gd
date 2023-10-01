@@ -1,5 +1,7 @@
 extends CharacterBody2D
 
+signal levelup
+
 @export var SPEED = 200.0
 @export var camera_speed = 1.0
 @export var camera_distance = 25.0
@@ -37,10 +39,12 @@ func _on_hitbox_on_hit(damage, source):
 func gain_xp(xp):
 	exp += xp
 	var level_cap_index = min(level - 1, level_caps.size() - 1)
-	if exp > level_caps[level_cap_index]:
+	if exp >= level_caps[level_cap_index]:
 		exp -= level_caps[level_cap_index]
 		level_up()
 
 func level_up():
+	print("levelup")
+	levelup.emit()
 	level += 1
 	pass
