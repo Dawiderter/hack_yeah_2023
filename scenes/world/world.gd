@@ -16,11 +16,7 @@ func _ready():
 	var finish_point = level.generate_point(level.finish_biome)
 	portal.position = finish_point
 	
-	var dinosaur1_pos = level.generate_point(BiomeType.FOREST)
-	var dinosaur2_pos = level.generate_point(BiomeType.FOREST)
-	var dinosaur3_pos = level.generate_point(BiomeType.DESERT)
-	var dinosaur4_pos = level.generate_point(BiomeType.DESERT)
-	
+	level.generate_dinosaurs()
 
 func _process(delta):
 	pass

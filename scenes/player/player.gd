@@ -12,7 +12,7 @@ const level_caps: Array[int] = [10, 25, 50, 80, 120, 180, 250, 360, 500]
 
 func _physics_process(delta):
 	var direction = Input.get_vector("player_left", "player_right", "player_up", "player_down")
-
+	
 	if not direction.is_zero_approx():
 		direction = direction.normalized()
 	

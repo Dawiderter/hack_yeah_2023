@@ -20,9 +20,13 @@ const FOLIAGE_LAYER: int = 1
 const FOLIAGE_TILESET: int = 2
 const FOLIAGE_TILESET_ID: int = 3
 
+const DINOSAUR_LAYER: int = 2
+const DINOSAUR_TILESET: int = 5
+const DINOSAUR_TILESET_ID: int = 8
+
 const NATURE_TILESET: int = 2
 const NATURE_TILESET_ID: int = 4
-const THRESHOLD = 0.15  
+const THRESHOLD = 0.15
 
 const GRASS_TILESET: int = 3
 const GRASS_TILESET_ID: int = 6
@@ -192,14 +196,14 @@ class ForestBiome extends Biome:
 
 	func terrain():
 		return FOREST_TERRAIN
-		
+
 	func generate_features(tile_map: TileMap):
 		pass
 
 class VolcanoBiome extends Biome:
 	func type():
 		return BiomeType.VOLCANO
-		
+
 	func terrain():
 		return VOLCANO_TERRAIN
 
@@ -234,7 +238,7 @@ func is_valid_grass_tile(x: int, y: int) -> bool:
 	if cell in [Vector2i(3, 1)]:
 		return true
 	return false
-	
+
 func is_valid_desert_tile(x: int, y: int) -> bool:
 	var cell = get_cell_atlas_coords(FLOOR_LAYER, Vector2i(x, y))
 	if cell in [Vector2i(3, 4)]:
@@ -365,19 +369,53 @@ func create_biomes(partitions: Array[BiomePartition]) -> Array[Biome]:
 
 	return biomes
 
-func generate_point(type: BiomeType):
+func generate_point(type: BiomeType) -> Vector2i:
 	var tile_size = tile_set.tile_size
 	var biome = find_biome(biomes, type)
 	var left_top = biome.partition.generative_left_top
 	var right_bottom = biome.partition.generative_right_bottom
-	var x = randi_range(left_top.x * tile_size.x, right_bottom.x * tile_size.x)
-	var y = randi_range(left_top.y * tile_size.y, right_bottom.y * tile_size.y)
-	return Vector2i(x, y)
+	while true:
+		var x = randi_range(left_top.x, right_bottom.x)
+		var y = randi_range(left_top.y, right_bottom.y)
+		if get_cell_atlas_coords(FOLIAGE_LAYER, Vector2i(x, y)) == Vector2i(-1, -1):
+			return Vector2i(x, y) * tile_size
+	return Vector2i(-1, -1)
 	
-#func generate_dinosaurs() -> Array[Vector2i]:
-#	var forest = find_biome(biomes, BiomeType.FOREST)
-#	var desert = find_biome(biomes, BiomeType.DESERT)
+func get_generative_tile(type: BiomeType) -> Vector2i:
+	var biome = find_biome(biomes, type)
+	var left_top = biome.partition.generative_left_top
+	var right_bottom = biome.partition.generative_right_bottom
+	while true:
+		var x = randi_range(left_top.x, right_bottom.x)
+		var y = randi_range(left_top.y, right_bottom.y)
+		if get_cell_atlas_coords(FOLIAGE_LAYER, Vector2i(x, y)) == Vector2i(-1, -1):
+			return Vector2i(x, y)
+	return Vector2i(-1, -1)
+
+enum {STEGO, TRICE, PTERO, BRONT}
+func generate_dinosaurs():
+	var dinosaur_types = [STEGO, TRICE, PTERO, BRONT]
+	dinosaur_types.shuffle()
+	var points = [get_generative_tile(BiomeType.FOREST),
+	get_generative_tile(BiomeType.FOREST),
+	get_generative_tile(BiomeType.DESERT),
+	get_generative_tile(BiomeType.DESERT)]
 	
+	for i in dinosaur_types.size():
+		var point = points[i]
+		var type = dinosaur_types[i]
+		var dino: Vector2i
+		match type:
+			BRONT:
+				dino = Vector2i(0,0)
+			PTERO:
+				dino = Vector2i(1,0)
+			STEGO:
+				dino = Vector2i(2,0)
+			TRICE:
+				dino = Vector2i(3,0)
+		print(point)
+		set_cell(DINOSAUR_LAYER, point, DINOSAUR_TILESET_ID, dino)
 
 func _ready():
 	var biome_count = 3
@@ -387,7 +425,7 @@ func _ready():
 
 	for biome in biomes:
 		biome.generate_floor(self)
-		
+	
 	generate_grass()
 	generate_twigs()
 	

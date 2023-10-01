@@ -1,0 +1,12 @@
+[gd_scene load_steps=4 format=3 uid="uid://bawol6p1w0opl"]
+
+[ext_resource type="Script" path="res://scenes/world/world.gd" id="1_ype4h"]
+[ext_resource type="PackedScene" uid="uid://cuhwqjx4b5kv" path="res://scenes/level/level.tscn" id="2_dbthd"]
+[ext_resource type="PackedScene" uid="uid://bshisiaede5tx" path="res://scenes/portal/portal.tscn" id="3_bfpy0"]
+
+[node name="World" type="Node2D"]
+script = ExtResource("1_ype4h")
+
+[node name="Level" parent="." instance=ExtResource("2_dbthd")]
+
+[node name="Portal" parent="." instance=ExtResource("3_bfpy0")]
