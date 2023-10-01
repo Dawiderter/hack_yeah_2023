@@ -3,8 +3,8 @@
 [ext_resource type="Texture2D" uid="uid://bj6w4v01y1ljq" path="res://scenes/assets/tileset.jpg" id="1_1wufh"]
 [ext_resource type="Texture2D" uid="uid://kg8ikv8ahfwb" path="res://scenes/assets/plants.png" id="2_4c15k"]
 [ext_resource type="Texture2D" uid="uid://dlus4xuauorse" path="res://resources/TilesetNature.png" id="2_rve8r"]
-[ext_resource type="Texture2D" uid="uid://bi6lck2pvbtng" path="res://scenes/assets/weed.png" id="4_7pwoa"]
-[ext_resource type="Texture2D" uid="uid://dpt767767iylr" path="res://resources/TilesetFloor.png" id="5_l75hq"]
+[ext_resource type="Texture2D" uid="uid://dd8sbfd6erpnn" path="res://scenes/assets/weed.png" id="4_7pwoa"]
+[ext_resource type="Texture2D" uid="uid://bd00d8g8n3r1c" path="res://resources/TilesetFloor.png" id="5_l75hq"]
 [ext_resource type="Texture2D" uid="uid://bo5mrmnqoacsp" path="res://scenes/assets/dino_tileset.png" id="6_fvk0e"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_372ou"]

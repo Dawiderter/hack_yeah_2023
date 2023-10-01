@@ -1,7 +1,6 @@
-[gd_scene load_steps=3 format=3 uid="uid://xcspfrnsbuxo"]
+[gd_scene load_steps=2 format=3 uid="uid://xcspfrnsbuxo"]
 
 [ext_resource type="Script" path="res://scenes/ui/pause.gd" id="1_68gb1"]
-[ext_resource type="FontFile" path="res://scenes/font/prstartk.ttf" id="2_uvtek"]
 
 [node name="pause" type="Control"]
 process_mode = 3
@@ -46,21 +45,18 @@ theme_override_constants/separation = 12
 
 [node name="Continue" type="Button" parent="VBoxContainer/ColorRect/CenterContainer/VBoxContainer"]
 layout_mode = 2
-theme_override_fonts/font = ExtResource("2_uvtek")
 theme_override_font_sizes/font_size = 30
 text = "Continue"
 icon_alignment = 1
 
 [node name="Restart" type="Button" parent="VBoxContainer/ColorRect/CenterContainer/VBoxContainer"]
 layout_mode = 2
-theme_override_fonts/font = ExtResource("2_uvtek")
 theme_override_font_sizes/font_size = 30
 text = "Restart"
 icon_alignment = 1
 
 [node name="Exit" type="Button" parent="VBoxContainer/ColorRect/CenterContainer/VBoxContainer"]
 layout_mode = 2
-theme_override_fonts/font = ExtResource("2_uvtek")
 theme_override_font_sizes/font_size = 30
 text = "Exit
 "
