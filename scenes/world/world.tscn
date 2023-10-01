@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=3 uid="uid://bcgetu0gt61tr"]
+[gd_scene load_steps=8 format=3 uid="uid://bawol6p1w0opl"]
 
 [ext_resource type="Script" path="res://scenes/world/world.gd" id="1_mlnty"]
 [ext_resource type="PackedScene" uid="uid://cuhwqjx4b5kv" path="res://scenes/level/level.tscn" id="2_ynwe4"]
@@ -19,15 +19,22 @@ z_index = 1
 zoom = Vector2(1.69, 1.69)
 
 [node name="TimerLabel" type="Label" parent="player/Camera2D" index="1"]
-offset_left = 304.0
-offset_right = 522.0
-offset_bottom = 50.0
-text = "awdsa"
+custom_minimum_size = Vector2(200, 50)
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -103.0
+offset_top = -132.0
+offset_right = 97.0
+offset_bottom = -82.0
+grow_horizontal = 2
+text = "awdsasddasdasd"
 horizontal_alignment = 1
 script = ExtResource("4_tr7mo")
 
 [node name="FinalTimer" type="Timer" parent="player/Camera2D/TimerLabel"]
 wait_time = 900.0
+one_shot = true
 autostart = true
 
 [node name="trex" parent="player" instance=ExtResource("4_ms6o1")]
