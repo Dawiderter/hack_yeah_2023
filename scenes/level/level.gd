@@ -394,6 +394,7 @@ func get_generative_tile(type: BiomeType) -> Vector2i:
 
 enum {STEGO, TRICE, PTERO, BRONT}
 func generate_dinosaurs():
+	var tile_size = tile_set.tile_size
 	var dinosaur_types = [STEGO, TRICE, PTERO, BRONT]
 	dinosaur_types.shuffle()
 	var points = [get_generative_tile(BiomeType.FOREST),
@@ -405,17 +406,33 @@ func generate_dinosaurs():
 		var point = points[i]
 		var type = dinosaur_types[i]
 		var dino: Vector2i
+		var dino_name
 		match type:
 			BRONT:
+				dino_name = "bront"
 				dino = Vector2i(0,0)
 			PTERO:
+				dino_name = "ptero"
 				dino = Vector2i(1,0)
 			STEGO:
+				dino_name = "stego"
 				dino = Vector2i(2,0)
 			TRICE:
+				dino_name = "trice"
 				dino = Vector2i(3,0)
-		print(point)
+		
+		var dino_collider_point = point * tile_size + Vector2i(16, 16)
+		var collider = preload("res://scenes/world/dino_collider.tscn").instantiate()
+		add_child(collider)
+		collider.dino_name = dino_name
+		collider.dino_tile = point
+		collider.position = dino_collider_point
+		collider.tilemap = self
+		print(dino_name + ": " + str(collider.position))
 		set_cell(DINOSAUR_LAYER, point, DINOSAUR_TILESET_ID, dino)
+
+func remove_dino(tile: Vector2i):
+	erase_cell(DINOSAUR_LAYER, tile)
 
 func _ready():
 	var biome_count = 3
