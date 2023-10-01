@@ -24,6 +24,9 @@ const NATURE_TILESET: int = 2
 const NATURE_TILESET_ID: int = 4
 const THRESHOLD = 0.15  
 
+const GRASS_TILESET: int = 3
+const GRASS_TILESET_ID: int = 6
+
 const FOREST_TERRAIN: int = 0
 const DESERT_TERRAIN: int = 1
 const VOLCANO_TERRAIN: int = 2
@@ -236,7 +239,7 @@ func generate_grass():
 		for x in range(-offset, columns + offset):
 			var value = noise.get_noise_2d(x, y)
 			if value > THRESHOLD and is_valid_grass_tile(x, y):
-				set_cell(FOLIAGE_LAYER, Vector2i(x, y), FOLIAGE_TILESET_ID, Vector2i(0, 3))
+				set_cell(FOLIAGE_LAYER, Vector2i(x, y), GRASS_TILESET_ID, Vector2i(0, 0))
 
 func generate_plants():
 	var offset = (EDGE_WIDTH * jaggedness_coefficient)
