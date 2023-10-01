@@ -1,12 +1,58 @@
-[gd_scene load_steps=4 format=3 uid="uid://bawol6p1w0opl"]
+[gd_scene load_steps=8 format=3 uid="uid://bcgetu0gt61tr"]
 
-[ext_resource type="Script" path="res://scenes/world/world.gd" id="1_ype4h"]
-[ext_resource type="PackedScene" uid="uid://cuhwqjx4b5kv" path="res://scenes/level/level.tscn" id="2_dbthd"]
-[ext_resource type="PackedScene" uid="uid://bshisiaede5tx" path="res://scenes/portal/portal.tscn" id="3_bfpy0"]
+[ext_resource type="Script" path="res://scenes/world/world.gd" id="1_mlnty"]
+[ext_resource type="PackedScene" uid="uid://cuhwqjx4b5kv" path="res://scenes/level/level.tscn" id="2_ynwe4"]
+[ext_resource type="PackedScene" uid="uid://bcm7pfx0qk8fj" path="res://scenes/player/player.tscn" id="4_lfa1r"]
+[ext_resource type="PackedScene" uid="uid://ejcbb02rwjqh" path="res://scenes/player/dinos/trex.tscn" id="4_ms6o1"]
+[ext_resource type="Script" path="res://scenes/world/TimerLabel.gd" id="4_tr7mo"]
+[ext_resource type="PackedScene" uid="uid://bshisiaede5tx" path="res://scenes/portal/portal.tscn" id="5_jvce4"]
+[ext_resource type="PackedScene" uid="uid://d022fu33um405" path="res://scenes/world/enemies_spawner.tscn" id="6_leehp"]
 
 [node name="World" type="Node2D"]
-script = ExtResource("1_ype4h")
+y_sort_enabled = true
+script = ExtResource("1_mlnty")
 
-[node name="Level" parent="." instance=ExtResource("2_dbthd")]
+[node name="player" parent="." instance=ExtResource("4_lfa1r")]
+z_index = 1
 
-[node name="Portal" parent="." instance=ExtResource("3_bfpy0")]
+[node name="Camera2D" parent="player" index="1"]
+zoom = Vector2(1.69, 1.69)
+
+[node name="TimerLabel" type="Label" parent="player/Camera2D" index="1"]
+offset_left = 304.0
+offset_right = 522.0
+offset_bottom = 50.0
+text = "awdsa"
+horizontal_alignment = 1
+script = ExtResource("4_tr7mo")
+
+[node name="FinalTimer" type="Timer" parent="player/Camera2D/TimerLabel"]
+wait_time = 900.0
+autostart = true
+
+[node name="trex" parent="player" instance=ExtResource("4_ms6o1")]
+z_index = 1
+
+[node name="Level" parent="." instance=ExtResource("2_ynwe4")]
+y_sort_enabled = true
+layer_1/y_sort_enabled = true
+layer_1/z_index = 1
+layer_2/name = "dinosaurs"
+layer_2/enabled = true
+layer_2/modulate = Color(1, 1, 1, 1)
+layer_2/y_sort_enabled = false
+layer_2/y_sort_origin = 0
+layer_2/z_index = 2
+layer_2/tile_data = PackedInt32Array()
+
+[node name="Portal" parent="." instance=ExtResource("5_jvce4")]
+
+[node name="Sprite2D" parent="Portal" index="0"]
+scale = Vector2(7.6, 7.6)
+
+[node name="enemies_spawner" parent="." node_paths=PackedStringArray("player") instance=ExtResource("6_leehp")]
+position = Vector2(-2, 1)
+player = NodePath("../player")
+
+[editable path="player"]
+[editable path="Portal"]
