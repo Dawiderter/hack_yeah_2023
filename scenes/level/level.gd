@@ -248,6 +248,17 @@ func generate_plants():
 				var y_coord = randi_range(10,11)
 				set_cell(FOLIAGE_LAYER, Vector2i(x, y), NATURE_TILESET_ID, Vector2i(x_coord, y_coord))
 
+func generate_twigs():
+	var offset = (EDGE_WIDTH * jaggedness_coefficient)
+	for y in range(-offset, rows + offset):
+		for x in range(-offset, columns + offset):
+			var value = randf()
+			if value < 0.005 and is_valid_grass_tile(x, y):
+				var x_coord = randi_range(12, 13)
+				var y_coord = randi_range(11,12)
+				set_cell(FOLIAGE_LAYER, Vector2i(x, y), NATURE_TILESET_ID, Vector2i(x_coord, y_coord))
+
+
 func partition_map(left_top: Vector2i, right_bottom: Vector2i, count: int) -> Array[BiomePartition]:
 	var biomes: Array[BiomePartition] = []
 	var len_x = abs(left_top.x - right_bottom.x)
@@ -338,4 +349,4 @@ func _ready():
 		biome.generate_floor(self)
 		
 	generate_grass()
-	generate_plants()
+	generate_twigs()

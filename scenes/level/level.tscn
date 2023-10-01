@@ -1,9 +1,14 @@
-[gd_scene load_steps=3 format=3 uid="uid://cuhwqjx4b5kv"]
+[gd_scene load_steps=5 format=3 uid="uid://cuhwqjx4b5kv"]
 
+[ext_resource type="Shader" path="res://scenes/level/tile_map_shader.gdshader" id="1_d4teh"]
 [ext_resource type="TileSet" uid="uid://bqxedoo3fm6yq" path="res://scenes/level/tileset.tres" id="1_dx1cp"]
 [ext_resource type="Script" path="res://scenes/level/level.gd" id="1_ooxbr"]
 
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_tkrem"]
+shader = ExtResource("1_d4teh")
+
 [node name="TileMap" type="TileMap"]
+material = SubResource("ShaderMaterial_tkrem")
 tile_set = ExtResource("1_dx1cp")
 format = 2
 layer_0/name = "floor"
