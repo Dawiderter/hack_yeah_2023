@@ -1,8 +1,10 @@
-[gd_scene load_steps=7 format=3 uid="uid://bcm7pfx0qk8fj"]
+[gd_scene load_steps=9 format=3 uid="uid://bcm7pfx0qk8fj"]
 
 [ext_resource type="Script" path="res://scenes/player/player.gd" id="1_hhlf2"]
 [ext_resource type="PackedScene" uid="uid://4xy8eaxa7myl" path="res://scenes/ui/player_hud.tscn" id="3_4b2xp"]
 [ext_resource type="PackedScene" uid="uid://cx3bl7sj2vgtn" path="res://scenes/hit/hitbox.tscn" id="3_mlk54"]
+[ext_resource type="AudioStream" uid="uid://b3qgbcd0eugei" path="res://scenes/sounds/levelUp.wav" id="4_srs1t"]
+[ext_resource type="AudioStream" uid="uid://dwjntn277hldm" path="res://scenes/sounds/takeDamage.wav" id="5_1fshp"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_hj4o2"]
 radius = 6.0
@@ -45,6 +47,12 @@ monitorable = false
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
 shape = SubResource("CircleShape2D_3ncx7")
+
+[node name="LevelUp" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("4_srs1t")
+
+[node name="TakeDamage" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("5_1fshp")
 
 [connection signal="on_hit" from="hitbox" to="." method="_on_hitbox_on_hit"]
 [connection signal="area_entered" from="Area2D" to="." method="_on_area_2d_area_entered"]

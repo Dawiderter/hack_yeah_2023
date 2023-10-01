@@ -20,9 +20,6 @@ SPEED = 2000.0
 [node name="Camera2D" parent="player" index="1"]
 zoom = Vector2(1.69, 1.69)
 
-[node name="player_hud" parent="player/Camera2D" index="0"]
-metadata/_edit_use_anchors_ = true
-
 [node name="TimerLabel" type="Label" parent="player/Camera2D" index="1"]
 custom_minimum_size = Vector2(200, 50)
 anchors_preset = 5

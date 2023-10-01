@@ -29,7 +29,7 @@ func _on_hurtbox_area_entered(area:Area2D):
 
 func _on_hitbox_on_hit(damage, source):
 	health -= damage.damage_dealt
-
+	$TakeDamage.play()
 	if health < 0:
 		health = 0
 
@@ -42,6 +42,7 @@ func gain_xp(xp):
 
 func level_up():
 	level += 1
+	$LevelUp.play()
 	pass
 
 
