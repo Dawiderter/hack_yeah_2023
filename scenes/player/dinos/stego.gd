@@ -4,11 +4,13 @@ extends Node2D
 @export var range_radius: float
 
 @onready var sprite : AnimatedSprite2D = $AnimatedSprite2D
+@onready var hurt_anim: AnimatedSprite2D = $hurt_anim
 @onready var shape: CollisionShape2D = $hurtbox/CollisionShape2D
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	set_range_radius(range_radius)
+	hurt_anim.play("default")
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
@@ -27,3 +29,5 @@ func _process(delta):
 func set_range_radius(_range_radius: float):
 	range_radius = _range_radius
 	shape.shape.radius = range_radius
+	hurt_anim.scale.x = range_radius / 40
+	hurt_anim.scale.y = range_radius / 40

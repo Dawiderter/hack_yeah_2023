@@ -44,8 +44,8 @@ animations = [{
 
 [node name="trex_attack" type="Node2D"]
 script = ExtResource("1_amktc")
-range_length = 100.0
-range_width = 64.0
+range_length = 60.0
+range_width = 45.0
 duration = 0.5
 cooldown = 1.0
 

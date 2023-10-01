@@ -1,10 +1,11 @@
-[gd_scene load_steps=9 format=3 uid="uid://suydt1xlk51q"]
+[gd_scene load_steps=14 format=3 uid="uid://suydt1xlk51q"]
 
 [ext_resource type="Script" path="res://scenes/player/dinos/stego.gd" id="1_38ht6"]
 [ext_resource type="Texture2D" uid="uid://xwymi14p1ut" path="res://scenes/assets/dinos/stego_idle.png" id="2_eur3o"]
 [ext_resource type="Texture2D" uid="uid://bn7p6mahdnrfg" path="res://scenes/assets/dinos/stego_walk.png" id="3_ubr4c"]
 [ext_resource type="PackedScene" uid="uid://bb28v0kht4nxk" path="res://scenes/hit/hurtbox.tscn" id="4_fjm2p"]
 [ext_resource type="Script" path="res://scenes/hit/hit_stats.gd" id="5_bkqan"]
+[ext_resource type="Texture2D" uid="uid://ddj25uqi6vk5g" path="res://scenes/assets/dinos/stego_circle.png" id="6_tq3nb"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_81sam"]
 animations = [{
@@ -30,13 +31,42 @@ animations = [{
 
 [sub_resource type="Resource" id="Resource_7vl06"]
 script = ExtResource("5_bkqan")
-damage_dealt = 10.0
-knockback_strength = 0.0
-intensity_seconds = 0.1
+damage_dealt = 20.0
+knockback_strength = 200.0
+intensity_seconds = 0.5
 damage_on_enter = false
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_pypue"]
 radius = 0.01
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ikmpo"]
+atlas = ExtResource("6_tq3nb")
+region = Rect2(0, 0, 80, 80)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_vusui"]
+atlas = ExtResource("6_tq3nb")
+region = Rect2(0, 80, 80, 80)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_pgudj"]
+atlas = ExtResource("6_tq3nb")
+region = Rect2(0, 160, 80, 80)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_0ohww"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ikmpo")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_vusui")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_pgudj")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
 
 [node name="stego" type="Node2D"]
 script = ExtResource("1_38ht6")
@@ -54,3 +84,7 @@ hit_data = SubResource("Resource_7vl06")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="hurtbox"]
 shape = SubResource("CircleShape2D_pypue")
+
+[node name="hurt_anim" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_0ohww")
+frame_progress = 0.822167
