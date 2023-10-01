@@ -1,0 +1,12 @@
+[gd_scene load_steps=2 format=3 uid="uid://c7uqmayg2wyfr"]
+
+[ext_resource type="PackedScene" uid="uid://c05ojm43p20g3" path="res://scenes/enemies/gun_bullet.tscn" id="1_63hbk"]
+
+[node name="flame_bullet" type="Node2D"]
+
+[node name="gun_bullet" parent="." instance=ExtResource("1_63hbk")]
+
+[node name="Sprite2D" parent="gun_bullet" index="0"]
+modulate = Color(0.901961, 0.290196, 0, 1)
+
+[editable path="gun_bullet"]

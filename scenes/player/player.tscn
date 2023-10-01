@@ -1,4 +1,4 @@
-[gd_scene load_steps=7 format=3 uid="uid://bcm7pfx0qk8fj"]
+[gd_scene load_steps=6 format=3 uid="uid://bcm7pfx0qk8fj"]
 
 [ext_resource type="Script" path="res://scenes/player/player.gd" id="1_hhlf2"]
 [ext_resource type="PackedScene" uid="uid://c27kpi26mr4n5" path="res://scenes/ui/player_hud.tscn" id="3_4b2xp"]
@@ -9,9 +9,6 @@ radius = 4.0
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_6ouy4"]
 radius = 11.0
-
-[sub_resource type="CircleShape2D" id="CircleShape2D_3ncx7"]
-radius = 32.1
 
 [node name="player" type="CharacterBody2D" groups=["player"]]
 y_sort_enabled = true
@@ -41,13 +38,4 @@ position = Vector2(0, -10)
 [node name="CollisionShape2D" type="CollisionShape2D" parent="hitbox"]
 shape = SubResource("CircleShape2D_6ouy4")
 
-[node name="Area2D" type="Area2D" parent="."]
-collision_layer = 16
-collision_mask = 16
-monitorable = false
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
-shape = SubResource("CircleShape2D_3ncx7")
-
 [connection signal="on_hit" from="hitbox" to="." method="_on_hitbox_on_hit"]
-[connection signal="area_entered" from="Area2D" to="." method="_on_area_2d_area_entered"]

@@ -9,6 +9,7 @@ extends CharacterBody2D
 
 @onready var health = max_health
 @onready var animation_tree: AnimationTree = $AnimationTree
+@onready var cooldown: Timer = $cooldown
 
 var impulse_vel: Vector2 = Vector2.ZERO
 
@@ -25,13 +26,15 @@ func _process(delta):
 
 func _ready():
 	animation_tree.active=true
+	cooldown.start(0.5)
+	
 
 func _on_hitbox_on_hit(hit_data : HitStats, source: Area2D):
 	health -= hit_data.damage_dealt
 	if health <= 0:
 		var droped_meat = meat.instantiate()
 		droped_meat.global_position = global_position
-		get_parent().add_child(droped_meat)
+		get_parent().call_deferred("add_child", droped_meat)
 		queue_free()
 
 	var source_pos = source.global_position
@@ -40,3 +43,13 @@ func _on_hitbox_on_hit(hit_data : HitStats, source: Area2D):
 
 	impulse_vel = dir * hit_data.knockback_strength
 
+func _on_cooldown_timeout():
+	var bullet = preload("res://scenes/enemies/gun_bullet.tscn").instantiate()
+	get_parent().add_child(bullet)
+
+	var source_pos = target.global_position
+	var our_pos = global_position
+	var dir = our_pos.direction_to(source_pos)
+
+	bullet.position = position
+	bullet.direction = dir

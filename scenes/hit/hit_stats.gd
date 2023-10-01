@@ -6,3 +6,4 @@ extends Resource
 @export var knockback_strength: float
 @export var intensity_seconds: float
 @export var damage_on_enter: bool
+@export var destroy_on_hit: bool = false

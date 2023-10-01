@@ -168,10 +168,11 @@ states/Start/position = Vector2(155, 100)
 transitions = ["Start", "Move", SubResource("AnimationNodeStateMachineTransition_dv7ne")]
 graph_offset = Vector2(-96, -6)
 
-[node name="soldier_with_knife" type="CharacterBody2D"]
+[node name="soldier_with_gun" type="CharacterBody2D"]
 collision_layer = 2049
 motion_mode = 1
 script = ExtResource("1_78kc1")
+move_speed = 40
 meat = ExtResource("2_ktc1p")
 max_health = 200.0
 
@@ -179,7 +180,7 @@ max_health = 200.0
 texture = ExtResource("2_cmd8j")
 hframes = 3
 vframes = 4
-frame = 2
+frame = 11
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("CircleShape2D_g46v3")
@@ -203,4 +204,9 @@ advance_expression_base_node = NodePath("../AnimationPlayer")
 active = true
 parameters/Move/blend_position = Vector2(0.112069, -0.196507)
 
+[node name="cooldown" type="Timer" parent="."]
+wait_time = 0.5
+autostart = true
+
 [connection signal="on_hit" from="hitbox" to="." method="_on_hitbox_on_hit"]
+[connection signal="timeout" from="cooldown" to="." method="_on_cooldown_timeout"]
