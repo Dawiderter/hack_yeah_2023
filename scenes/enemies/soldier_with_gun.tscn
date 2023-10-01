@@ -180,7 +180,7 @@ max_health = 200.0
 texture = ExtResource("2_cmd8j")
 hframes = 3
 vframes = 4
-frame = 11
+frame = 2
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("CircleShape2D_g46v3")
