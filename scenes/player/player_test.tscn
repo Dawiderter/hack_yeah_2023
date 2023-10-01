@@ -3,7 +3,7 @@
 [ext_resource type="PackedScene" uid="uid://bcm7pfx0qk8fj" path="res://scenes/player/player.tscn" id="1_tgjfa"]
 [ext_resource type="Texture2D" uid="uid://cdhtneb5pvcmh" path="res://scenes/player/tile_reference.png" id="2_2xdfp"]
 [ext_resource type="PackedScene" uid="uid://ejcbb02rwjqh" path="res://scenes/player/dinos/trex.tscn" id="2_ndnpm"]
-[ext_resource type="PackedScene" uid="uid://5btsvnsfayfk" path="res://scenes/player/dinos/bront.tscn" id="3_7d0tv"]
+[ext_resource type="PackedScene" path="res://scenes/player/dinos/bront.tscn" id="3_7d0tv"]
 [ext_resource type="PackedScene" uid="uid://d022fu33um405" path="res://scenes/world/enemies_spawner.tscn" id="4_v433g"]
 
 [sub_resource type="SegmentShape2D" id="SegmentShape2D_im26j"]

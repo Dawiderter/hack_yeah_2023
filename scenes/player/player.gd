@@ -44,3 +44,23 @@ func gain_xp(xp):
 func level_up():
 	level += 1
 	pass
+
+
+func _on_area_2d_area_entered(area):
+	match area.dino_name:
+		"bront":
+			var bront = preload("res://scenes/player/dinos/bront.tscn").instantiate()
+			add_child(bront)
+		"ptero":
+			var bront = preload("res://scenes/player/dinos/ptero.tscn").instantiate()
+			add_child(bront)
+		"stego":
+			var bront = preload("res://scenes/player/dinos/stego.tscn").instantiate()
+			add_child(bront)
+		"trice":
+			var bront = preload("res://scenes/player/dinos/trice.tscn").instantiate()
+			bront.player_target = self
+			get_parent().add_child(bront)
+			bront.position = position
+	area.tilemap.remove_dino(area.dino_tile)
+	area.queue_free()
