@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://ddj25uqi6vk5g"
-path="res://.godot/imported/stego_circle.png-547c3705b2895c1509d5470d27c68f42.ctex"
+uid="uid://bi6lck2pvbtng"
+path="res://.godot/imported/weed.png-7dab6dca76c167b25c07bb8f57c3749d.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://scenes/assets/dinos/stego_circle.png"
-dest_files=["res://.godot/imported/stego_circle.png-547c3705b2895c1509d5470d27c68f42.ctex"]
+source_file="res://scenes/assets/weed.png"
+dest_files=["res://.godot/imported/weed.png-7dab6dca76c167b25c07bb8f57c3749d.ctex"]
 
 [params]
 

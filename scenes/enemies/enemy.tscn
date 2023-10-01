@@ -5,10 +5,10 @@
 [ext_resource type="PackedScene" uid="uid://cx3bl7sj2vgtn" path="res://scenes/hit/hitbox.tscn" id="3_7xy2h"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_g46v3"]
-radius = 18.1108
+radius = 6.0
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_7ykwj"]
-radius = 21.0238
+radius = 11.0
 
 [sub_resource type="Animation" id="Animation_vpf0m"]
 resource_name = "walk_down"

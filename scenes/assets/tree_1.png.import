@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://ddj25uqi6vk5g"
-path="res://.godot/imported/stego_circle.png-547c3705b2895c1509d5470d27c68f42.ctex"
+uid="uid://c1bj1qsiijsqr"
+path="res://.godot/imported/tree_1.png-39b242e6df2760106b7a96dba1bd685c.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://scenes/assets/dinos/stego_circle.png"
-dest_files=["res://.godot/imported/stego_circle.png-547c3705b2895c1509d5470d27c68f42.ctex"]
+source_file="res://scenes/assets/tree_1.png"
+dest_files=["res://.godot/imported/tree_1.png-39b242e6df2760106b7a96dba1bd685c.ctex"]
 
 [params]
 

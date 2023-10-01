@@ -37,15 +37,18 @@ animations = [{
 
 [sub_resource type="Resource" id="Resource_eiest"]
 script = ExtResource("6_4ydaq")
-damage_dealt = 100.0
+damage_dealt = 20.0
 knockback_strength = 0.0
+intensity_seconds = 0.0
+damage_on_enter = false
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_bq8uj"]
-radius = 19.31
+radius = 22.0227
 
 [node name="ptero" type="Node2D"]
 script = ExtResource("1_pac2t")
 radius = 150.0
+angular_speed = 5.0
 
 [node name="sprite" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_yn4ln")

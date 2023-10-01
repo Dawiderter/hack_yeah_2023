@@ -1,13 +1,9 @@
-[gd_resource type="TileSet" load_steps=7 format=3 uid="uid://bqxedoo3fm6yq"]
+[gd_resource type="TileSet" load_steps=9 format=3 uid="uid://bqxedoo3fm6yq"]
 
-<<<<<<< HEAD
-[ext_resource type="Texture2D" uid="uid://cyjhiaxdnlxiq" path="res://scenes/assets/tileset.jpg" id="1_1wufh"]
-[ext_resource type="Texture2D" uid="uid://bxpqnjb6imtn5" path="res://scenes/assets/tileset2.jpg" id="1_mkhuc"]
-=======
 [ext_resource type="Texture2D" uid="uid://bj6w4v01y1ljq" path="res://scenes/assets/tileset.jpg" id="1_1wufh"]
 [ext_resource type="Texture2D" uid="uid://kg8ikv8ahfwb" path="res://scenes/assets/plants.png" id="2_4c15k"]
->>>>>>> 4b5605645b7cdcfc89261c936eac03005d1fd1ca
 [ext_resource type="Texture2D" uid="uid://dlus4xuauorse" path="res://resources/TilesetNature.png" id="2_rve8r"]
+[ext_resource type="Texture2D" path="res://scenes/assets/weed.png" id="4_7pwoa"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_372ou"]
 resource_name = "floor"
@@ -234,6 +230,34 @@ texture = ExtResource("1_1wufh")
 2:11/0 = 0
 3:11/0 = 0
 4:11/0 = 0
+5:0/0 = 0
+5:0/0/terrain_set = 0
+5:0/0/terrain = 0
+5:0/0/terrains_peering_bit/bottom_right_corner = 0
+5:0/0/terrains_peering_bit/bottom_left_corner = 0
+5:0/0/terrains_peering_bit/top_left_corner = 0
+5:0/0/terrains_peering_bit/top_right_corner = 0
+5:1/0 = 0
+5:1/0/terrain_set = 0
+5:1/0/terrain = 0
+5:1/0/terrains_peering_bit/bottom_right_corner = 0
+5:1/0/terrains_peering_bit/bottom_left_corner = 0
+5:1/0/terrains_peering_bit/top_left_corner = 0
+5:1/0/terrains_peering_bit/top_right_corner = 0
+6:1/0 = 0
+6:1/0/terrain_set = 0
+6:1/0/terrain = 0
+6:1/0/terrains_peering_bit/bottom_right_corner = 0
+6:1/0/terrains_peering_bit/bottom_left_corner = 0
+6:1/0/terrains_peering_bit/top_left_corner = 0
+6:1/0/terrains_peering_bit/top_right_corner = 0
+6:0/0 = 0
+6:0/0/terrain_set = 0
+6:0/0/terrain = 0
+6:0/0/terrains_peering_bit/bottom_right_corner = 0
+6:0/0/terrains_peering_bit/bottom_left_corner = 0
+6:0/0/terrains_peering_bit/top_left_corner = 0
+6:0/0/terrains_peering_bit/top_right_corner = 0
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_sc6yx"]
 texture = ExtResource("2_4c15k")
@@ -400,8 +424,9 @@ texture = ExtResource("2_rve8r")
 3:8/0 = 0
 4:8/0 = 0
 5:8/0 = 0
+6:8/size_in_atlas = Vector2i(2, 2)
 6:8/0 = 0
-7:8/0 = 0
+6:8/0/texture_origin = Vector2i(-8, -8)
 9:8/0 = 0
 10:8/0 = 0
 11:8/0 = 0
@@ -415,8 +440,6 @@ texture = ExtResource("2_rve8r")
 3:9/0 = 0
 4:9/0 = 0
 5:9/0 = 0
-6:9/0 = 0
-7:9/0 = 0
 9:9/0 = 0
 10:9/0 = 0
 11:9/0 = 0
@@ -440,13 +463,15 @@ texture = ExtResource("2_rve8r")
 10:10/0 = 0
 11:10/0 = 0
 12:10/0 = 0
+15:10/size_in_atlas = Vector2i(2, 2)
 15:10/0 = 0
-16:10/0 = 0
+15:10/0/texture_origin = Vector2i(-8, -8)
+17:10/size_in_atlas = Vector2i(4, 3)
 17:10/0 = 0
-18:10/0 = 0
-19:10/0 = 0
+17:10/0/texture_origin = Vector2i(-24, -16)
+21:10/size_in_atlas = Vector2i(2, 3)
 21:10/0 = 0
-22:10/0 = 0
+21:10/0/texture_origin = Vector2i(-8, -16)
 0:11/0 = 0
 1:11/0 = 0
 2:11/0 = 0
@@ -459,14 +484,6 @@ texture = ExtResource("2_rve8r")
 9:11/0 = 0
 12:11/0 = 0
 13:11/0 = 0
-15:11/0 = 0
-16:11/0 = 0
-17:11/0 = 0
-18:11/0 = 0
-19:11/0 = 0
-20:11/0 = 0
-21:11/0 = 0
-22:11/0 = 0
 0:12/0 = 0
 1:12/0 = 0
 2:12/0 = 0
@@ -481,14 +498,9 @@ texture = ExtResource("2_rve8r")
 11:12/0 = 0
 12:12/0 = 0
 13:12/0 = 0
+15:12/size_in_atlas = Vector2i(2, 2)
 15:12/0 = 0
-16:12/0 = 0
-17:12/0 = 0
-18:12/0 = 0
-19:12/0 = 0
-20:12/0 = 0
-21:12/0 = 0
-22:12/0 = 0
+15:12/0/texture_origin = Vector2i(-8, -8)
 0:13/0 = 0
 1:13/0 = 0
 2:13/0 = 0
@@ -503,8 +515,6 @@ texture = ExtResource("2_rve8r")
 11:13/0 = 0
 12:13/0 = 0
 13:13/0 = 0
-15:13/0 = 0
-16:13/0 = 0
 17:13/0 = 0
 18:13/0 = 0
 19:13/0 = 0
@@ -519,8 +529,12 @@ texture = ExtResource("2_rve8r")
 8:14/0 = 0
 9:14/0 = 0
 10:14/0 = 0
+12:14/size_in_atlas = Vector2i(1, 2)
 12:14/0 = 0
+12:14/0/texture_origin = Vector2i(0, -8)
+13:14/size_in_atlas = Vector2i(1, 2)
 13:14/0 = 0
+13:14/0/texture_origin = Vector2i(0, -8)
 15:14/0 = 0
 16:14/0 = 0
 17:14/0 = 0
@@ -539,8 +553,6 @@ texture = ExtResource("2_rve8r")
 8:15/0 = 0
 9:15/0 = 0
 10:15/0 = 0
-12:15/0 = 0
-13:15/0 = 0
 15:15/0 = 0
 16:15/0 = 0
 17:15/0 = 0
@@ -628,6 +640,16 @@ texture = ExtResource("2_rve8r")
 10:20/0 = 0
 11:20/0 = 0
 
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_512vy"]
+texture = ExtResource("4_7pwoa")
+0:0/animation_frame_0/duration = 0.2
+0:0/animation_frame_1/duration = 0.2
+0:0/animation_frame_2/duration = 0.2
+0:0/animation_frame_3/duration = 0.2
+0:0/animation_frame_4/duration = 0.2
+0:0/animation_frame_5/duration = 0.2
+0:0/0 = 0
+
 [resource]
 terrain_set_0/mode = 1
 terrain_set_0/terrain_0/name = "forest"
@@ -639,3 +661,4 @@ terrain_set_0/terrain_2/color = Color(0.12549, 0.501961, 0.741176, 1)
 sources/2 = SubResource("TileSetAtlasSource_372ou")
 sources/4 = SubResource("TileSetAtlasSource_c6nxr")
 sources/3 = SubResource("TileSetAtlasSource_sc6yx")
+sources/6 = SubResource("TileSetAtlasSource_512vy")
