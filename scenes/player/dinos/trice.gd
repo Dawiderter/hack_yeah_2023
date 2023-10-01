@@ -18,7 +18,7 @@ var trice_state = RETURNING
 func _ready():
 	set_range_radius(range_radius)
 
-func _physics_process(_delta):
+func _physics_process(delta):
 	velocity = Vector2.ZERO
 
 	match trice_state:
@@ -29,10 +29,9 @@ func _physics_process(_delta):
 				enemy_target = enemies[closest]
 				trice_state = CHASING
 			elif player_target:
-				if player_target.position.distance_squared_to(position) >= 4 * player_keep_range * player_keep_range:
-					trice_state = RETURNING
-				else:
-					velocity = (player_target.velocity)/2
+				if !player_target.velocity.is_zero_approx():
+					var target_point = player_target.position + -player_target.velocity.normalized() * player_keep_range / 2
+					velocity = (target_point - position) / (20 * delta)
 		CHASING:
 			if !is_instance_valid(enemy_target) or enemy_target.is_queued_for_deletion():
 				trice_state = RETURNING
@@ -41,7 +40,7 @@ func _physics_process(_delta):
 				var dir = position.direction_to(enemy_target.position)
 				velocity = (dir * chasing_speed)/2
 		RETURNING:
-			if player_target and player_target.position.distance_squared_to(position) >= player_keep_range * player_keep_range:
+			if player_target and player_target.position.distance_to(position) >= player_keep_range:
 				var dir = position.direction_to(player_target.position)
 				velocity = (dir * returning_speed)
 			else:
