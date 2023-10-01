@@ -5,6 +5,7 @@
 [ext_resource type="Script" path="res://scenes/level/level.gd" id="1_ooxbr"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_tkrem"]
+render_priority = 0
 shader = ExtResource("1_d4teh")
 
 [node name="TileMap" type="TileMap"]

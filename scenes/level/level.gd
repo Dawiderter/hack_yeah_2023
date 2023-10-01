@@ -375,11 +375,12 @@ func generate_starting_position():
 	return Vector2i(x, y)
 
 func generate_time_machine():
+	var tile_size = tile_set.tile_size
 	var biome = find_biome(biomes, finish_biome)
 	var left_top = biome.partition.generative_left_top
 	var right_bottom = biome.partition.generative_right_bottom
-	var x = randi_range(left_top.x, right_bottom.x)
-	var y = randi_range(left_top.y, right_bottom.y)
+	var x = randi_range(left_top.x * tile_size.x, right_bottom.x * tile_size.x)
+	var y = randi_range(left_top.y * tile_size.y, right_bottom.y * tile_size.y)
 	return Vector2i(x, y)
 
 func _ready():

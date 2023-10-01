@@ -1,9 +1,11 @@
-[gd_scene load_steps=5 format=3 uid="uid://bcgetu0gt61tr"]
+[gd_scene load_steps=7 format=3 uid="uid://bcgetu0gt61tr"]
 
 [ext_resource type="Script" path="res://scenes/world/world.gd" id="1_mlnty"]
 [ext_resource type="PackedScene" uid="uid://cuhwqjx4b5kv" path="res://scenes/level/level.tscn" id="2_ynwe4"]
 [ext_resource type="PackedScene" uid="uid://bcm7pfx0qk8fj" path="res://scenes/player/player.tscn" id="4_lfa1r"]
 [ext_resource type="PackedScene" uid="uid://ejcbb02rwjqh" path="res://scenes/player/dinos/trex.tscn" id="4_ms6o1"]
+[ext_resource type="PackedScene" uid="uid://bshisiaede5tx" path="res://scenes/portal/portal.tscn" id="5_jvce4"]
+[ext_resource type="PackedScene" uid="uid://4xy8eaxa7myl" path="res://scenes/ui/heart_gui.tscn" id="6_4kwm1"]
 
 [node name="World" type="Node2D"]
 y_sort_enabled = true
@@ -14,13 +16,32 @@ y_sort_enabled = true
 layer_1/y_sort_enabled = true
 layer_1/z_index = 1
 
-[node name="player" parent="." instance=ExtResource("4_lfa1r")]
+[node name="player" parent="." node_paths=PackedStringArray("heart_gui") instance=ExtResource("4_lfa1r")]
 z_index = 1
+SPEED = 2000.0
+heart_gui = NodePath("Camera2D/HeartGui")
 
 [node name="Camera2D" parent="player" index="1"]
-zoom = Vector2(3.58, 3.58)
+zoom = Vector2(1.69, 1.69)
+
+[node name="HeartGui" parent="player/Camera2D" index="0" instance=ExtResource("6_4kwm1")]
+anchors_preset = 0
+anchor_right = 0.0
+anchor_bottom = 0.0
+offset_left = -284.0
+offset_top = -159.0
+offset_right = -128.0
+offset_bottom = -101.0
+grow_horizontal = 1
+grow_vertical = 1
 
 [node name="trex" parent="player" instance=ExtResource("4_ms6o1")]
 z_index = 1
 
+[node name="Portal" parent="." instance=ExtResource("5_jvce4")]
+
+[node name="Sprite2D" parent="Portal" index="0"]
+scale = Vector2(7.6, 7.6)
+
 [editable path="player"]
+[editable path="Portal"]
