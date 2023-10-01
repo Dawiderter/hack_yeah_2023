@@ -42,6 +42,8 @@ func draw_anim(on_right: bool):
 	sprite.visible = true
 	sprite.stop()
 	sprite.play("default", 2 / duration)
+	$MainAttackSfx.play()
+	
 
 func _on_duration_timeout():
 	if should_attack_go_on_cooldown:
