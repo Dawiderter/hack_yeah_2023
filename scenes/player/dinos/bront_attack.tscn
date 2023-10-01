@@ -1,0 +1,44 @@
+[gd_scene load_steps=7 format=3 uid="uid://c8fry4q0fksx5"]
+
+[ext_resource type="Script" path="res://scenes/player/dinos/bront_attack.gd" id="1_8dh1t"]
+[ext_resource type="Texture2D" uid="uid://m6lhasidvcjv" path="res://scenes/assets/dinos/bront_wave.png" id="2_bgbvq"]
+[ext_resource type="PackedScene" uid="uid://bb28v0kht4nxk" path="res://scenes/hit/hurtbox.tscn" id="3_tr6vv"]
+[ext_resource type="Script" path="res://scenes/hit/hit_stats.gd" id="4_wyltm"]
+
+[sub_resource type="Resource" id="Resource_mqa7q"]
+script = ExtResource("4_wyltm")
+damage_dealt = 200.0
+knockback_strength = 500.0
+intensity_seconds = 0.0
+damage_on_enter = true
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_w6iof"]
+radius = 4.94975
+height = 28.2843
+
+[node name="bront_attack" type="Node2D"]
+script = ExtResource("1_8dh1t")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("2_bgbvq")
+
+[node name="hurtbox" parent="." instance=ExtResource("3_tr6vv")]
+collision_layer = 512
+collision_mask = 512
+hit_data = SubResource("Resource_mqa7q")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="hurtbox"]
+position = Vector2(12, 9)
+rotation = 0.785398
+shape = SubResource("CapsuleShape2D_w6iof")
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="hurtbox"]
+position = Vector2(12, -9)
+rotation = -0.785398
+shape = SubResource("CapsuleShape2D_w6iof")
+
+[node name="lifetime" type="Timer" parent="."]
+wait_time = 2.0
+one_shot = true
+
+[connection signal="timeout" from="lifetime" to="." method="_on_lifetime_timeout"]
