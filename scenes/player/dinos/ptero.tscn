@@ -37,9 +37,9 @@ animations = [{
 
 [sub_resource type="Resource" id="Resource_eiest"]
 script = ExtResource("6_4ydaq")
-damage_dealt = 20.0
-knockback_strength = 0.0
-intensity_seconds = 0.0
+damage_dealt = 100.0
+knockback_strength = 200.0
+intensity_seconds = 0.2
 damage_on_enter = false
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_bq8uj"]

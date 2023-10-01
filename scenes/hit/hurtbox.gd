@@ -12,7 +12,7 @@ func _ready():
 	timer.start()
 
 func _on_intensity_timeout():
-	if !hit_data.damage_on_enter:
+	if hit_data.intensity_seconds != 0:
 		deal_damage_to_all()
 
 func deal_damage_to_all():
