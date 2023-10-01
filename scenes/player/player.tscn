@@ -5,7 +5,7 @@
 [ext_resource type="PackedScene" uid="uid://cx3bl7sj2vgtn" path="res://scenes/hit/hitbox.tscn" id="3_mlk54"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_hj4o2"]
-radius = 6.0
+radius = 4.0
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_6ouy4"]
 radius = 11.0
@@ -16,6 +16,7 @@ motion_mode = 1
 script = ExtResource("1_hhlf2")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, -10)
 shape = SubResource("CircleShape2D_hj4o2")
 
 [node name="Camera2D" type="Camera2D" parent="."]
@@ -29,8 +30,10 @@ offset_right = -251.0
 offset_bottom = -140.0
 scale = Vector2(0.5, 0.5)
 player = NodePath("../..")
+metadata/_edit_use_anchors_ = true
 
 [node name="hitbox" parent="." instance=ExtResource("3_mlk54")]
+position = Vector2(0, -10)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="hitbox"]
 shape = SubResource("CircleShape2D_6ouy4")

@@ -1,4 +1,4 @@
-[gd_scene load_steps=4 format=3 uid="uid://dstkg2dafxbq8"]
+[gd_scene load_steps=4 format=3 uid="uid://vk2t5vj7my06"]
 
 [ext_resource type="Script" path="res://scenes/enemies/meat.gd" id="1_5r81j"]
 [ext_resource type="Texture2D" uid="uid://dpl8qlt03irel" path="res://scenes/assets/lcZzD-1176547933.png" id="2_5me42"]
