@@ -1,7 +1,7 @@
-[gd_scene load_steps=19 format=3 uid="uid://b6hnu88kkgld6"]
+[gd_scene load_steps=19 format=3 uid="uid://dvxub6pl1op30"]
 
 [ext_resource type="Script" path="res://scenes/enemies/tank.gd" id="1_7p33u"]
-[ext_resource type="PackedScene" uid="uid://dstkg2dafxbq8" path="res://scenes/enemies/meat.tscn" id="2_hv148"]
+[ext_resource type="PackedScene" uid="uid://vk2t5vj7my06" path="res://scenes/enemies/meat.tscn" id="2_hv148"]
 [ext_resource type="Texture2D" uid="uid://8nmmxbicjgax" path="res://scenes/assets/army/tank.png" id="2_tdob2"]
 [ext_resource type="PackedScene" uid="uid://cx3bl7sj2vgtn" path="res://scenes/hit/hitbox.tscn" id="3_5w7ch"]
 
@@ -181,7 +181,7 @@ scale = Vector2(1.5, 1.5)
 texture = ExtResource("2_tdob2")
 hframes = 3
 vframes = 2
-frame = 5
+frame = 2
 
 [node name="s" type="CollisionShape2D" parent="."]
 shape = SubResource("CircleShape2D_g46v3")

@@ -28,11 +28,10 @@ func _on_hurtbox_area_entered(area:Area2D):
 
 
 func _on_hitbox_on_hit(damage, source):
-	health -= damage
+	health -= damage.damage_dealt
 
 	if health < 0:
 		health = 0
-	print(damage)
 
 func gain_xp(xp):
 	exp += xp

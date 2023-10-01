@@ -1,8 +1,8 @@
-[gd_scene load_steps=19 format=3 uid="uid://pm35qxgdrsha"]
+[gd_scene load_steps=19 format=3 uid="uid://bnr8o165fuypg"]
 
 [ext_resource type="Script" path="res://scenes/enemies/soldier_with_gun.gd" id="1_78kc1"]
-[ext_resource type="Texture2D" uid="uid://chyxla1x7tpkd" path="res://scenes/assets/army/army_gun.png" id="2_cmd8j"]
-[ext_resource type="PackedScene" uid="uid://dstkg2dafxbq8" path="res://scenes/enemies/meat.tscn" id="2_ktc1p"]
+[ext_resource type="Texture2D" uid="uid://bc77qncpwkw0s" path="res://scenes/assets/army/army_gun.png" id="2_cmd8j"]
+[ext_resource type="PackedScene" uid="uid://vk2t5vj7my06" path="res://scenes/enemies/meat.tscn" id="2_ktc1p"]
 [ext_resource type="PackedScene" uid="uid://cx3bl7sj2vgtn" path="res://scenes/hit/hitbox.tscn" id="3_086gr"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_g46v3"]
@@ -179,7 +179,7 @@ max_health = 200.0
 texture = ExtResource("2_cmd8j")
 hframes = 3
 vframes = 4
-frame = 8
+frame = 2
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("CircleShape2D_g46v3")
