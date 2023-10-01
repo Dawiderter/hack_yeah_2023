@@ -4,6 +4,7 @@ extends Node2D
 @onready var right_shape: CollisionShape2D = $hurtbox/RightShape
 @onready var duration_timer: Timer = $duration
 @onready var cooldown_timer: Timer = $cooldown
+@onready var sprite: AnimatedSprite2D = $sprite
 
 @export var range_length: float
 @export var range_width: float
@@ -33,18 +34,30 @@ func set_range_length(_range_length: float):
 	left_shape.position.x = -range_length / 2
 	right_shape.position.x = range_length / 2
 	
+func draw_anim(on_right: bool):
+	sprite.position.x = (5 + range_length / 2) * (1 if on_right else -1)
+	sprite.scale.x = 1.2 * range_length / 32
+	sprite.scale.y = 1.2 * range_width / 32
+	sprite.flip_h = on_right
+	sprite.visible = true
+	sprite.stop()
+	sprite.play("default", 2 / duration)
 
 func _on_duration_timeout():
 	if should_attack_go_on_cooldown:
+		sprite.visible = false
 		left_shape.set_deferred("disabled", true)
 		cooldown_timer.start(cooldown)
 		should_attack_go_on_cooldown = false
 	else:
+		draw_anim(false)
 		left_shape.set_deferred("disabled", false)
 		right_shape.set_deferred("disabled", true)
+
 		duration_timer.start(duration / 2)
 		should_attack_go_on_cooldown = true
 
 func _on_cooldown_timeout():
+	draw_anim(true)
 	right_shape.set_deferred("disabled", false)
 	duration_timer.start(duration / 2)

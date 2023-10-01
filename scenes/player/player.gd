@@ -27,4 +27,4 @@ func _on_hitbox_on_hit(damage, source):
 	print(damage)
 
 func level_up():
-    pass
+	pass
