@@ -5,9 +5,9 @@
 [ext_resource type="PackedScene" uid="uid://ejcbb02rwjqh" path="res://scenes/player/dinos/trex.tscn" id="2_ndnpm"]
 [ext_resource type="PackedScene" uid="uid://dr5akf0xkeqgn" path="res://scenes/player/dinos/ptero.tscn" id="3_t668l"]
 [ext_resource type="PackedScene" uid="uid://bb28v0kht4nxk" path="res://scenes/hit/hurtbox.tscn" id="3_xjgvl"]
-[ext_resource type="PackedScene" uid="uid://suydt1xlk51q" path="res://scenes/player/dinos/stego.tscn" id="4_k0l7x"]
+[ext_resource type="PackedScene" path="res://scenes/player/dinos/stego.tscn" id="4_k0l7x"]
 [ext_resource type="PackedScene" uid="uid://d022fu33um405" path="res://scenes/world/enemies_spawner.tscn" id="4_v433g"]
-[ext_resource type="PackedScene" uid="uid://cg73lktt68fq7" path="res://scenes/player/dinos/trice.tscn" id="7_6yqc6"]
+[ext_resource type="PackedScene" path="res://scenes/player/dinos/trice.tscn" id="7_6yqc6"]
 
 [sub_resource type="SegmentShape2D" id="SegmentShape2D_im26j"]
 a = Vector2(-139.168, 48.2402)
