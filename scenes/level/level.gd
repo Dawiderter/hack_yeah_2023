@@ -5,20 +5,13 @@ extends TileMap
 @onready var rows: int = get_parent().rows
 @onready var columns: int = get_parent().columns
 
-@export var starting_biome: BiomeType = BiomeType.FOREST
-@export var finish_biome: BiomeType = BiomeType.VOLCANO
-
-var biomes: Array[Biome]
-
 enum BiomeType {FOREST, DESERT, VOLCANO}
 
 const FLOOR_LAYER: int = 0
 const FLOOR_TILESET: int = 0
-const FLOOR_TILESET_ID: int = 0
-
+const FLOOR_TILESET_ID: int = 2
 const FOLIAGE_LAYER: int = 1
-const FOLIAGE_TILESET: int = 2
-const FOLIAGE_TILESET_ID: int = 3
+const FOLIAGE_TILESET: int = 3
 const THRESHOLD = 0.15  
 
 const FOREST_TERRAIN: int = 0
@@ -44,7 +37,7 @@ class Biome:
 
 	func _init(partition):
 		self.partition = partition
-
+		
 	func terrain():
 		pass
 
@@ -53,7 +46,7 @@ class Biome:
 
 	func generate_floor(tile_map: TileMap):
 		var tiles = []
-
+		
 		var tiles2 = []
 		# Generate the inner rectangle where features will be generated
 		for x in range(partition.generative_left_top.x, partition.generative_right_bottom.x):
@@ -63,9 +56,7 @@ class Biome:
 
 		# Generate the left and right jagged edges
 		var noise_left = FastNoiseLite.new()
-		noise_left.seed = randi()
 		var noise_right = FastNoiseLite.new()
-		noise_right.seed = randi()
 		var left_up_x
 		var left_down_x
 		var right_up_x
@@ -88,9 +79,7 @@ class Biome:
 
 		# Generate the upper and lower jagged edges
 		var noise_up = FastNoiseLite.new()
-		noise_up.seed = randi()
 		var noise_down = FastNoiseLite.new()
-		noise_down.seed = randi()
 		var left_up_y
 		var left_down_y
 		var right_up_y
@@ -110,7 +99,7 @@ class Biome:
 			for k in down_jagged_line:
 				var y = partition.generative_right_bottom.y + k
 				tiles.push_back(Vector2i(x, y))
-
+				
 		# Fix the left upper corner
 		var a = left_up_x
 		var b = left_up_y
@@ -120,10 +109,10 @@ class Biome:
 			for y in b:
 				var x_t = abs(a) - x
 				if (x_t * x_t) / a_sq + (y * y) / b_sq <= 1:
-					var x_tt = partition.generative_left_top.x - abs(x_t) + 1
+					var x_tt = partition.generative_left_top.x - abs(x_t)
 					var y_tt = partition.generative_left_top.y - abs(y)
 					tiles.push_back(Vector2i(x_tt, y_tt))
-
+					
 		# Fix the right upper corner
 		a = right_up_x
 		b = right_up_y
@@ -135,7 +124,7 @@ class Biome:
 					var x_tt = partition.generative_right_bottom.x + abs(x)
 					var y_tt = partition.generative_left_top.y - abs(y)
 					tiles.push_back(Vector2i(x_tt, y_tt))
-
+					
 		# Fix the right lower corner
 		a = right_down_x
 		b = right_down_y
@@ -148,7 +137,7 @@ class Biome:
 					var x_tt = partition.generative_right_bottom.x + abs(x)
 					var y_tt = partition.generative_right_bottom.y + abs(y_t) - 1
 					tiles.push_back(Vector2i(x_tt, y_tt))
-
+					
 		# Fix the left lower corner
 		a = left_down_x
 		b = left_down_y
@@ -162,29 +151,26 @@ class Biome:
 					var x_tt = partition.generative_left_top.x - abs(x_t)
 					var y_tt = partition.generative_right_bottom.y + abs(y_t) - 1
 					tiles.push_back(Vector2i(x_tt, y_tt))
-
+					
 
 		tile_map.set_cells_terrain_connect(FLOOR_LAYER, tiles, FLOOR_TILESET, terrain())
-
-	func generate_features(tile_map: TileMap):
+	
+	func generate_features():
 		pass
 
 class DesertBiome extends Biome:
 	func type():
 		return BiomeType.DESERT
-
+		
 	func terrain():
 		return DESERT_TERRAIN
 
 class ForestBiome extends Biome:
 	func type():
 		return BiomeType.FOREST
-
+		
 	func terrain():
 		return FOREST_TERRAIN
-		
-	func generate_features(tile_map: TileMap):
-		pass
 
 class VolcanoBiome extends Biome:
 	func type():
@@ -199,41 +185,25 @@ class BiomePartition:
 	
 	var generative_left_top: Vector2i
 	var generative_right_bottom: Vector2i
-
+		
 	func _init(x1, y1, x2, y2):
 		left_top = Vector2i(x1, y1)
 		right_bottom = Vector2i(x2, y2)
-
+		
 		var length = Vector2i(abs(left_top.x - right_bottom.x), abs(left_top.y - right_bottom.y))
-
+		
 		generative_left_top = left_top + length / EDGE_WIDTH
 		generative_right_bottom = right_bottom - length / EDGE_WIDTH
-
+		
 	func area() -> int:
 		return abs(left_top.x - right_bottom.x) * abs(left_top.y - right_bottom.y)
-
+	
 func get_largest_biome_index(biomes: Array[BiomePartition]) -> int:
 	var index = 0
 	for i in range(biomes.size()):
 		if biomes[i].area() > biomes[index].area():
 			index = i
 	return index
-
-func is_valid_grass_tile(x: int, y: int) -> bool:
-	var cell = get_cell_atlas_coords(FLOOR_LAYER, Vector2i(x, y))
-	if cell in [Vector2i(3, 1)]:
-		return true
-	return false
-
-func generate_grass():
-	var noise = FastNoiseLite.new()
-	noise.frequency = 0.5
-	for y in range(rows):
-		for x in range(columns):
-			var value = noise.get_noise_2d(x, y)
-			if value > THRESHOLD and is_valid_grass_tile(x, y):
-				set_cell(FOLIAGE_LAYER, Vector2i(x, y), FOLIAGE_TILESET_ID, Vector2i(0, 3))
-	
 
 func partition_map(left_top: Vector2i, right_bottom: Vector2i, count: int) -> Array[BiomePartition]:
 	var biomes: Array[BiomePartition] = []
@@ -262,14 +232,14 @@ func partition_map(left_top: Vector2i, right_bottom: Vector2i, count: int) -> Ar
 		var partitioned = partition_map(largest_biome.left_top, largest_biome.right_bottom, count - 3)
 	
 	return biomes
-
+	
 func get_tiles(noise: Noise) -> Array[Vector2i]:
 	var tiles: Array[Vector2i] = []
 	for x in range(rows):
 		for y in range(columns):
 			tiles.push_back(Vector2i(x, y))
 	return tiles
-
+	
 func find_biome(biomes: Array[Biome], type: BiomeType) -> Biome:
 	for biome in biomes:
 		if biome.type() == type:
@@ -278,11 +248,11 @@ func find_biome(biomes: Array[Biome], type: BiomeType) -> Biome:
 
 func create_biomes(partitions: Array[BiomePartition]) -> Array[Biome]:
 	var biomes: Array[Biome] = []
-
+	
 	randomize()
 	var biome_types = BiomeType.values()
 	biome_types.shuffle()
-
+	
 	for i in range(biome_types.size()):
 		var type = biome_types[i]
 		var partition = partitions[i]
@@ -295,33 +265,25 @@ func create_biomes(partitions: Array[BiomePartition]) -> Array[Biome]:
 			BiomeType.VOLCANO:
 				biome = VolcanoBiome.new(partition)
 		biomes.push_back(biome)
-
+	
 	return biomes
 
-func generate_starting_position():
-	var tile_size = tile_set.tile_size
-	var biome = find_biome(biomes, starting_biome)
-	var left_top = biome.partition.generative_left_top
-	var right_bottom = biome.partition.generative_right_bottom
-	var x = randi_range(left_top.x * tile_size.x, right_bottom.x * tile_size.x)
-	var y = randi_range(left_top.y * tile_size.y, right_bottom.y * tile_size.y)
-	return Vector2i(x, y)
+func generate_starting_position(biome: Biome):
+	pass
 
-func generate_time_machine():
-	var biome = find_biome(biomes, finish_biome)
-	var left_top = biome.partition.generative_left_top
-	var right_bottom = biome.partition.generative_right_bottom
-	var x = randi_range(left_top.x, right_bottom.x)
-	var y = randi_range(left_top.y, right_bottom.y)
-	return Vector2i(x, y)
+func generate_time_machine(biome: Biome):
+	pass
 
 func _ready():
 	var biome_count = 3
 	var biome_partitions = partition_map(Vector2i(0,0), Vector2i(rows - 1, columns - 1), biome_count)
 
-	biomes = create_biomes(biome_partitions)
+	var biomes: Array[Biome] = create_biomes(biome_partitions)
+
+	var starting_biome = find_biome(biomes, BiomeType.FOREST)
+	generate_starting_position(starting_biome)
+	var finishing_biome = find_biome(biomes, BiomeType.VOLCANO)
+	generate_time_machine(finishing_biome)
 
 	for biome in biomes:
 		biome.generate_floor(self)
-		
-	generate_grass()

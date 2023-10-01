@@ -36,13 +36,16 @@ radius = 0.01
 
 [sub_resource type="Resource" id="Resource_b1u7s"]
 script = ExtResource("5_7x3kb")
-damage_dealt = 20.0
+damage_dealt = 50.0
 knockback_strength = 0.0
+intensity_seconds = 0.5
+damage_on_enter = false
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_qh2yn"]
 radius = 20.0
 
 [node name="trice" type="CharacterBody2D"]
+collision_layer = 0
 motion_mode = 1
 script = ExtResource("1_rbx1o")
 range_radius = 100.0
