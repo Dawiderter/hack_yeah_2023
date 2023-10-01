@@ -4,35 +4,51 @@ extends Node2D
 @export var player: Node2D
 @export var timer: Timer
 
-var current_time = 895
-
 var enemy_low = 0
 var enemy_high = 1
+
+var last_spawned = 895
 
 func _process(delta):
 	$player_position.position = player.position
 	
-	if current_time == 400:
+	var time_left = timer.time_left
+	var current_time = ceil(time_left)
+	
+	if current_time <= 260:
 		enemy_low = 1
 		enemy_high = 2
-	if current_time == 200:
+	if current_time <= 100:
 		enemy_low = 2
 		enemy_high = 3
+		
+	var spawned = false
 	
-	var time_left = timer.time_left
-	if current_time > ceil(time_left):
+	if last_spawned - current_time >= 2:
 		spawn_enemy(enemy_low)
 		spawn_enemy(0)
-		current_time = ceil(time_left) - 1
+		spawned = true
 	
-	if int(ceil(current_time - 1)) % 20 == 0:
-		var count = ceil(600 - ceil(current_time))
+	if last_spawned != current_time and int(current_time) % 20 == 0:
+		var count = ceil(480 - ceil(current_time))
 		print(count)
-		for i in range(count):
+		for i in range(count / 2):
+			spawn_enemy(enemy_high - 1)
+		for i in range(count / 4):
+			spawn_enemy(enemy_high)
+		spawned = true
+		
+	if last_spawned != current_time and int(current_time) % 120 == 0:
+		var count = ceil(480 - ceil(current_time))
+		print(count)
+		for i in range(count / 2):
 			spawn_enemy(enemy_high - 1)
 		for i in range(count / 2):
 			spawn_enemy(enemy_high)
-		current_time = current_time - 1
+		spawned = true
+		
+	if spawned:
+		last_spawned = current_time
 
 func spawn_enemy(number):
 	var enemy = enemy_scenes[number].instantiate()
