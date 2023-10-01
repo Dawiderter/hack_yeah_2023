@@ -1,8 +1,9 @@
-[gd_scene load_steps=18 format=3 uid="uid://dk7s1r5dnclxt"]
+[gd_scene load_steps=19 format=3 uid="uid://c1vuqbb10isgs"]
 
-[ext_resource type="Script" path="res://scenes/enemies/enemy.gd" id="1_htrxu"]
-[ext_resource type="Texture2D" uid="uid://cagakkoph5nim" path="res://scenes/assets/army/army_knife.png" id="2_7js3u"]
-[ext_resource type="PackedScene" uid="uid://cx3bl7sj2vgtn" path="res://scenes/hit/hitbox.tscn" id="3_7xy2h"]
+[ext_resource type="Script" path="res://scenes/enemies/soldier_with_flamethrower.gd" id="1_aor2m"]
+[ext_resource type="PackedScene" uid="uid://dstkg2dafxbq8" path="res://scenes/enemies/meat.tscn" id="2_8ny2e"]
+[ext_resource type="Texture2D" uid="uid://b1fpje3tv3cxy" path="res://scenes/assets/army/army_fire.png" id="2_wq7da"]
+[ext_resource type="PackedScene" uid="uid://cx3bl7sj2vgtn" path="res://scenes/hit/hitbox.tscn" id="3_6tst1"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_g46v3"]
 radius = 6.0
@@ -167,22 +168,24 @@ states/Start/position = Vector2(155, 100)
 transitions = ["Start", "Move", SubResource("AnimationNodeStateMachineTransition_dv7ne")]
 graph_offset = Vector2(-96, -6)
 
-[node name="enemy" type="CharacterBody2D"]
+[node name="soldier_with_knife" type="CharacterBody2D"]
 collision_layer = 2049
 motion_mode = 1
-script = ExtResource("1_htrxu")
-max_health = 100.0
+script = ExtResource("1_aor2m")
+move_speed = 150
+meat = ExtResource("2_8ny2e")
+max_health = 400.0
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-texture = ExtResource("2_7js3u")
+texture = ExtResource("2_wq7da")
 hframes = 3
 vframes = 4
-frame = 8
+frame = 2
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("CircleShape2D_g46v3")
 
-[node name="hitbox" parent="." instance=ExtResource("3_7xy2h")]
+[node name="hitbox" parent="." instance=ExtResource("3_6tst1")]
 collision_layer = 512
 collision_mask = 512
 
