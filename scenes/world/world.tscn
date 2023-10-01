@@ -19,7 +19,7 @@ layer_1/z_index = 1
 [node name="player" parent="." node_paths=PackedStringArray("heart_gui") instance=ExtResource("4_lfa1r")]
 z_index = 1
 SPEED = 2000.0
-heart_gui = NodePath("../HeartGui")
+heart_gui = NodePath("../ui/HeartGui")
 
 [node name="Camera2D" parent="player" index="1"]
 zoom = Vector2(1.69, 1.69)

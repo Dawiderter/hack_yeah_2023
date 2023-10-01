@@ -365,23 +365,19 @@ func create_biomes(partitions: Array[BiomePartition]) -> Array[Biome]:
 
 	return biomes
 
-func generate_starting_position():
+func generate_point(type: BiomeType):
 	var tile_size = tile_set.tile_size
-	var biome = find_biome(biomes, starting_biome)
+	var biome = find_biome(biomes, type)
 	var left_top = biome.partition.generative_left_top
 	var right_bottom = biome.partition.generative_right_bottom
 	var x = randi_range(left_top.x * tile_size.x, right_bottom.x * tile_size.x)
 	var y = randi_range(left_top.y * tile_size.y, right_bottom.y * tile_size.y)
 	return Vector2i(x, y)
-
-func generate_time_machine():
-	var tile_size = tile_set.tile_size
-	var biome = find_biome(biomes, finish_biome)
-	var left_top = biome.partition.generative_left_top
-	var right_bottom = biome.partition.generative_right_bottom
-	var x = randi_range(left_top.x * tile_size.x, right_bottom.x * tile_size.x)
-	var y = randi_range(left_top.y * tile_size.y, right_bottom.y * tile_size.y)
-	return Vector2i(x, y)
+	
+#func generate_dinosaurs() -> Array[Vector2i]:
+#	var forest = find_biome(biomes, BiomeType.FOREST)
+#	var desert = find_biome(biomes, BiomeType.DESERT)
+	
 
 func _ready():
 	var biome_count = 3
