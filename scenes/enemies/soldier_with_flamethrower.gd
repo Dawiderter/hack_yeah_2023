@@ -3,6 +3,8 @@ extends CharacterBody2D
 @export var move_speed = 100
 @export var target: Marker2D
 
+@export var meat: PackedScene
+
 @export var max_health: float
 
 @onready var health = max_health
@@ -27,6 +29,9 @@ func _ready():
 func _on_hitbox_on_hit(hit_data : HitStats, source: Area2D):
 	health -= hit_data.damage_dealt
 	if health <= 0:
+		var droped_meat = meat.instantiate()
+		droped_meat.global_position = global_position
+		get_parent().add_child(droped_meat)
 		queue_free()
 
 	var source_pos = source.global_position

@@ -1,0 +1,37 @@
+[gd_scene load_steps=3 format=3 uid="uid://4xy8eaxa7myl"]
+
+[ext_resource type="Script" path="res://scenes/ui/player_hud.gd" id="1_gqne3"]
+[ext_resource type="Texture2D" uid="uid://bmys6crjnp1is" path="res://scenes/assets/progressbar2.png" id="2_nwc5o"]
+
+[node name="player_hud" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_gqne3")
+
+[node name="healthbar" type="TextureProgressBar" parent="."]
+layout_mode = 0
+offset_left = 28.0
+offset_top = 21.0
+offset_right = 237.0
+offset_bottom = 48.0
+value = 69.0
+texture_under = ExtResource("2_nwc5o")
+texture_progress = ExtResource("2_nwc5o")
+tint_under = Color(1, 0, 0, 1)
+tint_progress = Color(0, 1, 0, 1)
+
+[node name="expbar" type="TextureProgressBar" parent="."]
+layout_mode = 0
+offset_left = 28.0
+offset_top = 66.0
+offset_right = 284.0
+offset_bottom = 98.0
+max_value = 10.0
+texture_under = ExtResource("2_nwc5o")
+texture_progress = ExtResource("2_nwc5o")
+tint_under = Color(0.392157, 0.392157, 0.392157, 1)
+tint_progress = Color(1, 1, 0, 1)

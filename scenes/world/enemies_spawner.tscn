@@ -1,7 +1,10 @@
-[gd_scene load_steps=4 format=3 uid="uid://d022fu33um405"]
+[gd_scene load_steps=7 format=3 uid="uid://d022fu33um405"]
 
 [ext_resource type="Script" path="res://scenes/world/enemies_spawner.gd" id="1_v7546"]
-[ext_resource type="PackedScene" uid="uid://dk7s1r5dnclxt" path="res://scenes/enemies/enemy.tscn" id="2_6y13b"]
+[ext_resource type="PackedScene" uid="uid://dk7s1r5dnclxt" path="res://scenes/enemies/soldier_with_knife.tscn" id="2_cqcjg"]
+[ext_resource type="PackedScene" uid="uid://pm35qxgdrsha" path="res://scenes/enemies/soldier_with_gun.tscn" id="3_omic7"]
+[ext_resource type="PackedScene" uid="uid://c1vuqbb10isgs" path="res://scenes/enemies/soldier_with_flamethrower.tscn" id="4_1i8tl"]
+[ext_resource type="PackedScene" uid="uid://b6hnu88kkgld6" path="res://scenes/enemies/tank.tscn" id="5_thbnv"]
 
 [sub_resource type="Curve2D" id="Curve2D_0xr3n"]
 _data = {
@@ -12,7 +15,7 @@ point_count = 5
 [node name="enemies_spawner" type="Node2D"]
 position = Vector2(2, -2)
 script = ExtResource("1_v7546")
-enemy_1_scene = ExtResource("2_6y13b")
+enemy_scenes = Array[PackedScene]([ExtResource("2_cqcjg"), ExtResource("3_omic7"), ExtResource("4_1i8tl"), ExtResource("5_thbnv")])
 
 [node name="player_position" type="Marker2D" parent="."]
 position = Vector2(372, 394)
