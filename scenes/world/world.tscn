@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=3 uid="uid://bawol6p1w0opl"]
+[gd_scene load_steps=8 format=3 uid="uid://bcgetu0gt61tr"]
 
 [ext_resource type="Script" path="res://scenes/world/world.gd" id="1_mlnty"]
 [ext_resource type="PackedScene" uid="uid://cuhwqjx4b5kv" path="res://scenes/level/level.tscn" id="2_ynwe4"]
@@ -14,6 +14,7 @@ script = ExtResource("1_mlnty")
 
 [node name="player" parent="." instance=ExtResource("4_lfa1r")]
 z_index = 1
+scale = Vector2(0.999933, 1)
 SPEED = 2000.0
 
 [node name="Camera2D" parent="player" index="1"]
@@ -58,9 +59,10 @@ layer_2/tile_data = PackedInt32Array()
 [node name="Sprite2D" parent="Portal" index="0"]
 scale = Vector2(7.6, 7.6)
 
-[node name="enemies_spawner" parent="." node_paths=PackedStringArray("player") instance=ExtResource("6_leehp")]
+[node name="enemies_spawner" parent="." node_paths=PackedStringArray("player", "timer") instance=ExtResource("6_leehp")]
 position = Vector2(-2, 1)
 player = NodePath("../player")
+timer = NodePath("../player/Camera2D/TimerLabel/FinalTimer")
 
 [editable path="player"]
 [editable path="Portal"]
