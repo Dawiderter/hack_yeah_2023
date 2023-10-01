@@ -27,9 +27,13 @@ const THRESHOLD = 0.15
 const GRASS_TILESET: int = 3
 const GRASS_TILESET_ID: int = 6
 
+const ADDITIONAL_FLOOR_TILESET: int = 4
+const ADDITIONAL_FLOOR_TILESET_ID: int = 7
+
 const FOREST_TERRAIN: int = 0
 const DESERT_TERRAIN: int = 1
 const VOLCANO_TERRAIN: int = 2
+const ROCK_TERRAIN: int = 3
 
 const EDGE_WIDTH: int = 20
 const jaggedness_coefficient: float = 0.8
@@ -170,7 +174,7 @@ class Biome:
 					tiles.push_back(Vector2i(x_tt, y_tt))
 
 
-		tile_map.set_cells_terrain_connect(FLOOR_LAYER, tiles, FLOOR_TILESET, terrain())
+		tile_map.set_cells_terrain_connect(FLOOR_LAYER, tiles, 0, terrain())
 
 	func generate_features(tile_map: TileMap):
 		pass
@@ -240,6 +244,21 @@ func generate_grass():
 			var value = noise.get_noise_2d(x, y)
 			if value > THRESHOLD and is_valid_grass_tile(x, y):
 				set_cell(FOLIAGE_LAYER, Vector2i(x, y), GRASS_TILESET_ID, Vector2i(0, 0))
+
+func generate_rocks():
+	var offset = (EDGE_WIDTH * jaggedness_coefficient * 1.5)
+	var tiles = []
+	for y in range(-offset, rows + offset):
+		for x in range(-offset, columns + offset):
+			var cell = get_cell_atlas_coords(FLOOR_LAYER, Vector2i(x, y))
+			if cell == Vector2i(-1, -1):
+				tiles.push_back(Vector2i(x, y))
+				var chance = randf() <= 0.05
+				if chance:
+					var rock_type = randi_range(0, 2)
+					set_cell(FOLIAGE_LAYER, Vector2i(x, y), NATURE_TILESET_ID, Vector2i(17 + rock_type, 17))
+				
+	set_cells_terrain_connect(FLOOR_LAYER, tiles, 0, 3)
 
 func generate_plants():
 	var offset = (EDGE_WIDTH * jaggedness_coefficient)
@@ -353,3 +372,4 @@ func _ready():
 		
 	generate_grass()
 	generate_twigs()
+	generate_rocks()
