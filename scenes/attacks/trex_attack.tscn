@@ -6,8 +6,10 @@
 
 [sub_resource type="Resource" id="Resource_tpi87"]
 script = ExtResource("3_ei4w7")
-damage_dealt = 100.0
-knockback_strength = 0.0
+damage_dealt = 50.0
+knockback_strength = 200.0
+intensity_seconds = 0.0
+damage_on_enter = true
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_erpft"]
 radius = 0.005
