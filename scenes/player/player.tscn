@@ -1,4 +1,4 @@
-[gd_scene load_steps=7 format=3 uid="uid://bcm7pfx0qk8fj"]
+[gd_scene load_steps=8 format=3 uid="uid://bcm7pfx0qk8fj"]
 
 [ext_resource type="Script" path="res://scenes/player/player.gd" id="1_hhlf2"]
 [ext_resource type="PackedScene" uid="uid://gjr71yfj8f01" path="res://scenes/ui/power_up.tscn" id="2_26xpj"]
@@ -10,6 +10,9 @@ radius = 6.0
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_6ouy4"]
 radius = 11.0
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_3ncx7"]
+radius = 32.1
 
 [node name="player" type="CharacterBody2D" groups=["player"]]
 y_sort_enabled = true
@@ -43,5 +46,18 @@ player = NodePath("../..")
 [node name="CollisionShape2D" type="CollisionShape2D" parent="hitbox"]
 shape = SubResource("CircleShape2D_6ouy4")
 
+[node name="Area2D" type="Area2D" parent="."]
+collision_layer = 16
+collision_mask = 16
+monitorable = false
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+shape = SubResource("CircleShape2D_3ncx7")
+
+[node name="LevelUp" type="AudioStreamPlayer" parent="."]
+
+[node name="TakeDamage" type="AudioStreamPlayer" parent="."]
+
 [connection signal="levelup" from="." to="Camera2D/power_up" method="_on_player_levelup"]
 [connection signal="on_hit" from="hitbox" to="." method="_on_hitbox_on_hit"]
+[connection signal="area_entered" from="Area2D" to="." method="_on_area_2d_area_entered"]

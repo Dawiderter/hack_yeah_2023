@@ -10,11 +10,13 @@ extends Node2D
 @onready var portal = $Portal
 
 func _ready():
-	var player_starting_point = level.generate_starting_position()
+	var player_starting_point = level.generate_point(level.starting_biome)
 	player.position = player_starting_point
 	
-	var finish_point = level.generate_time_machine()
+	var finish_point = level.generate_point(level.finish_biome)
 	portal.position = finish_point
+	
+	level.generate_dinosaurs()
 
 func _process(delta):
 	pass

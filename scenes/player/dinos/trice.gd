@@ -71,3 +71,7 @@ func closest_enemy(enemies: Array[Node2D]) -> int:
 func set_range_radius(_radius):
 	range_radius = _radius
 	range_shape.shape.radius = range_radius
+
+
+func _on_hurtbox_area_entered(area):
+	$ChargeHit.play()

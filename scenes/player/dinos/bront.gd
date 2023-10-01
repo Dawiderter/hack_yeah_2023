@@ -34,6 +34,7 @@ func play_attack():
 	sprite.offset.x = 16 * (-1 if sprite.flip_h else 1)
 	sprite.play("attack")
 	await sprite.animation_finished
+	$WaveAttack.play()
 	var new_attack = attack.instantiate()
 	get_tree().root.add_child(new_attack)
 	new_attack.position = global_position 

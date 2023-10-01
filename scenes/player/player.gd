@@ -14,7 +14,7 @@ const level_caps: Array[int] = [10, 25, 50, 80, 120, 180, 250, 360, 500]
 
 func _physics_process(delta):
 	var direction = Input.get_vector("player_left", "player_right", "player_up", "player_down")
-
+	
 	if not direction.is_zero_approx():
 		direction = direction.normalized()
 	
@@ -30,11 +30,10 @@ func _on_hurtbox_area_entered(area:Area2D):
 
 
 func _on_hitbox_on_hit(damage, source):
-	health -= damage
-
+	health -= damage.damage_dealt
+	$TakeDamage.play()
 	if health < 0:
 		health = 0
-	print(damage)
 
 func gain_xp(xp):
 	exp += xp
@@ -47,4 +46,25 @@ func level_up():
 	print("levelup")
 	levelup.emit()
 	level += 1
+	$LevelUp.play()
 	pass
+
+
+func _on_area_2d_area_entered(area):
+	match area.dino_name:
+		"bront":
+			var bront = preload("res://scenes/player/dinos/bront.tscn").instantiate()
+			add_child(bront)
+		"ptero":
+			var bront = preload("res://scenes/player/dinos/ptero.tscn").instantiate()
+			add_child(bront)
+		"stego":
+			var bront = preload("res://scenes/player/dinos/stego.tscn").instantiate()
+			add_child(bront)
+		"trice":
+			var bront = preload("res://scenes/player/dinos/trice.tscn").instantiate()
+			bront.player_target = self
+			get_parent().add_child(bront)
+			bront.position = position
+	area.tilemap.remove_dino(area.dino_tile)
+	area.queue_free()

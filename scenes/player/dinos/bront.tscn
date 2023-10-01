@@ -1,9 +1,10 @@
-[gd_scene load_steps=9 format=3 uid="uid://5btsvnsfayfk"]
+[gd_scene load_steps=10 format=3 uid="uid://5btsvnsfayfk"]
 
 [ext_resource type="Script" path="res://scenes/player/dinos/bront.gd" id="1_bku14"]
 [ext_resource type="Texture2D" uid="uid://3a7ivueuhiaj" path="res://scenes/assets/dinos/bront_atak.png" id="2_e4ayy"]
 [ext_resource type="Texture2D" uid="uid://bl8dm8dycr6el" path="res://scenes/assets/dinos/bront_idle.png" id="3_ru7er"]
 [ext_resource type="Texture2D" uid="uid://btcyhkucpq04x" path="res://scenes/assets/dinos/bront_walk.png" id="4_66je7"]
+[ext_resource type="AudioStream" uid="uid://d0b1ueqbsn08b" path="res://scenes/sounds/waveAttack.wav" id="5_3gm2l"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_xvb1a"]
 atlas = ExtResource("2_e4ayy")
@@ -66,5 +67,8 @@ frame_progress = 1.0
 [node name="Timer" type="Timer" parent="."]
 wait_time = 5.0
 autostart = true
+
+[node name="WaveAttack" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("5_3gm2l")
 
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

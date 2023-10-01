@@ -1,9 +1,11 @@
-[gd_scene load_steps=19 format=3 uid="uid://dk7s1r5dnclxt"]
+[gd_scene load_steps=23 format=3 uid="uid://dpcyajl5r4fms"]
 
 [ext_resource type="Script" path="res://scenes/enemies/soldier_with_knife.gd" id="1_7fvfd"]
-[ext_resource type="Texture2D" uid="uid://ritxsg3yqhqx" path="res://scenes/assets/army/army_knife.png" id="2_rv35u"]
-[ext_resource type="PackedScene" uid="uid://dstkg2dafxbq8" path="res://scenes/enemies/meat.tscn" id="2_whh4u"]
+[ext_resource type="Texture2D" uid="uid://cagakkoph5nim" path="res://scenes/assets/army/army_knife.png" id="2_rv35u"]
+[ext_resource type="PackedScene" uid="uid://vk2t5vj7my06" path="res://scenes/enemies/meat.tscn" id="2_whh4u"]
 [ext_resource type="PackedScene" uid="uid://cx3bl7sj2vgtn" path="res://scenes/hit/hitbox.tscn" id="3_t48p5"]
+[ext_resource type="PackedScene" uid="uid://bb28v0kht4nxk" path="res://scenes/hit/hurtbox.tscn" id="5_2go6a"]
+[ext_resource type="Script" path="res://scenes/hit/hit_stats.gd" id="6_mqgld"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_g46v3"]
 radius = 6.0
@@ -168,6 +170,16 @@ states/Start/position = Vector2(155, 100)
 transitions = ["Start", "Move", SubResource("AnimationNodeStateMachineTransition_dv7ne")]
 graph_offset = Vector2(-96, -6)
 
+[sub_resource type="Resource" id="Resource_fo0rm"]
+script = ExtResource("6_mqgld")
+damage_dealt = 5.0
+knockback_strength = 0.0
+intensity_seconds = 1.0
+damage_on_enter = true
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_bksm8"]
+radius = 11.0
+
 [node name="soldier_with_knife" type="CharacterBody2D"]
 collision_layer = 2049
 motion_mode = 1
@@ -179,7 +191,7 @@ max_health = 100.0
 texture = ExtResource("2_rv35u")
 hframes = 3
 vframes = 4
-frame = 8
+frame = 2
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("CircleShape2D_g46v3")
@@ -202,5 +214,11 @@ anim_player = NodePath("../AnimationPlayer")
 advance_expression_base_node = NodePath("../AnimationPlayer")
 active = true
 parameters/Move/blend_position = Vector2(0.112069, -0.196507)
+
+[node name="hurtbox" parent="." instance=ExtResource("5_2go6a")]
+hit_data = SubResource("Resource_fo0rm")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="hurtbox"]
+shape = SubResource("CircleShape2D_bksm8")
 
 [connection signal="on_hit" from="hitbox" to="." method="_on_hitbox_on_hit"]
