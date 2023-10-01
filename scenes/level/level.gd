@@ -244,6 +244,12 @@ func is_valid_desert_tile(x: int, y: int) -> bool:
 	if cell in [Vector2i(3, 4)]:
 		return true
 	return false
+	
+func is_valid_volcano_tile(x: int, y: int) -> bool:
+	var cell = get_cell_atlas_coords(FLOOR_LAYER, Vector2i(x, y))
+	if cell in [Vector2i(3, 7)]:
+		return true
+	return false
 
 func generate_grass():
 	var noise = FastNoiseLite.new()
@@ -303,6 +309,17 @@ func generate_desert_rocks():
 					chosen_rock = two_size_rocks[randi() % two_size_rocks.size()]
 				else:
 					chosen_rock = one_size_rocks[randi() % one_size_rocks.size()]
+				
+				set_cell(FOLIAGE_LAYER, Vector2i(x, y), NATURE_TILESET_ID, chosen_rock)
+
+func generate_volcano_rocks():
+	var offset = (EDGE_WIDTH * jaggedness_coefficient)
+	for y in range(-offset, rows + offset):
+		for x in range(-offset, columns + offset):
+			var value = randf()
+			if value < 0.02 and is_valid_volcano_tile(x, y):
+				var one_size_rocks = [Vector2i(6, 12), Vector2i(7, 12), Vector2i(8, 12)]
+				var chosen_rock = one_size_rocks[randi() % one_size_rocks.size()]
 				
 				set_cell(FOLIAGE_LAYER, Vector2i(x, y), NATURE_TILESET_ID, chosen_rock)
 
@@ -447,5 +464,7 @@ func _ready():
 	generate_twigs()
 	
 	generate_rocks()
+	
+	generate_volcano_rocks()
 	
 	generate_desert_rocks()
