@@ -1,18 +1,26 @@
-[gd_scene load_steps=4 format=3 uid="uid://bcgetu0gt61tr"]
+[gd_scene load_steps=5 format=3 uid="uid://bcgetu0gt61tr"]
 
 [ext_resource type="Script" path="res://scenes/world/world.gd" id="1_mlnty"]
 [ext_resource type="PackedScene" uid="uid://cuhwqjx4b5kv" path="res://scenes/level/level.tscn" id="2_ynwe4"]
 [ext_resource type="PackedScene" uid="uid://bcm7pfx0qk8fj" path="res://scenes/player/player.tscn" id="4_lfa1r"]
+[ext_resource type="PackedScene" uid="uid://ejcbb02rwjqh" path="res://scenes/player/dinos/trex.tscn" id="4_ms6o1"]
 
 [node name="World" type="Node2D"]
+y_sort_enabled = true
 script = ExtResource("1_mlnty")
 
 [node name="Level" parent="." instance=ExtResource("2_ynwe4")]
+y_sort_enabled = true
+layer_1/y_sort_enabled = true
+layer_1/z_index = 1
 
 [node name="player" parent="." instance=ExtResource("4_lfa1r")]
-SPEED = 2000.0
+z_index = 1
 
 [node name="Camera2D" parent="player" index="1"]
 zoom = Vector2(3.58, 3.58)
+
+[node name="trex" parent="player" instance=ExtResource("4_ms6o1")]
+z_index = 1
 
 [editable path="player"]

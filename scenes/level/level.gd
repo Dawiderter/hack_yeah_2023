@@ -234,6 +234,12 @@ func is_valid_grass_tile(x: int, y: int) -> bool:
 	if cell in [Vector2i(3, 1)]:
 		return true
 	return false
+	
+func is_valid_desert_tile(x: int, y: int) -> bool:
+	var cell = get_cell_atlas_coords(FLOOR_LAYER, Vector2i(x, y))
+	if cell in [Vector2i(3, 4)]:
+		return true
+	return false
 
 func generate_grass():
 	var noise = FastNoiseLite.new()
@@ -280,6 +286,21 @@ func generate_twigs():
 				var y_coord = randi_range(11,12)
 				set_cell(FOLIAGE_LAYER, Vector2i(x, y), NATURE_TILESET_ID, Vector2i(x_coord, y_coord))
 
+func generate_desert_rocks():
+	var offset = (EDGE_WIDTH * jaggedness_coefficient)
+	for y in range(-offset, rows + offset):
+		for x in range(-offset, columns + offset):
+			var value = randf()
+			if value < 0.02 and is_valid_desert_tile(x, y):
+				var one_size_rocks = [Vector2i(17, 13), Vector2i(18, 13), Vector2i(19, 13)]
+				var two_size_rocks = [Vector2i(15, 10), Vector2i(15, 12)]
+				var chosen_rock: Vector2i
+				if randf() < 0.1 and is_valid_desert_tile(x + 1, y) and is_valid_desert_tile(x + 1, y + 1) and is_valid_desert_tile(x, y + 1):
+					chosen_rock = two_size_rocks[randi() % two_size_rocks.size()]
+				else:
+					chosen_rock = one_size_rocks[randi() % one_size_rocks.size()]
+				
+				set_cell(FOLIAGE_LAYER, Vector2i(x, y), NATURE_TILESET_ID, chosen_rock)
 
 func partition_map(left_top: Vector2i, right_bottom: Vector2i, count: int) -> Array[BiomePartition]:
 	var biomes: Array[BiomePartition] = []
@@ -372,4 +393,7 @@ func _ready():
 		
 	generate_grass()
 	generate_twigs()
+	
 	generate_rocks()
+	
+	generate_desert_rocks()

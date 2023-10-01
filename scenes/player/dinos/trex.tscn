@@ -31,6 +31,8 @@ animations = [{
 script = ExtResource("1_5gekm")
 
 [node name="sprite" type="AnimatedSprite2D" parent="."]
+position = Vector2(0, -14)
 sprite_frames = SubResource("SpriteFrames_ng1hb")
 
 [node name="trex_attack" parent="." instance=ExtResource("3_863od")]
+position = Vector2(0, -14)
