@@ -11,6 +11,7 @@ damage_dealt = 200.0
 knockback_strength = 500.0
 intensity_seconds = 0.0
 damage_on_enter = true
+destroy_on_hit = false
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_w6iof"]
 radius = 4.94975

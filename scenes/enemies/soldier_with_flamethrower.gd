@@ -1,6 +1,6 @@
 extends CharacterBody2D
 
-@export var move_speed = 100
+@export var move_speed = 20
 @export var target: Marker2D
 
 @export var meat: PackedScene
@@ -11,6 +11,8 @@ extends CharacterBody2D
 @onready var animation_tree: AnimationTree = $AnimationTree
 
 var impulse_vel: Vector2 = Vector2.ZERO
+
+var throwing: bool = false
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
@@ -40,3 +42,24 @@ func _on_hitbox_on_hit(hit_data : HitStats, source: Area2D):
 
 	impulse_vel = dir * hit_data.knockback_strength
 
+
+
+func _on_cooldown_timeout():
+	for i in range(10):
+		var bullet = preload("res://scenes/enemies/flame_bullet.tscn").instantiate()
+		get_parent().add_child(bullet)
+
+		var source_pos = target.global_position
+		var our_pos = global_position
+		var dir = our_pos.direction_to(source_pos)
+
+		var randomness = randfn(0.0, 0.2)
+
+		dir = dir.rotated(randomness)
+
+		bullet.position = position
+		bullet.get_node("gun_bullet").direction = dir
+		var time = randf_range(25,75)
+		bullet.get_node("gun_bullet").speed = time
+		bullet.get_node("gun_bullet").get_node("lifetime").start(2 * time / 75)
+	

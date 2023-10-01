@@ -1,0 +1,50 @@
+[gd_scene load_steps=9 format=3 uid="uid://c05ojm43p20g3"]
+
+[ext_resource type="Script" path="res://scenes/enemies/gun_bullet.gd" id="1_065l6"]
+[ext_resource type="Texture2D" uid="uid://d0uyhephhnxom" path="res://scenes/assets/army/ammo.png" id="2_ftiqw"]
+[ext_resource type="PackedScene" uid="uid://bb28v0kht4nxk" path="res://scenes/hit/hurtbox.tscn" id="3_s77wi"]
+[ext_resource type="Script" path="res://scenes/hit/hit_stats.gd" id="4_forja"]
+[ext_resource type="PackedScene" uid="uid://cx3bl7sj2vgtn" path="res://scenes/hit/hitbox.tscn" id="5_uqk27"]
+
+[sub_resource type="Resource" id="Resource_x5kj3"]
+script = ExtResource("4_forja")
+damage_dealt = 20.0
+knockback_strength = 0.0
+intensity_seconds = 0.0
+damage_on_enter = true
+destroy_on_hit = true
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_kfup0"]
+radius = 4.0
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_csii2"]
+radius = 4.0
+
+[node name="gun_bullet" type="Node2D"]
+script = ExtResource("1_065l6")
+speed = 70.0
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+modulate = Color(0.976471, 0.976471, 0, 1)
+texture = ExtResource("2_ftiqw")
+
+[node name="hurtbox" parent="." instance=ExtResource("3_s77wi")]
+hit_data = SubResource("Resource_x5kj3")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="hurtbox"]
+shape = SubResource("CircleShape2D_kfup0")
+
+[node name="lifetime" type="Timer" parent="."]
+wait_time = 5.0
+one_shot = true
+autostart = true
+
+[node name="hitbox" parent="." instance=ExtResource("5_uqk27")]
+collision_layer = 512
+collision_mask = 512
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="hitbox"]
+shape = SubResource("CircleShape2D_csii2")
+
+[connection signal="timeout" from="lifetime" to="." method="_on_lifetime_timeout"]
+[connection signal="on_hit" from="hitbox" to="." method="_on_hitbox_on_hit"]
