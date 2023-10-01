@@ -3,11 +3,11 @@ extends CharacterBody2D
 @export var SPEED = 200.0
 @export var camera_speed = 1.0
 @export var camera_distance = 25.0
-@export var health: int = 100
+@export var max_health: int = 100
 
 @export var heart_gui: HeartGui
 
-
+var health = max_health
 var level = 1
 var exp = 0
 const level_caps: Array[int] = [10, 25, 50, 80, 120, 180, 250, 360, 500]
@@ -30,7 +30,8 @@ func _on_hurtbox_area_entered(area:Area2D):
 
 
 func _on_hitbox_on_hit(damage, source):
-	heart_gui.set_health(health - damage)
+	if heart_gui != null:
+		heart_gui.set_health(health - damage)
 	print(damage)
 
 func gain_xp(xp):

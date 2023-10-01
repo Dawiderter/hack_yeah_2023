@@ -19,12 +19,21 @@ layer_1/z_index = 1
 [node name="player" parent="." node_paths=PackedStringArray("heart_gui") instance=ExtResource("4_lfa1r")]
 z_index = 1
 SPEED = 2000.0
-heart_gui = NodePath("Camera2D/HeartGui")
+heart_gui = NodePath("../HeartGui")
 
 [node name="Camera2D" parent="player" index="1"]
 zoom = Vector2(1.69, 1.69)
 
-[node name="HeartGui" parent="player/Camera2D" index="0" instance=ExtResource("6_4kwm1")]
+[node name="trex" parent="player" instance=ExtResource("4_ms6o1")]
+z_index = 1
+
+[node name="Portal" parent="." instance=ExtResource("5_jvce4")]
+
+[node name="Sprite2D" parent="Portal" index="0"]
+scale = Vector2(7.6, 7.6)
+
+[node name="HeartGui" parent="." instance=ExtResource("6_4kwm1")]
+z_index = 1
 anchors_preset = 0
 anchor_right = 0.0
 anchor_bottom = 0.0
@@ -34,14 +43,6 @@ offset_right = -128.0
 offset_bottom = -101.0
 grow_horizontal = 1
 grow_vertical = 1
-
-[node name="trex" parent="player" instance=ExtResource("4_ms6o1")]
-z_index = 1
-
-[node name="Portal" parent="." instance=ExtResource("5_jvce4")]
-
-[node name="Sprite2D" parent="Portal" index="0"]
-scale = Vector2(7.6, 7.6)
 
 [editable path="player"]
 [editable path="Portal"]
