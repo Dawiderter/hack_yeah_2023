@@ -1,11 +1,13 @@
-[gd_scene load_steps=6 format=3 uid="uid://bcm7pfx0qk8fj"]
+[gd_scene load_steps=9 format=3 uid="uid://bcm7pfx0qk8fj"]
 
 [ext_resource type="Script" path="res://scenes/player/player.gd" id="1_hhlf2"]
-[ext_resource type="PackedScene" uid="uid://c27kpi26mr4n5" path="res://scenes/ui/player_hud.tscn" id="3_4b2xp"]
+[ext_resource type="PackedScene" uid="uid://4xy8eaxa7myl" path="res://scenes/ui/player_hud.tscn" id="3_4b2xp"]
 [ext_resource type="PackedScene" uid="uid://cx3bl7sj2vgtn" path="res://scenes/hit/hitbox.tscn" id="3_mlk54"]
+[ext_resource type="AudioStream" uid="uid://b3qgbcd0eugei" path="res://scenes/sounds/levelUp.wav" id="4_srs1t"]
+[ext_resource type="AudioStream" uid="uid://dwjntn277hldm" path="res://scenes/sounds/takeDamage.wav" id="5_1fshp"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_hj4o2"]
-radius = 4.0
+radius = 6.0
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_6ouy4"]
 radius = 11.0
@@ -16,7 +18,6 @@ motion_mode = 1
 script = ExtResource("1_hhlf2")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(0, -10)
 shape = SubResource("CircleShape2D_hj4o2")
 
 [node name="Camera2D" type="Camera2D" parent="."]
@@ -30,12 +31,24 @@ offset_right = -251.0
 offset_bottom = -140.0
 scale = Vector2(0.5, 0.5)
 player = NodePath("../..")
-metadata/_edit_use_anchors_ = true
 
 [node name="hitbox" parent="." instance=ExtResource("3_mlk54")]
-position = Vector2(0, -10)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="hitbox"]
 shape = SubResource("CircleShape2D_6ouy4")
+
+[node name="Area2D" type="Area2D" parent="."]
+collision_layer = 16
+collision_mask = 16
+monitorable = false
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+shape = SubResource("CircleShape2D_3ncx7")
+
+[node name="LevelUp" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("4_srs1t")
+
+[node name="TakeDamage" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("5_1fshp")
 
 [connection signal="on_hit" from="hitbox" to="." method="_on_hitbox_on_hit"]

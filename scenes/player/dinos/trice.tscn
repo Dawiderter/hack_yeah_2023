@@ -1,10 +1,11 @@
-[gd_scene load_steps=11 format=3 uid="uid://cg73lktt68fq7"]
+[gd_scene load_steps=12 format=3 uid="uid://cg73lktt68fq7"]
 
 [ext_resource type="Texture2D" uid="uid://csnp5s0jnv6c" path="res://scenes/assets/dinos/tri_idle.png" id="1_alg1i"]
 [ext_resource type="Script" path="res://scenes/player/dinos/trice.gd" id="1_rbx1o"]
 [ext_resource type="Texture2D" uid="uid://b760w2e1gk84k" path="res://scenes/assets/dinos/tri_walk.png" id="2_6ldvy"]
 [ext_resource type="PackedScene" uid="uid://bb28v0kht4nxk" path="res://scenes/hit/hurtbox.tscn" id="4_fqwe8"]
 [ext_resource type="Script" path="res://scenes/hit/hit_stats.gd" id="5_7x3kb"]
+[ext_resource type="AudioStream" uid="uid://cv5f4b8h58fua" path="res://scenes/sounds/chargeAttack.wav" id="6_ceg51"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_6x702"]
 animations = [{
@@ -75,3 +76,8 @@ hit_data = SubResource("Resource_b1u7s")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="hurtbox"]
 shape = SubResource("CircleShape2D_qh2yn")
+
+[node name="ChargeHit" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("6_ceg51")
+
+[connection signal="area_entered" from="hurtbox" to="." method="_on_hurtbox_area_entered"]
