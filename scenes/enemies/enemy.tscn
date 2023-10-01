@@ -1,7 +1,7 @@
 [gd_scene load_steps=18 format=3 uid="uid://dk7s1r5dnclxt"]
 
 [ext_resource type="Script" path="res://scenes/enemies/enemy.gd" id="1_htrxu"]
-[ext_resource type="Texture2D" uid="uid://cagakkoph5nim" path="res://scenes/assets/army/army_knife.png" id="2_7js3u"]
+[ext_resource type="Texture2D" uid="uid://ritxsg3yqhqx" path="res://scenes/assets/army/army_knife.png" id="2_7js3u"]
 [ext_resource type="PackedScene" uid="uid://cx3bl7sj2vgtn" path="res://scenes/hit/hitbox.tscn" id="3_7xy2h"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_g46v3"]

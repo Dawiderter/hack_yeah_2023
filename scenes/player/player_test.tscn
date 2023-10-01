@@ -1,13 +1,14 @@
-[gd_scene load_steps=11 format=3 uid="uid://dprsawowc2kg2"]
+[gd_scene load_steps=12 format=3 uid="uid://dprsawowc2kg2"]
 
 [ext_resource type="PackedScene" uid="uid://bcm7pfx0qk8fj" path="res://scenes/player/player.tscn" id="1_tgjfa"]
 [ext_resource type="Texture2D" uid="uid://cdhtneb5pvcmh" path="res://scenes/player/tile_reference.png" id="2_2xdfp"]
 [ext_resource type="PackedScene" uid="uid://ejcbb02rwjqh" path="res://scenes/player/dinos/trex.tscn" id="2_ndnpm"]
 [ext_resource type="PackedScene" uid="uid://dr5akf0xkeqgn" path="res://scenes/player/dinos/ptero.tscn" id="3_t668l"]
 [ext_resource type="PackedScene" uid="uid://bb28v0kht4nxk" path="res://scenes/hit/hurtbox.tscn" id="3_xjgvl"]
-[ext_resource type="PackedScene" uid="uid://suydt1xlk51q" path="res://scenes/player/dinos/stego.tscn" id="4_k0l7x"]
+[ext_resource type="PackedScene" path="res://scenes/player/dinos/stego.tscn" id="4_k0l7x"]
 [ext_resource type="PackedScene" uid="uid://d022fu33um405" path="res://scenes/world/enemies_spawner.tscn" id="4_v433g"]
 [ext_resource type="PackedScene" uid="uid://cg73lktt68fq7" path="res://scenes/player/dinos/trice.tscn" id="7_6yqc6"]
+[ext_resource type="PackedScene" uid="uid://dstkg2dafxbq8" path="res://scenes/enemies/meat.tscn" id="9_tgypf"]
 
 [sub_resource type="SegmentShape2D" id="SegmentShape2D_im26j"]
 a = Vector2(-139.168, 48.2402)
@@ -21,6 +22,9 @@ size = Vector2(108, 75)
 [node name="player" parent="." instance=ExtResource("1_tgjfa")]
 position = Vector2(449.159, 140.934)
 collision_mask = 0
+SPEED = null
+camera_speed = null
+camera_distance = null
 
 [node name="trex" parent="player" instance=ExtResource("2_ndnpm")]
 
@@ -58,3 +62,12 @@ player = NodePath("../player")
 [node name="trice" parent="." node_paths=PackedStringArray("player_target") instance=ExtResource("7_6yqc6")]
 position = Vector2(0, -1)
 player_target = NodePath("../player")
+
+[node name="Area2D" parent="." instance=ExtResource("9_tgypf")]
+position = Vector2(303, 229)
+
+[node name="Area2D2" parent="." instance=ExtResource("9_tgypf")]
+position = Vector2(597, 219)
+
+[node name="Area2D3" parent="." instance=ExtResource("9_tgypf")]
+position = Vector2(591, 62)

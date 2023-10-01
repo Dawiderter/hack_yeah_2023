@@ -1,13 +1,13 @@
 [gd_scene load_steps=14 format=3 uid="uid://drm7nufbw1egd"]
 
 [ext_resource type="Script" path="res://scenes/ui/history_comic.gd" id="1_vdbpk"]
-[ext_resource type="Texture2D" path="res://scenes/assets/comic/IMG_0722.png" id="2_1ywhb"]
-[ext_resource type="Texture2D" path="res://scenes/assets/comic/IMG_0723.png" id="3_smhld"]
-[ext_resource type="Texture2D" path="res://scenes/assets/comic/IMG_0724.png" id="4_qh1jk"]
-[ext_resource type="Texture2D" path="res://scenes/assets/comic/IMG_0725.png" id="5_w6ry2"]
-[ext_resource type="Texture2D" uid="uid://cfygilj85w4q8" path="res://scenes/assets/comic/comic6.png" id="6_7vqjt"]
+[ext_resource type="Texture2D" uid="uid://cjlj1ppal03fs" path="res://scenes/assets/comic/IMG_0722.png" id="2_1ywhb"]
+[ext_resource type="Texture2D" uid="uid://drvuqiwdjjm26" path="res://scenes/assets/comic/IMG_0723.png" id="3_smhld"]
+[ext_resource type="Texture2D" uid="uid://cf8tqtyinsxir" path="res://scenes/assets/comic/IMG_0724.png" id="4_qh1jk"]
+[ext_resource type="Texture2D" uid="uid://dr2hrub44nxjj" path="res://scenes/assets/comic/IMG_0725.png" id="5_w6ry2"]
 [ext_resource type="Texture2D" uid="uid://djofigj3tnidd" path="res://scenes/assets/comic/IMG_0729.png" id="6_nxwl0"]
-[ext_resource type="Texture2D" uid="uid://dp5eqifp1yfs5" path="res://scenes/assets/comic/comic7.png" id="7_t3bk1"]
+[ext_resource type="Texture2D" uid="uid://cqocwodip4b4c" path="res://scenes/assets/comic/IMG_0730.png" id="7_xwacn"]
+[ext_resource type="Texture2D" uid="uid://b82mcwldh8q55" path="res://scenes/assets/comic/IMG_0731.png" id="8_1848n"]
 [ext_resource type="FontFile" uid="uid://o1dq6pr7wn32" path="res://scenes/font/prstart.ttf" id="9_wuwey"]
 [ext_resource type="PackedScene" uid="uid://bclr88xsgr20p" path="res://scenes/ui/circular_progressbar.tscn" id="10_ijenv"]
 
@@ -265,6 +265,18 @@ tracks/20/keys = {
 "update": 0,
 "values": [Vector2(1, 1)]
 }
+tracks/21/type = "value"
+tracks/21/imported = false
+tracks/21/enabled = true
+tracks/21/path = NodePath("history_comic/Comic7:position")
+tracks/21/interp = 1
+tracks/21/loop_wrap = true
+tracks/21/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(479, 269)]
+}
 
 [sub_resource type="Animation" id="Animation_34g11"]
 resource_name = "history"
@@ -519,7 +531,19 @@ tracks/20/keys = {
 "times": PackedFloat32Array(35, 43),
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
-"values": [Vector2(1, 1), Vector2(1.3, 1.3)]
+"values": [Vector2(3, 3), Vector2(3.3, 3.3)]
+}
+tracks/21/type = "value"
+tracks/21/imported = false
+tracks/21/enabled = true
+tracks/21/path = NodePath("history_comic/Comic7:position")
+tracks/21/interp = 1
+tracks/21/loop_wrap = true
+tracks/21/keys = {
+"times": PackedFloat32Array(36, 43),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(479, 269), Vector2(528, 364)]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_xai6h"]
@@ -565,13 +589,16 @@ scale = Vector2(3, 3)
 texture = ExtResource("6_nxwl0")
 
 [node name="Comic6" type="Sprite2D" parent="."]
-position = Vector2(479, 285.72)
-texture = ExtResource("6_7vqjt")
+modulate = Color(1, 1, 1, 0.599998)
+position = Vector2(479, 274.84)
+scale = Vector2(3, 3)
+texture = ExtResource("7_xwacn")
 
 [node name="Comic7" type="Sprite2D" parent="."]
-modulate = Color(1, 1, 1, 0)
+modulate = Color(1, 1, 1, 0.400002)
 position = Vector2(479, 269)
-texture = ExtResource("7_t3bk1")
+scale = Vector2(3.015, 3.015)
+texture = ExtResource("8_1848n")
 
 [node name="end_timer" type="Timer" parent="."]
 wait_time = 43.0
@@ -653,6 +680,7 @@ horizontal_alignment = 1
 autowrap_mode = 3
 
 [node name="text6" type="Label" parent="."]
+modulate = Color(1, 1, 1, 0.199997)
 offset_left = 48.0
 offset_top = 33.0
 offset_right = 902.0
@@ -682,10 +710,10 @@ horizontal_alignment = 1
 autowrap_mode = 3
 
 [node name="circular_progressbar" parent="." instance=ExtResource("10_ijenv")]
-offset_left = 883.0
-offset_top = 467.0
-offset_right = 209.0
-offset_bottom = 192.0
+offset_left = 875.0
+offset_top = 454.0
+offset_right = 201.0
+offset_bottom = 179.0
 scale = Vector2(0.25, 0.25)
 
 [connection signal="timeout" from="end_timer" to="." method="_on_end_timer_timeout"]
