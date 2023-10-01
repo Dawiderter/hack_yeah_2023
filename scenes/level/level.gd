@@ -19,6 +19,9 @@ const FLOOR_TILESET_ID: int = 0
 const FOLIAGE_LAYER: int = 1
 const FOLIAGE_TILESET: int = 2
 const FOLIAGE_TILESET_ID: int = 3
+
+const NATURE_TILESET: int = 2
+const NATURE_TILESET_ID: int = 4
 const THRESHOLD = 0.15  
 
 const FOREST_TERRAIN: int = 0
@@ -228,12 +231,22 @@ func is_valid_grass_tile(x: int, y: int) -> bool:
 func generate_grass():
 	var noise = FastNoiseLite.new()
 	noise.frequency = 0.5
-	for y in range(rows):
-		for x in range(columns):
+	var offset = (EDGE_WIDTH * jaggedness_coefficient)
+	for y in range(-offset, rows + offset):
+		for x in range(-offset, columns + offset):
 			var value = noise.get_noise_2d(x, y)
 			if value > THRESHOLD and is_valid_grass_tile(x, y):
 				set_cell(FOLIAGE_LAYER, Vector2i(x, y), FOLIAGE_TILESET_ID, Vector2i(0, 3))
-	
+
+func generate_plants():
+	var offset = (EDGE_WIDTH * jaggedness_coefficient)
+	for y in range(-offset, rows + offset):
+		for x in range(-offset, columns + offset):
+			var value = randf()
+			if value < 0.005 and is_valid_grass_tile(x, y):
+				var x_coord = randi_range(0, 6)
+				var y_coord = randi_range(10,11)
+				set_cell(FOLIAGE_LAYER, Vector2i(x, y), NATURE_TILESET_ID, Vector2i(x_coord, y_coord))
 
 func partition_map(left_top: Vector2i, right_bottom: Vector2i, count: int) -> Array[BiomePartition]:
 	var biomes: Array[BiomePartition] = []
@@ -325,3 +338,4 @@ func _ready():
 		biome.generate_floor(self)
 		
 	generate_grass()
+	generate_plants()
