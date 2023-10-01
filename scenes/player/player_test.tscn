@@ -3,8 +3,8 @@
 [ext_resource type="PackedScene" uid="uid://bcm7pfx0qk8fj" path="res://scenes/player/player.tscn" id="1_tgjfa"]
 [ext_resource type="Texture2D" uid="uid://cdhtneb5pvcmh" path="res://scenes/player/tile_reference.png" id="2_2xdfp"]
 [ext_resource type="PackedScene" uid="uid://ejcbb02rwjqh" path="res://scenes/player/dinos/trex.tscn" id="2_ndnpm"]
+[ext_resource type="PackedScene" uid="uid://5btsvnsfayfk" path="res://scenes/player/dinos/bront.tscn" id="3_7d0tv"]
 [ext_resource type="PackedScene" uid="uid://d022fu33um405" path="res://scenes/world/enemies_spawner.tscn" id="4_v433g"]
-[ext_resource type="PackedScene" uid="uid://cg73lktt68fq7" path="res://scenes/player/dinos/trice.tscn" id="5_kbu38"]
 
 [sub_resource type="SegmentShape2D" id="SegmentShape2D_im26j"]
 a = Vector2(-139.168, 48.2402)
@@ -17,6 +17,8 @@ position = Vector2(449.159, 140.934)
 collision_mask = 0
 
 [node name="trex" parent="player" instance=ExtResource("2_ndnpm")]
+
+[node name="bront" parent="player" instance=ExtResource("3_7d0tv")]
 
 [node name="StaticBody2D" type="StaticBody2D" parent="."]
 position = Vector2(485.168, 200.76)
@@ -36,6 +38,3 @@ texture = ExtResource("2_2xdfp")
 [node name="enemies_spawner" parent="." node_paths=PackedStringArray("player") instance=ExtResource("4_v433g")]
 position = Vector2(-2, 1)
 player = NodePath("../player")
-
-[node name="trice" parent="." node_paths=PackedStringArray("player_target") instance=ExtResource("5_kbu38")]
-player_target = NodePath("../player")
