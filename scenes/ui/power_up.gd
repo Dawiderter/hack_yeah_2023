@@ -33,6 +33,29 @@ func _process(delta):
 						buttons_states[x][y] = true
 						buttons[x][y].icon = gothen
 						get_tree().paused = false
+
+						var dino
+
+						match x:
+							0:
+								dino = get_parent().get_parent().find_children("trex")
+							1:
+								dino = get_parent().get_parent().find_children("trice")
+							2:
+								dino = get_parent().get_parent().find_children("bront")
+							3:
+								dino = get_parent().get_parent().find_children("stego")
+							4:
+								dino = get_parent().get_parent().find_children("ptero")
+
+						match y:
+							0:
+                                dino.speed_times(2)
+                            1:
+                                dino.damage_times(2)
+                            3:
+                                dino.range_times(2)
+
 						hide()
 
 

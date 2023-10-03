@@ -21,6 +21,8 @@ func _ready():
 	set_range_length(range_length)
 	set_range_width(range_width)
 
+func change_damage(new_damage):
+	$hurtbox.change_damage(new_damage)
 
 func set_range_width(_range_width: float):
 	range_width = _range_width

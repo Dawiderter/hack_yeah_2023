@@ -14,6 +14,9 @@ func _ready():
 	start_wave(Vector2.DOWN)
 	pass # Replace with function body.
 
+func change_damage(new_damage):
+	$hurtbox.change_damage(new_damage)
+
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
 	if direction != Vector2.ZERO:

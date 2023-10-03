@@ -6,6 +6,9 @@ extends Area2D
 
 @onready var timer: Timer = $intensity
 
+func change_damage(new_damage):
+	hit_data.damage_dealt = new_damage
+
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	timer.wait_time = hit_data.intensity_seconds

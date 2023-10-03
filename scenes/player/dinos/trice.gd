@@ -15,6 +15,9 @@ var enemy_target: Node2D
 
 var trice_state = RETURNING
 
+func change_damage(new_damage):
+	$hurtbox.change_damage(new_damage)
+
 func _ready():
 	set_range_radius(range_radius)
 

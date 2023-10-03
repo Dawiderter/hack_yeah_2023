@@ -10,6 +10,9 @@ extends Node2D
 func _ready():
 	pass
 
+func change_damage(new_damage):
+	attack.change_damage(new_damage)
+
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
 	var direction = Input.get_vector("player_left", "player_right", "player_up", "player_down")

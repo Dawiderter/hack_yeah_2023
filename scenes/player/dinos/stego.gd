@@ -12,6 +12,9 @@ func _ready():
 	set_range_radius(range_radius)
 	hurt_anim.play("default")
 
+func change_damage(new_damage):
+	$hurtbox.change_damage(new_damage)
+
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
 	var direction = Input.get_vector("player_left", "player_right", "player_up", "player_down")

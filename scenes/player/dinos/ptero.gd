@@ -11,6 +11,9 @@ var time = 0
 func _ready():
 	sprite.play("move")
 
+func change_damage(new_damage):
+	$hurtbox.change_damage(new_damage)
+
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
 	time += delta * angular_speed
