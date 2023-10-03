@@ -1,6 +1,10 @@
 extends CharacterBody2D
 
 signal levelup
+signal bront_s
+signal ptero_s
+signal stego_s
+signal trice_s
 
 @export var SPEED = 200.0
 @export var camera_speed = 1.0
@@ -53,15 +57,19 @@ func level_up():
 func _on_area_2d_area_entered(area):
 	match area.dino_name:
 		"bront":
+			bront_s.emit() 
 			var bront = preload("res://scenes/player/dinos/bront.tscn").instantiate()
 			add_child(bront)
 		"ptero":
+			ptero_s.emit()
 			var bront = preload("res://scenes/player/dinos/ptero.tscn").instantiate()
 			add_child(bront)
 		"stego":
+			stego_s.emit()
 			var bront = preload("res://scenes/player/dinos/stego.tscn").instantiate()
 			add_child(bront)
 		"trice":
+			trice_s.emit()
 			var bront = preload("res://scenes/player/dinos/trice.tscn").instantiate()
 			bront.player_target = self
 			get_parent().add_child(bront)

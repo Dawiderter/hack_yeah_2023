@@ -30,6 +30,8 @@ func _process(delta):
 			for y in range(3):
 				if buttons[x][y].is_pressed():
 					if founded_dinos[x] && !buttons_states[x][y]:
+						buttons_states[x][y] = true
+						buttons[x][y].icon = gothen
 						get_tree().paused = false
 						hide()
 
@@ -37,3 +39,26 @@ func _process(delta):
 func _on_player_levelup():
 	show()
 	get_tree().paused = true
+
+func get_dino(x):
+	founded_dinos[x] = true
+	for y in range(3):
+		buttons[x][y].icon = possible
+
+func _on_player_bront_s():
+	get_dino(2)
+	$diplo.play("move")
+
+func _on_player_ptero_s():
+	get_dino(4)
+	$ptero.play("move")
+
+
+func _on_player_stego_s():
+	get_dino(3)
+	$steg.play("move")
+
+func _on_player_trice_s():
+	get_dino(1)
+	$tric.play("move")
+

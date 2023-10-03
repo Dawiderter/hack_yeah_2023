@@ -3,7 +3,7 @@
 [ext_resource type="Script" path="res://scenes/player/dinos/trex.gd" id="1_5gekm"]
 [ext_resource type="Texture2D" uid="uid://dka44i36fkhwk" path="res://scenes/assets/dinos/trex_idle.png" id="1_xcw2a"]
 [ext_resource type="Texture2D" uid="uid://cgtwjt7n011oe" path="res://scenes/assets/dinos/trex_walk.png" id="2_jald7"]
-[ext_resource type="PackedScene" path="res://scenes/player/dinos/trex_attack.tscn" id="3_863od"]
+[ext_resource type="PackedScene" uid="uid://ghbabccbo7bd" path="res://scenes/player/dinos/trex_attack.tscn" id="3_863od"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_ng1hb"]
 animations = [{
