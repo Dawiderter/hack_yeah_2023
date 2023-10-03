@@ -50,11 +50,11 @@ func _process(delta):
 
 						match y:
 							0:
-                                dino.speed_times(2)
-                            1:
-                                dino.damage_times(2)
-                            3:
-                                dino.range_times(2)
+								dino.speed_times(2)
+							1:
+								dino.damage_times(2)
+							3:
+								dino.range_times(2)
 
 						hide()
 
