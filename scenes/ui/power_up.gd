@@ -38,22 +38,22 @@ func _process(delta):
 
 						match x:
 							0:
-								dino = get_parent().get_parent().find_children("trex")
+								dino = get_parent().get_parent().find_child("trex", false)
 							1:
-								dino = get_parent().get_parent().find_children("trice")
+								dino = get_parent().get_parent().find_child("trice")
 							2:
-								dino = get_parent().get_parent().find_children("bront")
+								dino = get_parent().get_parent().find_child("bront")
 							3:
-								dino = get_parent().get_parent().find_children("stego")
+								dino = get_parent().get_parent().find_child("stego")
 							4:
-								dino = get_parent().get_parent().find_children("ptero")
+								dino = get_parent().get_parent().find_child("ptero")
 
 						match y:
 							0:
-								dino.speed_times(2)
+								dino.cooldown_times(0.5)
 							1:
 								dino.damage_times(2)
-							3:
+							2:
 								dino.range_times(2)
 
 						hide()

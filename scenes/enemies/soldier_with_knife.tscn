@@ -1,7 +1,7 @@
 [gd_scene load_steps=23 format=3 uid="uid://dpcyajl5r4fms"]
 
 [ext_resource type="Script" path="res://scenes/enemies/soldier_with_knife.gd" id="1_7fvfd"]
-[ext_resource type="Texture2D" uid="uid://cagakkoph5nim" path="res://scenes/assets/army/army_knife.png" id="2_rv35u"]
+[ext_resource type="Texture2D" uid="uid://ritxsg3yqhqx" path="res://scenes/assets/army/army_knife.png" id="2_rv35u"]
 [ext_resource type="PackedScene" uid="uid://vk2t5vj7my06" path="res://scenes/enemies/meat.tscn" id="2_whh4u"]
 [ext_resource type="PackedScene" uid="uid://cx3bl7sj2vgtn" path="res://scenes/hit/hitbox.tscn" id="3_t48p5"]
 [ext_resource type="PackedScene" uid="uid://bb28v0kht4nxk" path="res://scenes/hit/hurtbox.tscn" id="5_2go6a"]
@@ -191,7 +191,7 @@ max_health = 100.0
 texture = ExtResource("2_rv35u")
 hframes = 3
 vframes = 4
-frame = 2
+frame = 11
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("CircleShape2D_g46v3")
