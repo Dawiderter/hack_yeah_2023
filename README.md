@@ -4,7 +4,7 @@ This is a simple game made for hackyeah 2023. But it is still work in progress.
 - [ ] change naming convention of dinos so it is consistant
 - [ ] add all dinos functions to change speed, damage and range by some factor
 	- [x] trex
-    - [ ] bront
+    - [x] bront
     - [ ] stego
     - [ ] trice
     - [ ] ptero

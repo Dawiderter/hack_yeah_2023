@@ -62,17 +62,18 @@ func _on_area_2d_area_entered(area):
 			add_child(bront)
 		"ptero":
 			ptero_s.emit()
-			var bront = preload("res://scenes/player/dinos/ptero.tscn").instantiate()
-			add_child(bront)
+			var ptero = preload("res://scenes/player/dinos/ptero.tscn").instantiate()
+			add_child(ptero)
 		"stego":
 			stego_s.emit()
-			var bront = preload("res://scenes/player/dinos/stego.tscn").instantiate()
-			add_child(bront)
+			var stego = preload("res://scenes/player/dinos/stego.tscn").instantiate()
+			add_child(stego)
 		"trice":
 			trice_s.emit()
-			var bront = preload("res://scenes/player/dinos/trice.tscn").instantiate()
-			bront.player_target = self
-			get_parent().add_child(bront)
-			bront.position = position
+			var trice = preload("res://scenes/player/dinos/trice.tscn").instantiate()
+			trice.player_target = self
+			get_parent().add_child(trice)
+			trice.position = position
 	area.tilemap.remove_dino(area.dino_tile)
+	print_tree()
 	area.queue_free()

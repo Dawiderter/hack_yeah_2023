@@ -40,13 +40,13 @@ func _process(delta):
 							0:
 								dino = get_parent().get_parent().find_child("trex", false)
 							1:
-								dino = get_parent().get_parent().find_child("trice")
+								dino = get_parent().get_parent().find_child("trice", false, false)
 							2:
-								dino = get_parent().get_parent().find_child("bront")
+								dino = get_parent().get_parent().find_child("bront", false, false)
 							3:
-								dino = get_parent().get_parent().find_child("stego")
+								dino = get_parent().get_parent().find_child("stego", false, false)
 							4:
-								dino = get_parent().get_parent().find_child("ptero")
+								dino = get_parent().get_parent().find_child("ptero", false, false)
 
 						match y:
 							0:
