@@ -9,17 +9,29 @@ extends CharacterBody2D
 @onready var range_area: Area2D = $range
 @onready var range_shape: CollisionShape2D = $range/CollisionShape2D
 @onready var sprite: AnimatedSprite2D = $AnimatedSprite2D
+@export var starting_damage = 50
+@export var starting_speed = 2
+@export var starting_range_radius = 80
+
+func damage_times(x):
+	$hurtbox.change_damage(starting_damage * x)
+
+func cooldown_times(x):
+	returning_speed = starting_speed * x
+
+func range_times(x):
+	set_range_radius(starting_range_radius * x)
+
+# Called when the node enters the scene tree for the first time.
+func _ready():
+	damage_times(1)
+	cooldown_times(1)
+	range_times(1)
 
 enum { SEARCHING, CHASING, RETURNING }
 var enemy_target: Node2D
 
 var trice_state = RETURNING
-
-func change_damage(new_damage):
-	$hurtbox.change_damage(new_damage)
-
-func _ready():
-	set_range_radius(range_radius)
 
 func _physics_process(delta):
 	velocity = Vector2.ZERO

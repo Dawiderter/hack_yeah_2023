@@ -5,9 +5,9 @@ This is a simple game made for hackyeah 2023. But it is still work in progress.
 - [ ] add all dinos functions to change speed, damage and range by some factor
 	- [x] trex
     - [x] bront
-    - [ ] stego
-    - [ ] trice
-    - [ ] ptero
+    - [x] stego
+    - [x] trice
+    - [x] ptero
 - [ ] update powerup menu so it will really make some power ups
 - [ ] add movement of background in menu
 - [ ] enemies can spawn outside, add parachute to them

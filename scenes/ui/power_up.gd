@@ -40,7 +40,7 @@ func _process(delta):
 							0:
 								dino = get_parent().get_parent().find_child("trex", false)
 							1:
-								dino = get_parent().get_parent().find_child("trice", false, false)
+								dino = get_parent().get_parent().get_parent().find_child("trice", false, false)
 							2:
 								dino = get_parent().get_parent().find_child("bront", false, false)
 							3:
