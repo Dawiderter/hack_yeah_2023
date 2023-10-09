@@ -14,6 +14,7 @@ script = ExtResource("1_mlnty")
 
 [node name="player" parent="." instance=ExtResource("4_lfa1r")]
 z_index = 1
+position = Vector2(-1, 2)
 scale = Vector2(0.999933, 1)
 
 [node name="Camera2D" parent="player" index="1"]
@@ -62,6 +63,11 @@ scale = Vector2(7.6, 7.6)
 position = Vector2(-2, 1)
 player = NodePath("../player")
 timer = NodePath("../player/Camera2D/TimerLabel/FinalTimer")
+
+[connection signal="bront_s" from="player" to="player/Camera2D/power_up" method="_on_player_bront_s"]
+[connection signal="ptero_s" from="player" to="player/Camera2D/power_up" method="_on_player_ptero_s"]
+[connection signal="stego_s" from="player" to="player/Camera2D/power_up" method="_on_player_stego_s"]
+[connection signal="trice_s" from="player" to="player/Camera2D/power_up" method="_on_player_trice_s"]
 
 [editable path="player"]
 [editable path="Portal"]

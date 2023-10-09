@@ -1,5 +1,11 @@
 extends CharacterBody2D
 
+signal levelup
+signal bront_s
+signal ptero_s
+signal stego_s
+signal trice_s
+
 @export var SPEED = 200.0
 @export var camera_speed = 1.0
 @export var camera_distance = 25.0
@@ -36,11 +42,13 @@ func _on_hitbox_on_hit(damage, source):
 func gain_xp(xp):
 	exp += xp
 	var level_cap_index = min(level - 1, level_caps.size() - 1)
-	if exp > level_caps[level_cap_index]:
+	if exp >= level_caps[level_cap_index]:
 		exp -= level_caps[level_cap_index]
 		level_up()
 
 func level_up():
+	print("levelup")
+	levelup.emit()
 	level += 1
 	$LevelUp.play()
 	pass
@@ -49,18 +57,23 @@ func level_up():
 func _on_area_2d_area_entered(area):
 	match area.dino_name:
 		"bront":
+			bront_s.emit() 
 			var bront = preload("res://scenes/player/dinos/bront.tscn").instantiate()
 			add_child(bront)
 		"ptero":
-			var bront = preload("res://scenes/player/dinos/ptero.tscn").instantiate()
-			add_child(bront)
+			ptero_s.emit()
+			var ptero = preload("res://scenes/player/dinos/ptero.tscn").instantiate()
+			add_child(ptero)
 		"stego":
-			var bront = preload("res://scenes/player/dinos/stego.tscn").instantiate()
-			add_child(bront)
+			stego_s.emit()
+			var stego = preload("res://scenes/player/dinos/stego.tscn").instantiate()
+			add_child(stego)
 		"trice":
-			var bront = preload("res://scenes/player/dinos/trice.tscn").instantiate()
-			bront.player_target = self
-			get_parent().add_child(bront)
-			bront.position = position
+			trice_s.emit()
+			var trice = preload("res://scenes/player/dinos/trice.tscn").instantiate()
+			trice.player_target = self
+			get_parent().add_child(trice)
+			trice.position = position
 	area.tilemap.remove_dino(area.dino_tile)
+	print_tree()
 	area.queue_free()

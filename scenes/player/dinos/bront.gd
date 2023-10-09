@@ -5,10 +5,25 @@ extends Node2D
 @onready var sprite : AnimatedSprite2D = $AnimatedSprite2D
 @onready var attack : PackedScene = preload("res://scenes/player/dinos/bront_attack.tscn")
 @onready var cooldown : Timer = $Timer
+@export var starting_damage = 10
+@export var starting_speed = 3
+@export var starting_wave_speed = 10
+v  ar current_damage
+var current_wave_speed
 
-# Called when the node enters the scene tree for the first time.
 func _ready():
-	pass
+	damage_times(1)
+	cooldown_times(1)
+	range_times(1)
+
+func damage_times(x):
+	current_damage = starting_damage * x
+
+func cooldown_times(x):
+	cooldown.wait_time = starting_speed * x
+
+func range_times(x):
+	current_wave_speed = starting_wave_speed * x
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
@@ -37,6 +52,8 @@ func play_attack():
 	$WaveAttack.play()
 	var new_attack = attack.instantiate()
 	get_tree().root.add_child(new_attack)
+	new_attack.change_damage(current_damage)
+	new_attack.move_speed = current_wave_speed
 	new_attack.position = global_position 
 	new_attack.position += Vector2.RIGHT * (-1 if sprite.flip_h else 1) * 30
 	new_attack.start_wave(Vector2.RIGHT * (-1 if sprite.flip_h else 1))

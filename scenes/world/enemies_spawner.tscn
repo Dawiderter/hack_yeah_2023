@@ -1,10 +1,10 @@
 [gd_scene load_steps=7 format=3 uid="uid://d022fu33um405"]
 
 [ext_resource type="Script" path="res://scenes/world/enemies_spawner.gd" id="1_v7546"]
-[ext_resource type="PackedScene" uid="uid://dk7s1r5dnclxt" path="res://scenes/enemies/soldier_with_knife.tscn" id="2_cqcjg"]
-[ext_resource type="PackedScene" uid="uid://pm35qxgdrsha" path="res://scenes/enemies/soldier_with_gun.tscn" id="3_omic7"]
-[ext_resource type="PackedScene" uid="uid://c1vuqbb10isgs" path="res://scenes/enemies/soldier_with_flamethrower.tscn" id="4_1i8tl"]
-[ext_resource type="PackedScene" uid="uid://b6hnu88kkgld6" path="res://scenes/enemies/tank.tscn" id="5_thbnv"]
+[ext_resource type="PackedScene" uid="uid://dpcyajl5r4fms" path="res://scenes/enemies/soldier_with_knife.tscn" id="2_cqcjg"]
+[ext_resource type="PackedScene" uid="uid://bnr8o165fuypg" path="res://scenes/enemies/soldier_with_gun.tscn" id="3_omic7"]
+[ext_resource type="PackedScene" uid="uid://cipk3xvkwb2ea" path="res://scenes/enemies/soldier_with_flamethrower.tscn" id="4_1i8tl"]
+[ext_resource type="PackedScene" uid="uid://dvxub6pl1op30" path="res://scenes/enemies/tank.tscn" id="5_thbnv"]
 
 [sub_resource type="Curve2D" id="Curve2D_0xr3n"]
 _data = {

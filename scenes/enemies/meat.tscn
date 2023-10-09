@@ -1,7 +1,7 @@
 [gd_scene load_steps=4 format=3 uid="uid://vk2t5vj7my06"]
 
 [ext_resource type="Script" path="res://scenes/enemies/meat.gd" id="1_5r81j"]
-[ext_resource type="Texture2D" uid="uid://dpl8qlt03irel" path="res://scenes/assets/lcZzD-1176547933.png" id="2_5me42"]
+[ext_resource type="Texture2D" uid="uid://u0hthr0oi4kr" path="res://scenes/assets/meat.png" id="2_4gaf7"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_hyma5"]
 
@@ -12,7 +12,6 @@ script = ExtResource("1_5r81j")
 shape = SubResource("CircleShape2D_hyma5")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-scale = Vector2(0.1, 0.1)
-texture = ExtResource("2_5me42")
+texture = ExtResource("2_4gaf7")
 
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]

@@ -1,0 +1,361 @@
+[gd_scene load_steps=27 format=3 uid="uid://gjr71yfj8f01"]
+
+[ext_resource type="Texture2D" uid="uid://b6to8tdun5xw8" path="res://scenes/assets/power_up.png" id="1_18xa6"]
+[ext_resource type="Script" path="res://scenes/ui/power_up.gd" id="1_yibqe"]
+[ext_resource type="Texture2D" uid="uid://3a7ivueuhiaj" path="res://scenes/assets/dinos/bront_atak.png" id="2_00rwc"]
+[ext_resource type="Texture2D" uid="uid://bl8dm8dycr6el" path="res://scenes/assets/dinos/bront_idle.png" id="3_w37o0"]
+[ext_resource type="Texture2D" uid="uid://btcyhkucpq04x" path="res://scenes/assets/dinos/bront_walk.png" id="4_xlugu"]
+[ext_resource type="Texture2D" uid="uid://dka44i36fkhwk" path="res://scenes/assets/dinos/trex_idle.png" id="5_7h82s"]
+[ext_resource type="Texture2D" uid="uid://dsf8cc8mbvpj0" path="res://scenes/assets/questionmark.png" id="6_7po0o"]
+[ext_resource type="Texture2D" uid="uid://cgtwjt7n011oe" path="res://scenes/assets/dinos/trex_walk.png" id="6_vgdsk"]
+[ext_resource type="Texture2D" uid="uid://csnp5s0jnv6c" path="res://scenes/assets/dinos/tri_idle.png" id="7_ib0e7"]
+[ext_resource type="Texture2D" uid="uid://b760w2e1gk84k" path="res://scenes/assets/dinos/tri_walk.png" id="8_at72t"]
+[ext_resource type="Texture2D" uid="uid://ccafksokmythm" path="res://scenes/assets/dinos/ptero_idle.png" id="9_shopv"]
+[ext_resource type="Texture2D" uid="uid://be87mcluxn2t7" path="res://scenes/assets/dinos/ptero_walk1.png" id="10_01t2k"]
+[ext_resource type="Texture2D" uid="uid://cju4e7bgvbhbi" path="res://scenes/assets/dinos/ptero_walk2.png" id="11_xnkm2"]
+[ext_resource type="Texture2D" uid="uid://xwymi14p1ut" path="res://scenes/assets/dinos/stego_idle.png" id="12_5u3yj"]
+[ext_resource type="Texture2D" uid="uid://bn7p6mahdnrfg" path="res://scenes/assets/dinos/stego_walk.png" id="13_ak00k"]
+[ext_resource type="Texture2D" uid="uid://bquy4eu33mqso" path="res://scenes/assets/gothen.png" id="15_w8878"]
+[ext_resource type="Texture2D" uid="uid://d2beyrlb0oqg3" path="res://scenes/assets/empty.png" id="16_6cqfa"]
+[ext_resource type="Texture2D" uid="uid://mfobqersva6o" path="res://scenes/assets/possible.png" id="17_v35ml"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_xvb1a"]
+atlas = ExtResource("2_00rwc")
+region = Rect2(0, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_xecdd"]
+atlas = ExtResource("2_00rwc")
+region = Rect2(64, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_hu6gl"]
+atlas = ExtResource("2_00rwc")
+region = Rect2(128, 0, 64, 64)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_dk48m"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_xvb1a")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_xecdd")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_hu6gl")
+}],
+"loop": false,
+"name": &"attack",
+"speed": 4.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("3_w37o0")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("3_w37o0")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_xlugu")
+}],
+"loop": true,
+"name": &"move",
+"speed": 4.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("6_7po0o")
+}],
+"loop": true,
+"name": &"questionmark",
+"speed": 5.0
+}]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_thvwo"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("5_7h82s")
+}],
+"loop": true,
+"name": &"default",
+"speed": 4.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("5_7h82s")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_vgdsk")
+}],
+"loop": true,
+"name": &"move",
+"speed": 4.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("6_7po0o")
+}],
+"loop": true,
+"name": &"questionmark",
+"speed": 5.0
+}]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_mx8i1"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("7_ib0e7")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("7_ib0e7")
+}, {
+"duration": 1.0,
+"texture": ExtResource("8_at72t")
+}],
+"loop": true,
+"name": &"move",
+"speed": 4.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("6_7po0o")
+}],
+"loop": true,
+"name": &"questionmark",
+"speed": 5.0
+}]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_quyum"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("9_shopv")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("9_shopv")
+}, {
+"duration": 1.0,
+"texture": ExtResource("10_01t2k")
+}, {
+"duration": 1.0,
+"texture": ExtResource("9_shopv")
+}, {
+"duration": 1.0,
+"texture": ExtResource("11_xnkm2")
+}],
+"loop": true,
+"name": &"move",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("6_7po0o")
+}],
+"loop": true,
+"name": &"questionmark",
+"speed": 5.0
+}]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_luqee"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("12_5u3yj")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("12_5u3yj")
+}, {
+"duration": 1.0,
+"texture": ExtResource("13_ak00k")
+}],
+"loop": true,
+"name": &"move",
+"speed": 4.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("6_7po0o")
+}],
+"loop": true,
+"name": &"questionmark",
+"speed": 5.0
+}]
+
+[node name="power_up" type="Node2D"]
+process_mode = 3
+script = ExtResource("1_yibqe")
+metadata/_edit_horizontal_guides_ = [-108.0]
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+scale = Vector2(2, 2)
+texture = ExtResource("1_18xa6")
+
+[node name="diplo" type="AnimatedSprite2D" parent="."]
+position = Vector2(71, -144)
+scale = Vector2(1.5, 1.5)
+sprite_frames = SubResource("SpriteFrames_dk48m")
+animation = &"questionmark"
+
+[node name="trex" type="AnimatedSprite2D" parent="."]
+position = Vector2(-134, -144)
+scale = Vector2(1.5, 1.5)
+sprite_frames = SubResource("SpriteFrames_thvwo")
+animation = &"move"
+
+[node name="tric" type="AnimatedSprite2D" parent="."]
+position = Vector2(-37, -144)
+scale = Vector2(1.5, 1.5)
+sprite_frames = SubResource("SpriteFrames_mx8i1")
+animation = &"questionmark"
+
+[node name="ptero" type="AnimatedSprite2D" parent="."]
+position = Vector2(273, -144)
+scale = Vector2(1.5, 1.5)
+sprite_frames = SubResource("SpriteFrames_quyum")
+animation = &"questionmark"
+
+[node name="steg" type="AnimatedSprite2D" parent="."]
+position = Vector2(166, -144)
+scale = Vector2(1.5, 1.5)
+sprite_frames = SubResource("SpriteFrames_luqee")
+animation = &"questionmark"
+
+[node name="button1x1" type="Button" parent="."]
+offset_left = -171.0
+offset_top = -108.0
+offset_right = -118.0
+offset_bottom = -55.0
+scale = Vector2(1.5, 1.5)
+icon = ExtResource("15_w8878")
+
+[node name="button1x2" type="Button" parent="."]
+offset_left = -171.0
+offset_top = -7.0
+offset_right = -118.0
+offset_bottom = 46.0
+scale = Vector2(1.5, 1.5)
+icon = ExtResource("16_6cqfa")
+
+[node name="button1x3" type="Button" parent="."]
+offset_left = -171.0
+offset_top = 92.0
+offset_right = -118.0
+offset_bottom = 145.0
+scale = Vector2(1.5, 1.5)
+icon = ExtResource("17_v35ml")
+
+[node name="button2x1" type="Button" parent="."]
+offset_left = -70.0
+offset_top = -108.0
+offset_right = -17.0
+offset_bottom = -55.0
+scale = Vector2(1.5, 1.5)
+icon = ExtResource("15_w8878")
+
+[node name="button2x2" type="Button" parent="."]
+offset_left = -70.0
+offset_top = -7.0
+offset_right = -17.0
+offset_bottom = 46.0
+scale = Vector2(1.5, 1.5)
+icon = ExtResource("16_6cqfa")
+
+[node name="button2x3" type="Button" parent="."]
+offset_left = -70.0
+offset_top = 92.0
+offset_right = -17.0
+offset_bottom = 145.0
+scale = Vector2(1.5, 1.5)
+icon = ExtResource("17_v35ml")
+
+[node name="button3x1" type="Button" parent="."]
+offset_left = 31.0
+offset_top = -107.0
+offset_right = 84.0
+offset_bottom = -54.0
+scale = Vector2(1.5, 1.5)
+icon = ExtResource("15_w8878")
+
+[node name="button3x2" type="Button" parent="."]
+offset_left = 31.0
+offset_top = -7.0
+offset_right = 84.0
+offset_bottom = 46.0
+scale = Vector2(1.5, 1.5)
+icon = ExtResource("16_6cqfa")
+
+[node name="button3x3" type="Button" parent="."]
+offset_left = 31.0
+offset_top = 92.0
+offset_right = 84.0
+offset_bottom = 145.0
+scale = Vector2(1.5, 1.5)
+icon = ExtResource("17_v35ml")
+
+[node name="button4x1" type="Button" parent="."]
+offset_left = 130.0
+offset_top = -108.0
+offset_right = 183.0
+offset_bottom = -55.0
+scale = Vector2(1.5, 1.5)
+icon = ExtResource("15_w8878")
+
+[node name="button4x2" type="Button" parent="."]
+offset_left = 130.0
+offset_top = -7.0
+offset_right = 183.0
+offset_bottom = 46.0
+scale = Vector2(1.5, 1.5)
+icon = ExtResource("16_6cqfa")
+
+[node name="button4x3" type="Button" parent="."]
+offset_left = 130.0
+offset_top = 92.0
+offset_right = 183.0
+offset_bottom = 145.0
+scale = Vector2(1.5, 1.5)
+icon = ExtResource("17_v35ml")
+
+[node name="button5x1" type="Button" parent="."]
+offset_left = 230.0
+offset_top = -107.0
+offset_right = 283.0
+offset_bottom = -54.0
+scale = Vector2(1.5, 1.5)
+icon = ExtResource("15_w8878")
+
+[node name="button5x2" type="Button" parent="."]
+offset_left = 231.0
+offset_top = -7.0
+offset_right = 284.0
+offset_bottom = 46.0
+scale = Vector2(1.5, 1.5)
+icon = ExtResource("16_6cqfa")
+
+[node name="button5x3" type="Button" parent="."]
+offset_left = 230.0
+offset_top = 92.0
+offset_right = 283.0
+offset_bottom = 145.0
+scale = Vector2(1.5, 1.5)
+icon = ExtResource("17_v35ml")

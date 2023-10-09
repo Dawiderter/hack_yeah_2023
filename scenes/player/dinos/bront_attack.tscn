@@ -14,8 +14,6 @@ damage_on_enter = true
 destroy_on_hit = false
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_w6iof"]
-radius = 4.94975
-height = 28.2843
 
 [node name="bront_attack" type="Node2D"]
 script = ExtResource("1_8dh1t")

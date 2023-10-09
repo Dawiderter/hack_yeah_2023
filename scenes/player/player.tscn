@@ -1,7 +1,8 @@
-[gd_scene load_steps=7 format=3 uid="uid://bcm7pfx0qk8fj"]
+[gd_scene load_steps=8 format=3 uid="uid://bcm7pfx0qk8fj"]
 
 [ext_resource type="Script" path="res://scenes/player/player.gd" id="1_hhlf2"]
-[ext_resource type="PackedScene" uid="uid://c27kpi26mr4n5" path="res://scenes/ui/player_hud.tscn" id="3_4b2xp"]
+[ext_resource type="PackedScene" uid="uid://gjr71yfj8f01" path="res://scenes/ui/power_up.tscn" id="2_26xpj"]
+[ext_resource type="PackedScene" uid="uid://4xy8eaxa7myl" path="res://scenes/ui/player_hud.tscn" id="3_4b2xp"]
 [ext_resource type="PackedScene" uid="uid://cx3bl7sj2vgtn" path="res://scenes/hit/hitbox.tscn" id="3_mlk54"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_hj4o2"]
@@ -15,6 +16,7 @@ radius = 18.0
 
 [node name="player" type="CharacterBody2D" groups=["player"]]
 y_sort_enabled = true
+scale = Vector2(1.00429, 1)
 motion_mode = 1
 script = ExtResource("1_hhlf2")
 
@@ -25,7 +27,14 @@ shape = SubResource("CircleShape2D_hj4o2")
 zoom = Vector2(2, 2)
 position_smoothing_speed = 1.0
 
+[node name="power_up" parent="Camera2D" instance=ExtResource("2_26xpj")]
+visible = false
+visibility_layer = 524289
+z_index = 5
+scale = Vector2(0.46, 0.46)
+
 [node name="player_hud" parent="Camera2D" node_paths=PackedStringArray("player") instance=ExtResource("3_4b2xp")]
+z_index = 5
 offset_left = -251.0
 offset_top = -140.0
 offset_right = -251.0
@@ -50,4 +59,5 @@ shape = SubResource("CircleShape2D_mc7mr")
 
 [node name="TakeDamage" type="AudioStreamPlayer" parent="."]
 
+[connection signal="levelup" from="." to="Camera2D/power_up" method="_on_player_levelup"]
 [connection signal="on_hit" from="hitbox" to="." method="_on_hitbox_on_hit"]

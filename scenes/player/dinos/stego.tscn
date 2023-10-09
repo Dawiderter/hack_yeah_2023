@@ -5,7 +5,7 @@
 [ext_resource type="Texture2D" uid="uid://bn7p6mahdnrfg" path="res://scenes/assets/dinos/stego_walk.png" id="3_ubr4c"]
 [ext_resource type="PackedScene" uid="uid://bb28v0kht4nxk" path="res://scenes/hit/hurtbox.tscn" id="4_fjm2p"]
 [ext_resource type="Script" path="res://scenes/hit/hit_stats.gd" id="5_bkqan"]
-[ext_resource type="Texture2D" uid="uid://ddj25uqi6vk5g" path="res://scenes/assets/dinos/stego_circle.png" id="6_tq3nb"]
+[ext_resource type="Texture2D" uid="uid://dq4ve0ib8lds3" path="res://scenes/assets/dinos/stego_circle.png" id="6_tq3nb"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_81sam"]
 animations = [{
@@ -71,7 +71,6 @@ animations = [{
 [node name="stego" type="Node2D"]
 script = ExtResource("1_38ht6")
 player_keep_range = 50.0
-range_radius = 50.0
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_81sam")
