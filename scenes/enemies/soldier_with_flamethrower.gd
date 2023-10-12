@@ -2,6 +2,7 @@ extends CharacterBody2D
 
 @export var move_speed = 20
 @export var target: Marker2D
+@export var hit_time = 2
 
 @export var meat: PackedScene
 
@@ -10,12 +11,16 @@ extends CharacterBody2D
 @onready var health = max_health
 @onready var animation_tree: AnimationTree = $AnimationTree
 
+var timer = 0.0
 var impulse_vel: Vector2 = Vector2.ZERO
 
 var throwing: bool = false
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
+	if timer > 0.0:
+		timer -= delta
+		modulate = Color.from_hsv(0, (1 - health/max_health) * timer, 1)
 	var direction = (target.position - position).normalized()
 
 	velocity = impulse_vel + direction * move_speed
@@ -30,6 +35,7 @@ func _ready():
 
 func _on_hitbox_on_hit(hit_data : HitStats, source: Area2D):
 	health -= hit_data.damage_dealt
+	timer = hit_time
 	if health <= 0:
 		var droped_meat = meat.instantiate()
 		droped_meat.global_position = global_position

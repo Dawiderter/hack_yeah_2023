@@ -13,4 +13,4 @@ This is a simple game made for hackyeah 2023. But it is still work in progress.
 - [ ] enemies can spawn outside, add parachute to them
 - [ ] add minimap
 - [ ] add goals to game, collect all dinos and them travel throught the portal
-- [ ] add changing color of enemies when they are hitted. and also color should go from white to red white hp left
+- [x] add changing color of enemies when they are hitted. and also color should go from white to red white hp left
