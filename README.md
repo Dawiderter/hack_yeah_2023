@@ -13,6 +13,8 @@ This is a simple game made for hackyeah 2023. But it is still work in progress.
 - [ ] enemies can spawn outside, add parachute to them
     - [x] enemy can spawn with parachute
     - [ ] enemy will remove parachute when appropiate
+        - RayCast2D could deal with it
+        - change layers so 1 is only ground etc
     - [ ] add coresponding sprites
 - [ ] add minimap
 - [ ] add goals to game, collect all dinos and them travel throught the portal

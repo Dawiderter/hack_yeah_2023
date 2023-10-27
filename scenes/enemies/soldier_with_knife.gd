@@ -45,9 +45,7 @@ func remove_parachute():
 	speed = move_speed
 
 func _ready():
-	var colision := move_and_collide(Vector2.UP * epsilon)
-
-	if colision != null:
+	if $point.is_colliding():
 		put_parachute()
 	animation_tree.active=true
 
