@@ -1,6 +1,7 @@
 extends CharacterBody2D
 
 @export var move_speed = 20
+@export var parachute_speed = 10
 @export var target: Marker2D
 @export var hit_time = 2
 
@@ -13,7 +14,9 @@ extends CharacterBody2D
 
 var timer = 0.0
 var impulse_vel: Vector2 = Vector2.ZERO
+var speed = move_speed
 
+var parachute_on = false
 var throwing: bool = false
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -22,15 +25,33 @@ func _process(delta):
 		timer -= delta
 		modulate = Color.from_hsv(0, (1 - health/max_health) * timer, 1)
 	var direction = (target.position - position).normalized()
+	if parachute_on && !$point.is_colliding():
+		remove_parachute()
 
-	velocity = impulse_vel + direction * move_speed
+	velocity = impulse_vel + direction * speed
 
 	impulse_vel = impulse_vel.lerp(Vector2.ZERO,delta)
 
 	animation_tree["parameters/Move/blend_position"] = direction
 	move_and_slide()
 
+func put_parachute():
+	parachute_on = true
+	set_collision_mask_value(1, false)
+	set_collision_layer_value(1, false)
+	speed = parachute_speed
+	print("PARACHUTE")
+
+func remove_parachute():
+	parachute_on = false
+	set_collision_mask_value(1, true)
+	set_collision_layer_value(1, true)
+	speed = move_speed
+
 func _ready():
+	$point.force_raycast_update()
+	if $point.is_colliding():
+		put_parachute()
 	animation_tree.active=true
 
 func _on_hitbox_on_hit(hit_data : HitStats, source: Area2D):

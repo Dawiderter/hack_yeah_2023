@@ -1,7 +1,7 @@
 [gd_scene load_steps=19 format=3 uid="uid://bnr8o165fuypg"]
 
 [ext_resource type="Script" path="res://scenes/enemies/soldier_with_gun.gd" id="1_78kc1"]
-[ext_resource type="Texture2D" uid="uid://bc77qncpwkw0s" path="res://scenes/assets/army/army_gun.png" id="2_cmd8j"]
+[ext_resource type="Texture2D" uid="uid://chyxla1x7tpkd" path="res://scenes/assets/army/army_gun.png" id="2_cmd8j"]
 [ext_resource type="PackedScene" uid="uid://vk2t5vj7my06" path="res://scenes/enemies/meat.tscn" id="2_ktc1p"]
 [ext_resource type="PackedScene" uid="uid://cx3bl7sj2vgtn" path="res://scenes/hit/hitbox.tscn" id="3_086gr"]
 
@@ -169,7 +169,8 @@ transitions = ["Start", "Move", SubResource("AnimationNodeStateMachineTransition
 graph_offset = Vector2(-96, -6)
 
 [node name="soldier_with_gun" type="CharacterBody2D"]
-collision_layer = 2049
+collision_layer = 2050
+collision_mask = 3
 motion_mode = 1
 script = ExtResource("1_78kc1")
 move_speed = 40
@@ -180,7 +181,7 @@ max_health = 200.0
 texture = ExtResource("2_cmd8j")
 hframes = 3
 vframes = 4
-frame = 2
+frame = 8
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("CircleShape2D_g46v3")
@@ -207,6 +208,10 @@ parameters/Move/blend_position = Vector2(0.112069, -0.196507)
 [node name="cooldown" type="Timer" parent="."]
 wait_time = 0.5
 autostart = true
+
+[node name="point" type="RayCast2D" parent="."]
+target_position = Vector2(0, 0)
+hit_from_inside = true
 
 [connection signal="on_hit" from="hitbox" to="." method="_on_hitbox_on_hit"]
 [connection signal="timeout" from="cooldown" to="." method="_on_cooldown_timeout"]

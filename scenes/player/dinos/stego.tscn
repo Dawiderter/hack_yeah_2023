@@ -35,6 +35,7 @@ damage_dealt = 20.0
 knockback_strength = 200.0
 intensity_seconds = 0.5
 damage_on_enter = false
+destroy_on_hit = false
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_pypue"]
 radius = 0.01

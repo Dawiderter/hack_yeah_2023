@@ -25,6 +25,8 @@ func _process(delta):
 	var direction = (target.position - position).normalized()
 
 	velocity = impulse_vel + direction * speed
+	if parachute_on && !$point.is_colliding():
+		remove_parachute()
 
 	impulse_vel = impulse_vel.lerp(Vector2.ZERO,delta)
 
@@ -45,6 +47,7 @@ func remove_parachute():
 	speed = move_speed
 
 func _ready():
+	$point.force_raycast_update()
 	if $point.is_colliding():
 		put_parachute()
 	animation_tree.active=true

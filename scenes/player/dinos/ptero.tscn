@@ -41,6 +41,7 @@ damage_dealt = 100.0
 knockback_strength = 200.0
 intensity_seconds = 0.2
 damage_on_enter = false
+destroy_on_hit = false
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_bq8uj"]
 radius = 22.0227
