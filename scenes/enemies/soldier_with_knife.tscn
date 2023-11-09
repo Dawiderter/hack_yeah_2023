@@ -1,4 +1,4 @@
-[gd_scene load_steps=23 format=3 uid="uid://dpcyajl5r4fms"]
+[gd_scene load_steps=26 format=3 uid="uid://dpcyajl5r4fms"]
 
 [ext_resource type="Script" path="res://scenes/enemies/soldier_with_knife.gd" id="1_7fvfd"]
 [ext_resource type="Texture2D" uid="uid://ritxsg3yqhqx" path="res://scenes/assets/army/army_knife.png" id="2_rv35u"]
@@ -6,6 +6,7 @@
 [ext_resource type="PackedScene" uid="uid://cx3bl7sj2vgtn" path="res://scenes/hit/hitbox.tscn" id="3_t48p5"]
 [ext_resource type="PackedScene" uid="uid://bb28v0kht4nxk" path="res://scenes/hit/hurtbox.tscn" id="5_2go6a"]
 [ext_resource type="Script" path="res://scenes/hit/hit_stats.gd" id="6_mqgld"]
+[ext_resource type="Texture2D" uid="uid://dhis8ri0lyl8e" path="res://scenes/assets/army/army_knife_parachute.png" id="7_jval2"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_g46v3"]
 radius = 6.0
@@ -41,6 +42,18 @@ tracks/1/keys = {
 "update": 1,
 "values": [false]
 }
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Sprite2DParachute:frame")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
 
 [sub_resource type="Animation" id="Animation_p4ptn"]
 resource_name = "walk_left"
@@ -65,6 +78,30 @@ tracks/1/path = NodePath("Sprite2D:flip_h")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Sprite2DParachute:frame")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [1]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Sprite2DParachute:flip_h")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 1,
@@ -99,6 +136,30 @@ tracks/1/keys = {
 "update": 1,
 "values": [true]
 }
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Sprite2DParachute:frame")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [1]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Sprite2DParachute:flip_h")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
 
 [sub_resource type="Animation" id="Animation_201t0"]
 resource_name = "walk_up"
@@ -128,9 +189,53 @@ tracks/1/keys = {
 "update": 1,
 "values": [false]
 }
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Sprite2DParachute:frame")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [2]
+}
+
+[sub_resource type="Animation" id="Animation_5n76y"]
+resource_name = "Parachute"
+
+[sub_resource type="Animation" id="Animation_bl5br"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2DParachute:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Sprite2DParachute:flip_h")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_xjs0a"]
 _data = {
+"Parachute": SubResource("Animation_5n76y"),
+"RESET": SubResource("Animation_bl5br"),
 "walk_down": SubResource("Animation_vpf0m"),
 "walk_left": SubResource("Animation_p4ptn"),
 "walk_right": SubResource("Animation_p0j0h"),
@@ -193,7 +298,7 @@ max_health = 100.0
 texture = ExtResource("2_rv35u")
 hframes = 3
 vframes = 4
-frame = 8
+frame = 2
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("CircleShape2D_g46v3")
@@ -226,5 +331,12 @@ hit_data = SubResource("Resource_fo0rm")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="hurtbox"]
 shape = SubResource("CircleShape2D_bksm8")
+
+[node name="Sprite2DParachute" type="Sprite2D" parent="."]
+visible = false
+position = Vector2(0, -8)
+texture = ExtResource("7_jval2")
+flip_h = true
+hframes = 3
 
 [connection signal="on_hit" from="hitbox" to="." method="_on_hitbox_on_hit"]

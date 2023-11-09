@@ -34,6 +34,8 @@ func _process(delta):
 	move_and_slide()
 
 func put_parachute():
+	$Sprite2DParachute.visible = true;
+	$Sprite2D.visible = false;
 	parachute_on = true
 	set_collision_mask_value(1, false)
 	set_collision_layer_value(1, false)
@@ -41,6 +43,8 @@ func put_parachute():
 	print("PARACHUTE")
 
 func remove_parachute():
+	$Sprite2DParachute.visible = false;
+	$Sprite2D.visible = true;
 	parachute_on = false
 	set_collision_mask_value(1, true)
 	set_collision_layer_value(1, true)
