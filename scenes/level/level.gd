@@ -262,7 +262,7 @@ func generate_grass():
 				set_cell(FOLIAGE_LAYER, Vector2i(x, y), GRASS_TILESET_ID, Vector2i(0, 0))
 
 func generate_rocks():
-	var offset = (EDGE_WIDTH * jaggedness_coefficient * 1.5)
+	var offset = (EDGE_WIDTH * jaggedness_coefficient * 3.5)
 	var tiles = []
 	for y in range(-offset, rows + offset):
 		for x in range(-offset, columns + offset):

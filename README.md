@@ -16,7 +16,11 @@ This is a simple game made for hackyeah 2023. But it is still work in progress.
         - RayCast2D could deal with it
         - change layers so 1 is only ground etc
     - [ ] add coresponding sprites
-    - [ ] widen nomans land so enemies can't spawn outside of map
+        - [x] soldier with knife
+        - [ ] soldier with gun
+        - [ ] soldier with flamethrower
+        - [ ] tank
+    - [x] widen nomans land so enemies can't spawn outside of map
 - [ ] add minimap
 - [ ] add goals to game, collect all dinos and them travel throught the portal
 - [x] add changing color of enemies when they are hitted. and also color should go from white to red white hp left
