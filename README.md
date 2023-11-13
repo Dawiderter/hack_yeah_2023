@@ -24,5 +24,9 @@ This is a simple game made for hackyeah 2023. But it is still work in progress.
 - [ ] add minimap
 - [ ] add goals to game, collect all dinos and them travel throught the portal
 - [x] add changing color of enemies when they are hitted. and also color should go from white to red white hp left
-- [ ] by trying to make parachute work, i changed layers, now you can not pick up dinos, change that
+- [x] by trying to make parachute work, i changed layers, now you can not pick up dinos, change that
+    - nope, signals were disconected
+- [ ] There are black squares in map
+- [ ] MainMenu -> Cutscene -> world doesn't work properly
+
 

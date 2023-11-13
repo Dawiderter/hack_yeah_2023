@@ -53,7 +53,6 @@ func level_up():
 	$LevelUp.play()
 	pass
 
-
 func _on_area_2d_area_entered(area):
 	match area.dino_name:
 		"bront":

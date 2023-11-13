@@ -1,0 +1,12 @@
+[gd_scene load_steps=3 format=3 uid="uid://mhrssiawpqgh"]
+
+[ext_resource type="PackedScene" uid="uid://dwp8uyndy2qut" path="res://scenes/world/dino_collider.tscn" id="1_uac16"]
+[ext_resource type="PackedScene" uid="uid://bcm7pfx0qk8fj" path="res://scenes/player/player.tscn" id="2_ip8v2"]
+
+[node name="test" type="Node2D"]
+
+[node name="DinoCollider" parent="." instance=ExtResource("1_uac16")]
+position = Vector2(243, 207)
+
+[node name="player" parent="." instance=ExtResource("2_ip8v2")]
+position = Vector2(402, 242)

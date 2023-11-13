@@ -6,7 +6,7 @@
 size = Vector2(32, 32)
 
 [node name="DinoCollider" type="Area2D"]
-visible = false
+process_mode = 3
 collision_layer = 16
 collision_mask = 16
 monitoring = false
@@ -14,4 +14,5 @@ script = ExtResource("1_m0qx7")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("RectangleShape2D_wstg3")
-debug_color = Color(0.666667, 0.509804, 0.109804, 0.419608)
+one_way_collision_margin = 0.0
+debug_color = Color(0.666667, 0, 1, 0.419608)

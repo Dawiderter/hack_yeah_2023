@@ -17,6 +17,8 @@ radius = 18.0
 [node name="player" type="CharacterBody2D" groups=["player"]]
 y_sort_enabled = true
 scale = Vector2(1.00429, 1)
+collision_layer = 17
+collision_mask = 17
 motion_mode = 1
 script = ExtResource("1_hhlf2")
 
@@ -50,7 +52,6 @@ shape = SubResource("CircleShape2D_6ouy4")
 [node name="Area2D" type="Area2D" parent="."]
 collision_layer = 16
 collision_mask = 16
-monitorable = false
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
 shape = SubResource("CircleShape2D_mc7mr")
@@ -61,3 +62,4 @@ shape = SubResource("CircleShape2D_mc7mr")
 
 [connection signal="levelup" from="." to="Camera2D/power_up" method="_on_player_levelup"]
 [connection signal="on_hit" from="hitbox" to="." method="_on_hitbox_on_hit"]
+[connection signal="area_entered" from="Area2D" to="." method="_on_area_2d_area_entered"]
